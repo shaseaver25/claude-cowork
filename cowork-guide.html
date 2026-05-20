@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Cowork Field Guide</title>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body,p,h1,h2,h3,h4,ul,ol,dl,dd,figure,blockquote{margin:0;padding:0}
+:root{
+  --bg:#08080c;--text:#f5f5f7;--muted:rgba(255,255,255,0.65);--muted-2:rgba(255,255,255,0.55);--muted-3:rgba(255,255,255,0.45);
+  --border:rgba(255,255,255,0.08);--border-strong:rgba(255,255,255,0.14);
+  --violet:#a78bfa;--pink:#ec4899;--sky:#38bdf8;--amber:#f59e0b;--emerald:#10b981;--fuchsia:#d946ef;--rose:#f43f5e;--indigo:#6366f1;--teal:#14b8a6;--orange:#f97316;--yellow:#eab308;--cyan:#06b6d4;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh}
+a{color:inherit;text-decoration:none}
+button{font:inherit;background:none;border:0;cursor:pointer;color:inherit}
+svg{display:block}
+ul,ol{list-style:none}
+
+/* Ambient background blobs */
+.ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.ambient::before,.ambient::after,.ambient .blob3{content:'';position:absolute;width:60vw;height:60vw;border-radius:50%;filter:blur(120px);opacity:0.35}
+.ambient::before{background:radial-gradient(circle,var(--violet),transparent 60%);top:-20vw;left:-10vw}
+.ambient::after{background:radial-gradient(circle,var(--pink),transparent 60%);bottom:-25vw;right:-15vw}
+.ambient .blob3{width:45vw;height:45vw;opacity:0.25;background:radial-gradient(circle,var(--sky),transparent 60%);top:40vh;left:30vw}
+
+/* Layout */
+.container{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+.container-narrow{max-width:56rem;margin:0 auto;padding:0 1.5rem}
+.section{padding:5rem 0;position:relative}
+.section-sm{padding:4rem 0;position:relative}
+
+/* Typography */
+.eyebrow{color:var(--violet);font-size:0.8125rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:0.75rem;display:block}
+.h1{font-size:clamp(2.5rem,7vw,4.5rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;margin-bottom:1.5rem}
+.h2{font-size:clamp(1.875rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin-bottom:0.75rem}
+.h3{font-size:1.125rem;font-weight:600;line-height:1.3;margin-bottom:0.5rem}
+.lead{font-size:1.0625rem;color:rgba(255,255,255,0.7);line-height:1.65;max-width:42rem;margin-bottom:2rem}
+@media(min-width:768px){.lead{font-size:1.125rem}}
+.section-sub{color:rgba(255,255,255,0.65);max-width:42rem;margin-bottom:2.5rem;line-height:1.6;font-size:0.9375rem}
+.muted{color:rgba(255,255,255,0.65)}
+.muted-2{color:rgba(255,255,255,0.55)}
+.muted-3{color:rgba(255,255,255,0.45)}
+.small{font-size:0.875rem}
+.xs{font-size:0.75rem}
+
+.grad-text{background:linear-gradient(135deg,#fff 0%,#c4b5fd 40%,#f0abfc 70%,#fda4af 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.grad-text-soft{background:linear-gradient(135deg,#c4b5fd,#f0abfc);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Nav */
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);z-index:50;background:rgba(10,10,15,0.7);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%);border:1px solid rgba(255,255,255,0.08);border-radius:9999px;padding:0.5rem;display:none;align-items:center;gap:0.25rem;font-size:0.875rem}
+@media(min-width:768px){.nav{display:flex}}
+.nav a{padding:0.375rem 0.875rem;border-radius:9999px;color:rgba(255,255,255,0.8);transition:all 0.2s ease}
+.nav a:hover{background:rgba(255,255,255,0.08);color:#fff}
+.nav a.brand{color:#fff;font-weight:600;display:flex;align-items:center;gap:0.5rem;padding-left:0.875rem}
+.nav-dot{width:0.5rem;height:0.5rem;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--pink))}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.75rem 1.5rem;border-radius:9999px;font-weight:600;font-size:0.9375rem;transition:all 0.2s ease;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;box-shadow:0 10px 30px -10px rgba(167,139,250,0.5)}
+.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 14px 36px -10px rgba(236,72,153,0.55)}
+.btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.12)}
+.btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.22)}
+
+/* Hero */
+.hero{padding:8rem 1.5rem 6rem;position:relative}
+.hero-inner{max-width:72rem;margin:0 auto;position:relative}
+.badge{display:inline-flex;align-items:center;gap:0.5rem;padding:0.375rem 0.875rem;border-radius:9999px;background:rgba(255,255,255,0.05);border:1px solid var(--border);font-size:0.75rem;color:rgba(255,255,255,0.85);margin-bottom:1.5rem;backdrop-filter:blur(16px)}
+.dot-live{width:0.4rem;height:0.4rem;border-radius:50%;background:var(--emerald);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-actions{display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:3rem}
+
+.stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem}
+@media(min-width:768px){.stat-row{grid-template-columns:repeat(4,1fr)}}
+.stat{background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:1rem;padding:1rem;backdrop-filter:blur(16px)}
+.stat-num{font-size:1.875rem;font-weight:700;line-height:1}
+.stat-label{font-size:0.75rem;color:rgba(255,255,255,0.6);margin-top:0.375rem}
+
+/* Three-feature row */
+.feat-row{display:grid;grid-template-columns:1fr;gap:1.25rem}
+@media(min-width:768px){.feat-row{grid-template-columns:repeat(3,1fr)}}
+.feat-card{background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:1rem;padding:1.5rem;transition:all 0.25s ease}
+.feat-card:hover{transform:translateY(-3px);border-color:rgba(167,139,250,0.4);box-shadow:0 16px 40px -16px rgba(167,139,250,0.3)}
+.feat-icon{width:2.75rem;height:2.75rem;border-radius:0.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.feat-card h3{font-size:1.0625rem;font-weight:600;margin-bottom:0.5rem}
+.feat-card p{font-size:0.875rem;color:rgba(255,255,255,0.65);line-height:1.6}
+
+/* Icon backgrounds */
+.ic-violet{background:rgba(167,139,250,0.18);border:1px solid rgba(167,139,250,0.35);color:#c4b5fd}
+.ic-pink{background:rgba(236,72,153,0.18);border:1px solid rgba(236,72,153,0.35);color:#f9a8d4}
+.ic-sky{background:rgba(56,189,248,0.18);border:1px solid rgba(56,189,248,0.35);color:#7dd3fc}
+.ic-amber{background:rgba(245,158,11,0.18);border:1px solid rgba(245,158,11,0.35);color:#fcd34d}
+.ic-emerald{background:rgba(16,185,129,0.18);border:1px solid rgba(16,185,129,0.35);color:#6ee7b7}
+.ic-fuchsia{background:rgba(217,70,239,0.18);border:1px solid rgba(217,70,239,0.35);color:#e879f9}
+.ic-rose{background:rgba(244,63,94,0.18);border:1px solid rgba(244,63,94,0.35);color:#fda4af}
+.ic-indigo{background:rgba(99,102,241,0.18);border:1px solid rgba(99,102,241,0.35);color:#a5b4fc}
+.ic-teal{background:rgba(20,184,166,0.18);border:1px solid rgba(20,184,166,0.35);color:#5eead4}
+.ic-orange{background:rgba(249,115,22,0.18);border:1px solid rgba(249,115,22,0.35);color:#fdba74}
+.ic-yellow{background:rgba(234,179,8,0.18);border:1px solid rgba(234,179,8,0.35);color:#fde047}
+.ic-cyan{background:rgba(6,182,212,0.18);border:1px solid rgba(6,182,212,0.35);color:#67e8f9}
+.icon{width:1.375rem;height:1.375rem}
+.icon-sm{width:1.125rem;height:1.125rem}
+
+/* Quick start steps */
+.steps{display:flex;flex-direction:column;gap:1rem}
+.step-card{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid var(--border-strong);border-radius:1.25rem;padding:2rem;display:flex;align-items:flex-start;gap:1.25rem;transition:all 0.25s ease}
+.step-card:hover{transform:translateY(-2px);border-color:rgba(167,139,250,0.35);box-shadow:0 16px 40px -16px rgba(167,139,250,0.3)}
+.step-num{background:linear-gradient(135deg,var(--violet),var(--pink));color:#fff;font-weight:700;width:2.5rem;height:2.5rem;border-radius:9999px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
+.step-num-sm{width:1.5rem;height:1.5rem;font-size:0.75rem}
+.step-body h3{font-size:1.25rem;font-weight:600;margin-bottom:0.5rem}
+.step-body p{color:rgba(255,255,255,0.7);font-size:0.9375rem;line-height:1.6;margin-bottom:1rem}
+.step-body .note{font-size:0.8125rem;color:rgba(255,255,255,0.6);line-height:1.6;margin-top:0.5rem}
+.step-body .note b{color:rgba(255,255,255,0.9);font-weight:600}
+
+/* Capability grid */
+.cap-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:640px){.cap-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.cap-grid{grid-template-columns:repeat(3,1fr)}}
+.cap-card{display:flex;align-items:flex-start;gap:0.875rem;background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:1rem;padding:1.25rem;transition:all 0.25s ease}
+.cap-card:hover{transform:translateY(-3px);border-color:rgba(167,139,250,0.4);box-shadow:0 16px 40px -16px rgba(167,139,250,0.3)}
+.cap-icon{width:2.5rem;height:2.5rem;border-radius:0.5rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cap-card h3{font-weight:600;margin-bottom:0.25rem;font-size:0.9375rem;color:#fff}
+.cap-card p{font-size:0.8125rem;color:rgba(255,255,255,0.6);line-height:1.55}
+
+/* Accordion tutorials */
+.accordion{display:flex;flex-direction:column;gap:0.75rem}
+.acc{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid var(--border-strong);border-radius:1rem;overflow:hidden}
+.acc summary{list-style:none;cursor:pointer;padding:1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.acc summary::-webkit-details-marker{display:none}
+.acc-head{display:flex;align-items:center;gap:1rem;flex:1;min-width:0}
+.acc-icon{width:2.5rem;height:2.5rem;border-radius:0.5rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.acc-title{font-size:1.125rem;font-weight:600;color:#fff}
+.acc-sub{font-size:0.875rem;color:rgba(255,255,255,0.55);margin-top:0.125rem}
+.acc-chev{width:1.25rem;height:1.25rem;color:rgba(255,255,255,0.55);transition:transform 0.25s ease;flex-shrink:0}
+.acc[open] .acc-chev{transform:rotate(180deg)}
+.acc-body{padding:1.25rem 1.5rem 1.75rem;border-top:1px solid rgba(255,255,255,0.06)}
+.acc-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-bottom:1.5rem}
+@media(min-width:768px){.acc-grid{grid-template-columns:repeat(2,1fr)}}
+.acc-label{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.5rem;color:var(--violet)}
+.acc-label.pink{color:#f9a8d4}
+.acc-label.sky{color:#7dd3fc}
+.acc-label.amber{color:#fcd34d}
+.acc-label.emerald{color:#6ee7b7}
+.acc-label.fuchsia{color:#e879f9}
+.acc-label.rose{color:#fda4af}
+.acc-label.indigo{color:#a5b4fc}
+.acc-label.teal{color:#5eead4}
+.acc-label.orange{color:#fdba74}
+.acc-label.yellow{color:#fde047}
+.acc-label.cyan{color:#67e8f9}
+.acc-text{font-size:0.875rem;color:rgba(255,255,255,0.72);line-height:1.65}
+
+.steps-list{display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.5rem}
+.steps-list li{display:flex;gap:0.75rem;align-items:flex-start;font-size:0.875rem;color:rgba(255,255,255,0.78);line-height:1.55}
+
+.note-callout{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.25);border-left:3px solid rgba(245,158,11,0.7);border-radius:0.625rem;padding:0.875rem 1rem;margin-bottom:1.25rem;font-size:0.875rem;color:rgba(255,255,255,0.75);line-height:1.6}
+.note-callout b{color:#fcd34d;font-weight:600}
+
+.prompts-grid{display:grid;grid-template-columns:1fr;gap:0.75rem}
+@media(min-width:768px){.prompts-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* Prompt cards */
+.prompt{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:0.875rem;padding:1rem;text-align:left;width:100%;cursor:pointer;transition:all 0.2s ease;display:block;color:inherit}
+.prompt:hover{border-color:rgba(167,139,250,0.45);background:rgba(167,139,250,0.06)}
+.prompt-label{font-size:0.6875rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:0.375rem;text-transform:uppercase;letter-spacing:0.05em}
+.prompt-text{font-family:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;font-size:0.8125rem;line-height:1.55;color:#f5f5f7}
+.prompt:hover .prompt-text{color:#fff}
+
+/* Try-saying inline card (used in step body) */
+.try-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:0.75rem;padding:1rem;margin-bottom:0.75rem}
+.try-card .prompt-label{margin-bottom:0.375rem}
+.try-card .prompt-text{font-size:0.875rem}
+.try-card .accent{color:var(--violet)}
+
+/* Role tabs */
+.role-tabs{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
+.role-tab{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:rgba(255,255,255,0.85);padding:0.5rem 1rem;border-radius:9999px;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.2s ease}
+.role-tab:hover{background:rgba(255,255,255,0.08);color:#fff}
+.role-tab.active{background:linear-gradient(135deg,rgba(167,139,250,0.3),rgba(236,72,153,0.3));border-color:rgba(167,139,250,0.55);color:#fff}
+
+/* Tiles */
+.tile-grid{display:grid;grid-template-columns:1fr;gap:0.75rem}
+@media(min-width:640px){.tile-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:768px){.tile-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1024px){.tile-grid{grid-template-columns:repeat(4,1fr)}}
+.tile{background:linear-gradient(180deg,rgba(255,255,255,0.05),rgba(255,255,255,0.02));border:1px solid var(--border);border-radius:0.75rem;padding:1rem;transition:all 0.25s ease}
+.tile:hover{transform:translateY(-2px);border-color:rgba(167,139,250,0.35)}
+.tile-title{font-weight:600;margin-bottom:0.25rem;font-size:0.9375rem;color:#fff}
+.tile-desc{font-size:0.75rem;color:rgba(255,255,255,0.6);line-height:1.55}
+
+.skills-grid{display:grid;grid-template-columns:1fr;gap:0.75rem}
+@media(min-width:640px){.skills-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.skills-grid{grid-template-columns:repeat(3,1fr)}}
+
+/* Pills */
+.pill{display:inline-block;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);color:#cfcfdc;font-size:0.6875rem;padding:0.1875rem 0.625rem;border-radius:9999px;font-weight:500}
+.pill-violet{background:rgba(167,139,250,0.16);border-color:rgba(167,139,250,0.35);color:#ddd6fe}
+.pill-pink{background:rgba(236,72,153,0.16);border-color:rgba(236,72,153,0.35);color:#fbcfe8}
+.pill-sky{background:rgba(56,189,248,0.16);border-color:rgba(56,189,248,0.35);color:#bae6fd}
+.pill-amber{background:rgba(245,158,11,0.16);border-color:rgba(245,158,11,0.35);color:#fde68a}
+
+/* Prompt library categories */
+.cat-section{margin-bottom:2.5rem}
+.cat-header{display:flex;align-items:center;gap:0.5rem;font-size:1.0625rem;font-weight:600;margin-bottom:0.875rem}
+
+/* Tip cards */
+.tip-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:768px){.tip-grid{grid-template-columns:repeat(2,1fr)}}
+.tip-card{background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03));border:1px solid var(--border-strong);border-radius:1rem;padding:1.5rem;transition:all 0.25s ease}
+.tip-card:hover{transform:translateY(-3px);border-color:rgba(167,139,250,0.4)}
+.tip-card .pill{margin-bottom:0.75rem}
+.tip-card h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem;color:#fff}
+.tip-card p{font-size:0.875rem;color:rgba(255,255,255,0.7);line-height:1.6}
+
+/* Footer */
+footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-top:2rem}
+.footer-row{display:flex;flex-direction:column;gap:1.5rem;max-width:72rem;margin:0 auto}
+@media(min-width:768px){.footer-row{flex-direction:row;align-items:flex-end;justify-content:space-between}}
+.footer-brand{display:flex;align-items:center;gap:0.5rem;font-weight:600;margin-bottom:0.75rem}
+.footer-desc{font-size:0.875rem;color:rgba(255,255,255,0.55);max-width:28rem;line-height:1.6}
+.footer-meta{font-size:0.8125rem;color:rgba(255,255,255,0.45)}
+
+/* Toast */
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:rgba(20,20,28,0.95);border:1px solid rgba(167,139,250,0.5);color:#fff;padding:0.625rem 1.125rem;border-radius:0.75rem;font-size:0.875rem;font-weight:500;opacity:0;transition:opacity 0.2s ease,transform 0.2s ease;pointer-events:none;z-index:100}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-0.5rem)}
+
+/* Screenshots in tutorials and worked examples */
+.screenshot{display:block;max-width:100%;height:auto;border-radius:0.75rem;border:1px solid var(--border-strong);margin:1rem auto 0.5rem;box-shadow:0 20px 50px -20px rgba(0,0,0,0.6),0 0 0 1px rgba(255,255,255,0.04)}
+.screenshot-caption{font-size:0.8125rem;color:rgba(255,255,255,0.6);text-align:center;margin:0 auto 1rem;max-width:42rem;line-height:1.5}
+.screenshot-frame{background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));border:1px solid var(--border);border-radius:1rem;padding:1.25rem;margin-top:1rem}
+.kbd{display:inline-block;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:0.8125rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);border-radius:0.375rem;padding:0.125rem 0.5rem;color:#f5f5f7;font-weight:500}
+.callout-skill{background:rgba(217,70,239,0.06);border:1px solid rgba(217,70,239,0.2);border-left:3px solid rgba(217,70,239,0.6);border-radius:0.625rem;padding:1rem 1.25rem;margin:1rem 0;font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.6}
+.callout-skill b{color:#f0abfc}
+.callout-skill code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:0.875rem;background:rgba(217,70,239,0.18);padding:0.125rem 0.375rem;border-radius:0.25rem;color:#f5d0fe}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.16)}
+
+/* Noise overlay (subtle texture) */
+.noise{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.5'/></svg>");opacity:0.04;pointer-events:none;position:absolute;inset:0}
+
+/* Cross-section ref link */
+.xref{color:#e879f9;text-decoration:underline;text-decoration-color:rgba(217,70,239,0.5);text-underline-offset:3px}
+.xref:hover{text-decoration-color:#e879f9}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<!-- NAV -->
+<nav class="nav" id="top-anchor">
+  <a href="#top" class="brand"><span class="nav-dot"></span>Cowork Guide</a>
+  <a href="#start">Get Started</a>
+  <a href="#capabilities">Capabilities</a>
+  <a href="#walkthroughs">Tutorials</a>
+  <a href="#activate-bundle">Worked example</a>
+  <a href="#skills">Skills</a>
+  <a href="#connectors">Connectors</a>
+  <a href="#prompts">Prompts</a>
+  <a href="#tips">Tips</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="noise"></div>
+  <div class="hero-inner">
+    <span class="badge"><span class="dot-live"></span> A field guide to Claude's Cowork mode</span>
+    <h1 class="h1 grad-text">Claude doesn't just<br/>chat. It works<br/>alongside you.</h1>
+    <p class="lead">Cowork mode turns Claude into a hands-on collaborator on your real computer &mdash; reading your files, running your tools, controlling your apps, and remembering what matters across sessions.</p>
+    <div class="hero-actions">
+      <a href="#start" class="btn btn-primary">Start the walkthrough
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#capabilities" class="btn btn-secondary">See what it can do</a>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num grad-text-soft">80+</div><div class="stat-label">Built-in skills</div></div>
+      <div class="stat"><div class="stat-num grad-text-soft">30+</div><div class="stat-label">App connectors</div></div>
+      <div class="stat"><div class="stat-num grad-text-soft">&infin;</div><div class="stat-label">Memory across sessions</div></div>
+      <div class="stat"><div class="stat-num grad-text-soft">1</div><div class="stat-label">App on your Mac</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE LAYERS -->
+<section class="section-sm">
+  <div class="container">
+    <span class="eyebrow">The shape of it</span>
+    <h2 class="h2">Three layers, one assistant.</h2>
+    <div style="height:1.5rem"></div>
+    <div class="feat-row">
+      <div class="feat-card">
+        <div class="feat-icon ic-violet"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Your files</h3>
+        <p>Pick a folder on your computer. Claude can read, write, and edit files in it &mdash; docs, spreadsheets, decks, PDFs, code, anything.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon ic-pink"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Your computer</h3>
+        <p>With your permission, Claude can take screenshots, click, type, and drive native apps &mdash; Finder, Notes, Maps, third-party software, anything.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon ic-sky"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+        <h3>Your tools</h3>
+        <p>Connect Gmail, Slack, Notion, Linear, Figma, Drive, and 30+ more. Claude reads from and acts in your real workplace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK START -->
+<section class="section" id="start">
+  <div class="container">
+    <span class="eyebrow">Quick start</span>
+    <h2 class="h2">Get to your first win in five minutes.</h2>
+    <p class="section-sub">If you do nothing else from this guide, do these three things. After that, Cowork can already do useful work.</p>
+
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Pick a folder for Claude to work in</h3>
+          <p>Cowork needs a workspace. Pick a folder where finished outputs should land &mdash; a project folder, a Documents subfolder, anything sensible. Claude can read and write files there. Files outside that folder are off-limits unless you grant access.</p>
+          <div class="try-card">
+            <div class="prompt-label">Try saying</div>
+            <div class="prompt-text">"Let's use my <span class="accent">~/Documents/Projects/marketing</span> folder for this session."</div>
+          </div>
+          <div class="note"><b>Heads up:</b> Cowork has two file areas. The folder you pick (where your real work lives) and a hidden temporary scratchpad (where Claude drafts things you don't need to see). Final outputs always land in your folder with a clickable link.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Connect one tool you use every day</h3>
+          <p>A connected tool turns Claude from a smart chat into a coworker. Start with the one you live in. Gmail, Calendar, Slack, Notion, or Linear are common first picks.</p>
+          <div class="try-card">
+            <div class="prompt-label">Try saying</div>
+            <div class="prompt-text">"Connect Gmail so you can help me triage email."</div>
+          </div>
+          <div class="note"><b>How it works:</b> Claude opens an OAuth flow in your browser. You approve, and the connection persists across sessions. You can revoke it anytime.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Run one real task end to end</h3>
+          <p>Don't test Cowork with a toy prompt. Ask it to do something you'd otherwise do yourself today. The point is to see it complete a real loop &mdash; read source data, do the work, hand you a deliverable.</p>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Summarize my unread email from this week and flag anything I need to act on.">
+              <div class="prompt-label">If you connected Gmail</div>
+              <div class="prompt-text">Summarize my unread email from this week and flag anything I need to act on.</div>
+            </button>
+            <button class="prompt copy-prompt" data-prompt="Prep me for tomorrow — what's on my calendar, who's attending, and what should I prepare for each meeting?">
+              <div class="prompt-label">If you connected Calendar</div>
+              <div class="prompt-text">Prep me for tomorrow &mdash; what's on my calendar, who's attending, and what should I prepare for each meeting?</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES GRID -->
+<section class="section" id="capabilities">
+  <div class="container">
+    <span class="eyebrow">What it can do</span>
+    <h2 class="h2">Twelve capabilities, one app.</h2>
+    <p class="section-sub">Each tile links to a tutorial walkthrough further down the page. Skim, then dive into the ones that match your work.</p>
+
+    <div class="cap-grid">
+      <a href="#cap-files" class="cap-card"><div class="cap-icon ic-violet"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><div><h3>Files &amp; folders</h3><p>Read, write, edit, reorganize files in a folder you pick.</p></div></a>
+      <a href="#cap-code" class="cap-card"><div class="cap-icon ic-pink"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div><h3>Run code</h3><p>Sandboxed Linux for Python, Node, data processing, scripts.</p></div></a>
+      <a href="#cap-computer" class="cap-card"><div class="cap-icon ic-sky"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h3>Control your computer</h3><p>Screenshots, clicks, typing in native desktop apps.</p></div></a>
+      <a href="#cap-browser" class="cap-card"><div class="cap-icon ic-amber"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><div><h3>Drive your browser</h3><p>Navigate, fill forms, scrape pages via Claude in Chrome.</p></div></a>
+      <a href="#cap-connectors" class="cap-card"><div class="cap-icon ic-emerald"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 10a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><div><h3>Connect your apps (MCP)</h3><p>Gmail, Slack, Notion, Linear, Figma, Drive, 30+ more.</p></div></a>
+      <a href="#cap-skills" class="cap-card"><div class="cap-icon ic-fuchsia"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 7.36H22l-6.18 4.49 2.36 7.36L12 16.7l-6.18 4.51 2.36-7.36L2 9.36h7.61z"/></svg></div><div><h3>Skills</h3><p>Pre-built playbooks for sales, marketing, eng, legal, design.</p></div></a>
+      <a href="#cap-plugins" class="cap-card"><div class="cap-icon ic-indigo"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><h3>Plugins</h3><p>Bundles of skills + connectors. Install by role.</p></div></a>
+      <a href="#cap-memory" class="cap-card"><div class="cap-icon ic-rose"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h3>Persistent memory</h3><p>Remembers you, your preferences, your projects across sessions.</p></div></a>
+      <a href="#cap-schedule" class="cap-card"><div class="cap-icon ic-teal"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Scheduled tasks</h3><p>Run on a cadence &mdash; daily briefings, weekly digests, reminders.</p></div></a>
+      <a href="#cap-artifacts" class="cap-card"><div class="cap-icon ic-orange"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div><h3>Live artifacts</h3><p>HTML pages that persist and refresh data each time you open them.</p></div></a>
+      <a href="#cap-viz" class="cap-card"><div class="cap-icon ic-yellow"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div><div><h3>Inline visualizations</h3><p>Diagrams, charts, mockups, interactive widgets in chat.</p></div></a>
+      <a href="#cap-agents" class="cap-card"><div class="cap-icon ic-cyan"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><h3>Subagents</h3><p>Delegate heavy work &mdash; research, code review, parallel searches.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIAL WALKTHROUGHS -->
+<section class="section" id="walkthroughs">
+  <div class="container-narrow">
+    <span class="eyebrow">Tutorials</span>
+    <h2 class="h2">Tutorial walkthroughs.</h2>
+    <p class="section-sub">Click any section to expand. Each tutorial has: what it is, when to reach for it, a step-by-step walkthrough, and copy-paste prompts.</p>
+
+    <div class="accordion">
+
+      <!-- Files -->
+      <details class="acc" id="cap-files">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-violet"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+            <div><div class="acc-title">Files &amp; folders</div><div class="acc-sub">Read, write, edit, and reorganize files in a folder you pick.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label">What it is</div><div class="acc-text">Claude can read every file in the folder you select (Word, Excel, PowerPoint, PDF, CSV, code, plain text, images) and create or edit files in that same folder. New deliverables show up as clickable links right in chat.</div></div>
+            <div><div class="acc-label">When to reach for it</div><div class="acc-text">Any time the work touches files you'd otherwise open by hand. Reports, spreadsheet cleanup, batch renames, format conversions, content drafts that live as documents.</div></div>
+          </div>
+          <div class="acc-label">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Open Cowork and select a folder. Claude can now see what's in it.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Ask a question about the contents ("what's in this folder?", "summarize the deck named Q2 launch").</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Ask for an output. Claude builds the file in your folder and gives you a link to open it.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Iterate. "Make the executive summary tighter." "Add a chart for the regional breakdown."</div></li>
+          </ol>
+          <div class="acc-label">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Read every file in this folder and give me a one-line summary of each. Group similar files together."><div class="prompt-label">Audit a folder</div><div class="prompt-text">Read every file in this folder and give me a one-line summary of each. Group similar files together.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Take the data in sales-q1.xlsx and build a one-page executive summary as a Word doc. Include a chart showing revenue by region."><div class="prompt-label">Build a deliverable from data</div><div class="prompt-text">Take the data in sales-q1.xlsx and build a one-page executive summary as a Word doc. Include a chart showing revenue by region.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Convert every .docx in this folder to PDF and put them in a /pdf subfolder. Keep the originals."><div class="prompt-label">Batch convert</div><div class="prompt-text">Convert every .docx in this folder to PDF and put them in a /pdf subfolder. Keep the originals.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Clean up this messy CSV — fix the misaligned headers, standardize dates to YYYY-MM-DD, and split it into one file per region."><div class="prompt-label">Clean and split</div><div class="prompt-text">Clean up this messy CSV &mdash; fix the misaligned headers, standardize dates to YYYY-MM-DD, and split it into one file per region.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Code -->
+      <details class="acc" id="cap-code">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-pink"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <div><div class="acc-title">Run code in a sandbox</div><div class="acc-sub">A real Linux environment for Python, Node, and shell scripts.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label pink">What it is</div><div class="acc-text">An isolated Linux environment with Python, Node, and common CLI tools. Claude can install packages, process data, run analyses, and emit files into your workspace.</div></div>
+            <div><div class="acc-label pink">When to reach for it</div><div class="acc-text">Anything computational: cleaning datasets, transforming files, running statistical analysis, generating charts, scraping structured data, or one-off scripts you'd otherwise write by hand.</div></div>
+          </div>
+          <div class="acc-label pink">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Hand Claude a file (CSV, JSON, log, anything) or describe a computation.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Claude writes the script and runs it. You see the output (and the code, if you ask).</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Results get written back into your folder &mdash; a new spreadsheet, a chart image, a cleaned dataset.</div></li>
+          </ol>
+          <div class="acc-label pink">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Load survey-results.csv and tell me the top 3 themes in the open-ended responses. Then build a bar chart of NPS by segment."><div class="prompt-label">Analyze survey data</div><div class="prompt-text">Load survey-results.csv and tell me the top 3 themes in the open-ended responses. Then build a bar chart of NPS by segment.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Take all the JSON files in /logs and aggregate the error counts by day. Output a CSV and a line chart."><div class="prompt-label">Aggregate logs</div><div class="prompt-text">Take all the JSON files in /logs and aggregate the error counts by day. Output a CSV and a line chart.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Computer use -->
+      <details class="acc" id="cap-computer">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-sky"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div><div class="acc-title">Control your computer</div><div class="acc-sub">Screenshots, clicks, typing in native desktop apps.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label sky">What it is</div><div class="acc-text">Claude can take a screenshot of your screen and drive your computer with mouse and keyboard. Useful for native apps like Notes, Finder, Maps, System Settings, Photos, or any third-party desktop app without an API.</div></div>
+            <div><div class="acc-label sky">When to reach for it</div><div class="acc-text">When the work is in a desktop app and there's no MCP for it. Cross-app workflows (drag from one app to another). Anything where the only interface is the GUI.</div></div>
+          </div>
+          <div class="acc-label sky">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude to do something on your desktop. It will request permission for the apps it needs.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Approve each app explicitly. Some apps get restricted tiers (browsers and IDEs are visible but read-only or click-only by default &mdash; for safety).</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Claude takes screenshots to look at your screen, then clicks and types. You can watch it work.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>You can interrupt anytime by moving the mouse or telling it to stop.</div></li>
+          </ol>
+          <div class="note-callout"><b>Safety guardrails:</b> Claude will not execute trades, send money, or initiate transfers &mdash; even in apps where it has full access. For browsers it defaults to read-only (use the Chrome extension for navigation).</div>
+          <div class="acc-label sky">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Open Finder, find every screenshot I took this week in ~/Desktop, and move them into a 'Screenshots/2026-W21' folder."><div class="prompt-label">Tidy desktop</div><div class="prompt-text">Open Finder, find every screenshot I took this week in ~/Desktop, and move them into a 'Screenshots/2026-W21' folder.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Walk me through how to set up Focus mode in System Settings — show me each click."><div class="prompt-label">Teach mode</div><div class="prompt-text">Walk me through how to set up Focus mode in System Settings &mdash; show me each click.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Browser -->
+      <details class="acc" id="cap-browser">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-amber"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+            <div><div class="acc-title">Drive your browser</div><div class="acc-sub">Navigate, fill forms, extract page content via Claude in Chrome.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label amber">What it is</div><div class="acc-text">A Chrome extension that lets Claude see and act on web pages through the DOM, not by clicking pixels. Much faster and more reliable than computer use for web apps.</div></div>
+            <div><div class="acc-label amber">When to reach for it</div><div class="acc-text">Any web app that doesn't have its own MCP. Booking flights, filling expense reports, scraping a SaaS dashboard, navigating internal tools.</div></div>
+          </div>
+          <div class="acc-label amber">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Install the Claude in Chrome extension (Claude will prompt you the first time).</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Ask Claude to do something in a browser. It will open or use an existing tab.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>It reads the page, clicks the right elements, fills inputs, and reports back what it did.</div></li>
+          </ol>
+          <div class="acc-label amber">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Go to my Concur expense page, find every receipt from May that hasn't been categorized, and categorize them based on the vendor."><div class="prompt-label">Tame expenses</div><div class="prompt-text">Go to my Concur expense page, find every receipt from May that hasn't been categorized, and categorize them based on the vendor.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Pull the top 50 results from this Zillow search and put them in a spreadsheet with price, beds, sqft, and the link."><div class="prompt-label">Scrape a result list</div><div class="prompt-text">Pull the top 50 results from this Zillow search and put them in a spreadsheet with price, beds, sqft, and the link.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Connectors -->
+      <details class="acc" id="cap-connectors">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-emerald"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 10a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+            <div><div class="acc-title">Connect your apps (MCP)</div><div class="acc-sub">Gmail, Slack, Notion, Linear, Figma, Drive &mdash; 30+ connectors.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label emerald">What it is</div><div class="acc-text">MCP (Model Context Protocol) connectors are official integrations with apps you already use. Each gives Claude read and write access through proper APIs &mdash; fast, structured, permission-gated.</div></div>
+            <div><div class="acc-label emerald">When to reach for it</div><div class="acc-text">Whenever you'd otherwise alt-tab into an app to look something up, paste it somewhere, or send something. Connect it once, then ask Claude.</div></div>
+          </div>
+          <div class="acc-label emerald">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude what connectors are available, or directly ask it to connect a specific tool.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Claude opens an OAuth approval page in your browser. Confirm.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>That connector now persists across sessions. Claude can use it any time.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>To revoke, ask Claude to disconnect it (or do it from the connectors panel).</div></li>
+          </ol>
+          <div class="acc-label emerald">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="What connectors do I have set up? Suggest three more I should add given that I work in marketing."><div class="prompt-label">Audit your connectors</div><div class="prompt-text">What connectors do I have set up? Suggest three more I should add given that I work in marketing.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Cross-reference my open Linear tickets with the threads in #engineering on Slack — flag anything where there's been discussion that hasn't made it into the ticket."><div class="prompt-label">Cross-tool work</div><div class="prompt-text">Cross-reference my open Linear tickets with the threads in #engineering on Slack &mdash; flag anything where there's been discussion that hasn't made it into the ticket.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Skills -->
+      <details class="acc" id="cap-skills">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-fuchsia"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 7.36H22l-6.18 4.49 2.36 7.36L12 16.7l-6.18 4.51 2.36-7.36L2 9.36h7.61z"/></svg></div>
+            <div><div class="acc-title">Skills</div><div class="acc-sub">Pre-built playbooks for specific kinds of work.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label fuchsia">What it is</div><div class="acc-text">Skills are recipes Claude knows how to follow. Each one packages domain expertise &mdash; how a marketer writes a campaign brief, how a lawyer triages an NDA, how an engineer writes a postmortem &mdash; and turns it into a repeatable workflow.</div></div>
+            <div><div class="acc-label fuchsia">When to reach for it</div><div class="acc-text">When the output has an industry-standard shape. Claude knows what good looks like and produces structured, complete deliverables instead of generic prose.</div></div>
+          </div>
+          <div class="acc-label fuchsia">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>You don't have to memorize skill names. Phrase the ask naturally &mdash; "write a PRD for X", "review this contract" &mdash; and Claude picks the right skill automatically.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>The skill kicks in and asks any clarifying questions it needs.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>You get a structured deliverable &mdash; PRD, brief, audit report, etc. &mdash; formatted the way that kind of doc is supposed to look.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>If you want to see what's installed, ask: "what skills do I have?"</div></li>
+          </ol>
+          <div class="acc-label fuchsia">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Write a PRD for a feature that lets users schedule social posts across LinkedIn and Twitter from one composer."><div class="prompt-label">Trigger the PRD skill</div><div class="prompt-text">Write a PRD for a feature that lets users schedule social posts across LinkedIn and Twitter from one composer.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Run an SEO audit on my website. The URL is in my notes."><div class="prompt-label">Trigger the SEO audit skill</div><div class="prompt-text">Run an SEO audit on my website. The URL is in my notes.</div></button>
+          </div>
+          <div style="margin-top:1rem;font-size:0.875rem;color:rgba(255,255,255,0.65)"><b style="color:#fff">&rarr;</b> See the full list of skills by role in the <a href="#skills" class="xref">Skills</a> section below.</div>
+        </div>
+      </details>
+
+      <!-- Plugins -->
+      <details class="acc" id="cap-plugins">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-indigo"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div><div class="acc-title">Plugins</div><div class="acc-sub">Installable bundles of skills and connectors, often role-matched.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label indigo">What it is</div><div class="acc-text">Plugins are pre-bundled sets of skills + connectors. Install the "Sales" plugin and you get pipeline review, call prep, outreach drafting, plus relevant connectors (Apollo, Close, Outreach) in one shot.</div></div>
+            <div><div class="acc-label indigo">When to reach for it</div><div class="acc-text">When you're setting up Cowork for a specific role or workflow. Avoids the "what skills do I need?" question.</div></div>
+          </div>
+          <div class="acc-label indigo">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude what plugins are available, or pick one by role (Sales, Marketing, Engineering, Legal, Ops, etc.).</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Install. Skills and connector options appear.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Connect the tools the plugin uses. You're now set up for that workflow.</div></li>
+          </ol>
+          <div class="acc-label indigo">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Suggest plugins I should install given that I'm a product manager at a B2B SaaS startup."><div class="prompt-label">Get a recommendation</div><div class="prompt-text">Suggest plugins I should install given that I'm a product manager at a B2B SaaS startup.</div></button>
+            <button class="prompt copy-prompt" data-prompt="What plugins do I already have installed?"><div class="prompt-label">Inventory check</div><div class="prompt-text">What plugins do I already have installed?</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Memory -->
+      <details class="acc" id="cap-memory">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-rose"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div><div class="acc-title">Persistent memory</div><div class="acc-sub">Remembers facts about you across sessions &mdash; preferences, projects, feedback.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label rose">What it is</div><div class="acc-text">A file-based memory system that survives across conversations. Claude builds up a picture of who you are, how you like to work, what projects you're in, and what feedback you've given.</div></div>
+            <div><div class="acc-label rose">When to reach for it</div><div class="acc-text">It runs automatically. You can also explicitly tell Claude to remember (or forget) something.</div></div>
+          </div>
+          <div class="acc-label rose">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Just work with Claude. As you go, it quietly notes things &mdash; your role, your projects, preferences you've stated.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Next session, it already knows the context. No re-onboarding.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Be explicit when something matters: "remember that I prefer terse responses with no trailing summaries."</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Audit any time: "what do you remember about me?" or "show me your memory file for project X."</div></li>
+          </ol>
+          <div class="acc-label rose">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Remember that I work across two companies — Acme (B2B SaaS) and Beta Lab (consumer app). When I mention a project, ask which one if it's not obvious."><div class="prompt-label">Teach it your context</div><div class="prompt-text">Remember that I work across two companies &mdash; Acme (B2B SaaS) and Beta Lab (consumer app). When I mention a project, ask which one if it's not obvious.</div></button>
+            <button class="prompt copy-prompt" data-prompt="What do you currently remember about me? Show me the index of your memory files."><div class="prompt-label">Audit memory</div><div class="prompt-text">What do you currently remember about me? Show me the index of your memory files.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Schedule -->
+      <details class="acc" id="cap-schedule">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-teal"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><div class="acc-title">Scheduled tasks</div><div class="acc-sub">Run on a cadence &mdash; daily briefings, weekly digests, future reminders.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label teal">What it is</div><div class="acc-text">Tasks that run on a schedule, either recurring (daily at 6am) or one-off in the future (in an hour, tomorrow at 3pm).</div></div>
+            <div><div class="acc-label teal">When to reach for it</div><div class="acc-text">Anything you'd benefit from receiving without asking each time. Morning briefings, weekly metric digests, alerts when something changes.</div></div>
+          </div>
+          <div class="acc-label teal">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Tell Claude the cadence in natural language: "every morning", "each Monday at 9am", "in an hour".</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Tell it what to do when the task fires.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Claude creates the schedule. You'll see it run in Cowork at the appointed time.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>List, edit, or remove schedules anytime.</div></li>
+          </ol>
+          <div class="acc-label teal">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Every weekday at 7am, summarize my unread email and tell me which threads need a reply today."><div class="prompt-label">Morning email digest</div><div class="prompt-text">Every weekday at 7am, summarize my unread email and tell me which threads need a reply today.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Each Friday at 4pm, give me a weekly recap — what I shipped, what's still open, and what I should prep for next week."><div class="prompt-label">Weekly recap</div><div class="prompt-text">Each Friday at 4pm, give me a weekly recap &mdash; what I shipped, what's still open, and what I should prep for next week.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Artifacts -->
+      <details class="acc" id="cap-artifacts">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-orange"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div><div class="acc-title">Live artifacts</div><div class="acc-sub">HTML pages that persist and refresh data each time you open them.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label orange">What it is</div><div class="acc-text">Self-contained interactive pages that Cowork saves and re-opens later. Each time you open one, it can pull fresh data from your connected tools.</div></div>
+            <div><div class="acc-label orange">When to reach for it</div><div class="acc-text">When the answer to your question changes over time. Status pages, project trackers, pipeline views, weekly metric dashboards. Anything you'd want to re-open instead of re-asking.</div></div>
+          </div>
+          <div class="acc-label orange">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude something that turns into a list, table, or dashboard.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>If it'll be useful later, ask: "turn this into a live artifact I can re-open."</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Claude builds the HTML page. It shows up in your artifacts list and is sharable.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Reopen any time &mdash; the page calls your connectors and shows the latest data.</div></li>
+          </ol>
+          <div class="acc-label orange">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Build me a live artifact that shows my open Linear tickets, grouped by project, with a button to mark each as done."><div class="prompt-label">Personal task dashboard</div><div class="prompt-text">Build me a live artifact that shows my open Linear tickets, grouped by project, with a button to mark each as done.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Make a live artifact that shows my calendar for the next 7 days plus a prep checklist for each meeting that hasn't started yet."><div class="prompt-label">Weekly briefing page</div><div class="prompt-text">Make a live artifact that shows my calendar for the next 7 days plus a prep checklist for each meeting that hasn't started yet.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Viz -->
+      <details class="acc" id="cap-viz">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-yellow"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
+            <div><div class="acc-title">Inline visualizations</div><div class="acc-sub">Diagrams, charts, mockups, interactive widgets right in chat.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label yellow">What it is</div><div class="acc-text">Claude can render visuals inline in the conversation &mdash; flowcharts, system diagrams, charts, UI mockups, illustrations, even small interactive demos.</div></div>
+            <div><div class="acc-label yellow">When to reach for it</div><div class="acc-text">When a picture makes the answer 10x clearer. Explaining architecture, comparing options, prototyping a UI, walking through a process.</div></div>
+          </div>
+          <div class="acc-label yellow">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Draw me a flowchart of how a new customer goes from website signup to onboarding email to first product use."><div class="prompt-label">Process diagram</div><div class="prompt-text">Draw me a flowchart of how a new customer goes from website signup to onboarding email to first product use.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Mock up a settings page for a habit-tracker app — show me three layout options side by side."><div class="prompt-label">UI mockup</div><div class="prompt-text">Mock up a settings page for a habit-tracker app &mdash; show me three layout options side by side.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Subagents -->
+      <details class="acc" id="cap-agents">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-cyan"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div><div class="acc-title">Subagents</div><div class="acc-sub">Delegate heavy work &mdash; research, code review, parallel searches.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label cyan">What it is</div><div class="acc-text">Specialized helper agents that Claude can dispatch in parallel for heavy work &mdash; searching a large codebase, doing deep research on a topic, reviewing a PR independently.</div></div>
+            <div><div class="acc-label cyan">When to reach for it</div><div class="acc-text">When work is parallelizable, or when you want an independent second opinion. Claude usually picks them automatically &mdash; you'll see them in the task list.</div></div>
+          </div>
+          <div class="acc-label cyan">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Research the top 5 competitors to my company and write a competitive brief. Have separate agents handle each competitor in parallel."><div class="prompt-label">Parallel research</div><div class="prompt-text">Research the top 5 competitors to my company and write a competitive brief. Have separate agents handle each competitor in parallel.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Get a second opinion on my migration plan from another agent — I want an independent read on whether it's safe."><div class="prompt-label">Second opinion</div><div class="prompt-text">Get a second opinion on my migration plan from another agent &mdash; I want an independent read on whether it's safe.</div></button>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKED EXAMPLE: ACTIVATE A ROLE BUNDLE -->
+<section class="section" id="activate-bundle">
+  <div class="container-narrow">
+    <span class="eyebrow">Worked example</span>
+    <h2 class="h2">Activate a role-bundle plugin.</h2>
+    <p class="section-sub">Five steps, real screenshots. We're using the <b style="color:#f0abfc">Design</b> plugin in this walkthrough &mdash; the exact same flow works for Sales, Marketing, Engineering, Legal, Ops, Product Management, Customer Support, or Brand Voice. Pick whichever matches your role.</p>
+
+    <div class="steps">
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Open Customize</h3>
+          <p>From any Cowork window, click <b style="color:#fff">Customize</b> in the left sidebar (briefcase icon, near the bottom). You'll land on the page below.</p>
+          <div class="screenshot-frame">
+            <img src="screenshots/06-customize-landing.png" class="screenshot" alt="Customize Claude landing page with three cards: Connect your apps, Create new skills, Browse plugins" />
+            <p class="screenshot-caption">The "Customize Claude" landing page. Three cards correspond to the three ways to extend Cowork &mdash; connectors, skills, and plugins.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Click "Browse plugins"</h3>
+          <p>The Directory opens to the Plugins tab, showing role bundles from Anthropic &amp; Partners. Each card lists the publisher, install count, and a one-line description of what the bundle covers.</p>
+          <div class="screenshot-frame">
+            <img src="screenshots/13-plugin-marketplace.png" class="screenshot" alt="Directory page showing plugin cards: Design, Productivity, Marketing, Engineering, Product management, Operations, Sales, Legal, Brand voice, Customer support" />
+            <p class="screenshot-caption">Ten role bundles available right now. Each one packages 5&ndash;10 skills plus recommended connectors for that job function.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Open the plugin you want</h3>
+          <p>Click any plugin card to see what's inside. The detail view shows:</p>
+          <ul class="steps-list" style="margin-top:0.5rem">
+            <li><span class="step-num step-num-sm">&middot;</span><div><b style="color:#fff">"Try asking&hellip;" examples</b> &mdash; sample prompts that fire each skill, so you can see what the bundle actually does.</div></li>
+            <li><span class="step-num step-num-sm">&middot;</span><div><b style="color:#fff">Skills chips</b> &mdash; the slash-command names you can use to trigger each skill directly.</div></li>
+            <li><span class="step-num step-num-sm">&middot;</span><div><b style="color:#fff">Connectors chips</b> &mdash; tools the plugin works best with. Not required, but the skills get richer when these are connected.</div></li>
+          </ul>
+          <div class="screenshot-frame">
+            <img src="screenshots/10-plugin-detail.png" class="screenshot" alt="Design plugin detail page showing Try asking section with 5 example prompts, 7 skills including /accessibility-review, /design-critique, /design-handoff, /design-system, /research-synthesis, /user-research, /ux-copy, and 9 connectors" />
+            <p class="screenshot-caption">The Design plugin: 5 example prompts, 7 skills (<code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.8rem;background:rgba(217,70,239,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#f5d0fe">/design-critique</code>, <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.8rem;background:rgba(217,70,239,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#f5d0fe">/accessibility-review</code>, and 5 more), and 9 recommended connectors (Slack, Figma, Linear, Asana, Atlassian, Notion, Intercom, Google Calendar, +1).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Hit Install</h3>
+          <p>Top-right of the plugin detail view: an <span class="kbd">Install</span> button. Click it. The plugin downloads and registers all its skills in your Cowork instance.</p>
+          <p style="margin-top:0.75rem">If you've already installed the plugin, the button reads <span class="kbd">Uninstall</span> and a second <span class="kbd">Manage</span> button appears next to it. <b style="color:#fff">Manage</b> lets you turn individual skills on/off without uninstalling the whole bundle &mdash; useful when you want, say, 5 of the 7 Design skills but not all.</p>
+          <p style="margin-top:0.75rem">Connectors aren't auto-installed. To finish the setup, switch to the Connectors tab in the Directory and connect the tools the plugin recommends. OAuth flow per service, one minute each. Skip any you don't use.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Use it &mdash; two ways</h3>
+          <p>Once installed, the plugin shows up in your left sidebar under <b style="color:#fff">Personal plugins</b>, with every skill nested below it. Skills activate in two ways:</p>
+
+          <div class="callout-skill" style="margin-top:1rem">
+            <b>Natural language (default).</b> Just describe what you need. Each skill has a description telling Cowork when to fire. "Critique this design for me &mdash; I'm worried about hierarchy" auto-activates <code>/design-critique</code> without you naming it.
+          </div>
+
+          <div class="callout-skill">
+            <b>Slash command (explicit).</b> Type the skill's name with a leading slash to force it. <code>/design-handoff</code> jumps straight into the developer handoff workflow even if your prompt was ambiguous about which skill to use. Best for when you know exactly what you want.
+          </div>
+
+          <p style="margin-top:1rem">That's it. The plugin is live. Skills will trigger on their own from now on whenever your prompts match their patterns &mdash; no further setup needed.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-callout" style="margin-top:2rem">
+      <b>One more thing &mdash; making your own.</b> The plugin marketplace is the easy path, but you can also build custom skills. From Customize &rarr; Skills, click <span class="kbd">+</span> and pick <b>Create with Claude</b> (conversational builder), <b>Write skill instructions</b> (a form for the name, description, and instructions), or <b>Upload a skill</b> (drop in a <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(245,158,11,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#fde68a">.skill</code> zip). Custom skills activate the same way as bundled ones &mdash; natural language match or slash command.
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS BY ROLE -->
+<section class="section" id="skills">
+  <div class="container">
+    <span class="eyebrow">Skills library</span>
+    <h2 class="h2">Pick a role. See what Claude can do.</h2>
+    <p class="section-sub">Each role bundles skills you'd reach for in that job. You don't have to install them by name &mdash; they activate when your prompt matches.</p>
+
+    <div class="role-tabs" id="role-tabs">
+      <button class="role-tab active" data-role="sales">Sales</button>
+      <button class="role-tab" data-role="marketing">Marketing</button>
+      <button class="role-tab" data-role="product">Product</button>
+      <button class="role-tab" data-role="engineering">Engineering</button>
+      <button class="role-tab" data-role="design">Design</button>
+      <button class="role-tab" data-role="legal">Legal</button>
+      <button class="role-tab" data-role="ops">Ops</button>
+      <button class="role-tab" data-role="support">Support</button>
+      <button class="role-tab" data-role="seo">SEO</button>
+    </div>
+    <div id="role-content" class="skills-grid"></div>
+  </div>
+</section>
+
+<!-- CONNECTORS -->
+<section class="section" id="connectors">
+  <div class="container">
+    <span class="eyebrow">Connector library</span>
+    <h2 class="h2">Connect what you already use.</h2>
+    <p class="section-sub">These all run on MCP. Each persists once connected and respects your existing access permissions.</p>
+
+    <div class="tile-grid">
+      <div class="tile"><div class="tile-title">Gmail</div><div class="tile-desc">Read, search, draft, label email and threads.</div></div>
+      <div class="tile"><div class="tile-title">Google Calendar</div><div class="tile-desc">View, create, edit, respond to events.</div></div>
+      <div class="tile"><div class="tile-title">Google Drive</div><div class="tile-desc">Read, create, search docs and folders.</div></div>
+      <div class="tile"><div class="tile-title">Slack</div><div class="tile-desc">Read channels, search, send messages, create canvases.</div></div>
+      <div class="tile"><div class="tile-title">Notion</div><div class="tile-desc">Read and write pages, databases, blocks.</div></div>
+      <div class="tile"><div class="tile-title">Linear</div><div class="tile-desc">Triage, create, and update issues and projects.</div></div>
+      <div class="tile"><div class="tile-title">Atlassian (Jira)</div><div class="tile-desc">Issues, sprints, and Confluence pages.</div></div>
+      <div class="tile"><div class="tile-title">Asana</div><div class="tile-desc">Tasks, projects, assignments.</div></div>
+      <div class="tile"><div class="tile-title">ClickUp</div><div class="tile-desc">Multi-workspace task management.</div></div>
+      <div class="tile"><div class="tile-title">Monday</div><div class="tile-desc">Boards, items, status updates.</div></div>
+      <div class="tile"><div class="tile-title">Figma</div><div class="tile-desc">Inspect files, components, and design tokens.</div></div>
+      <div class="tile"><div class="tile-title">Miro</div><div class="tile-desc">Build diagrams, docs, tables on boards.</div></div>
+      <div class="tile"><div class="tile-title">Canva</div><div class="tile-desc">Generate and edit designs from prompts.</div></div>
+      <div class="tile"><div class="tile-title">Apollo</div><div class="tile-desc">Lead enrichment, prospecting, sequences.</div></div>
+      <div class="tile"><div class="tile-title">Close / Outreach</div><div class="tile-desc">Sales CRM and outbound workflows.</div></div>
+      <div class="tile"><div class="tile-title">Intercom</div><div class="tile-desc">Conversations, contacts, support context.</div></div>
+      <div class="tile"><div class="tile-title">Pendo / Amplitude</div><div class="tile-desc">Product analytics and user behavior.</div></div>
+      <div class="tile"><div class="tile-title">Fireflies / Granola</div><div class="tile-desc">Meeting transcripts and notes.</div></div>
+      <div class="tile"><div class="tile-title">DocuSign</div><div class="tile-desc">Route documents for signature.</div></div>
+      <div class="tile"><div class="tile-title">Egnyte / Box</div><div class="tile-desc">Enterprise file storage and search.</div></div>
+      <div class="tile"><div class="tile-title">Ahrefs / Supermetrics</div><div class="tile-desc">SEO and marketing analytics data.</div></div>
+      <div class="tile"><div class="tile-title">Klaviyo / Postiz</div><div class="tile-desc">Email marketing and social scheduling.</div></div>
+      <div class="tile"><div class="tile-title">Vercel / Supabase</div><div class="tile-desc">Hosting, databases, edge functions.</div></div>
+      <div class="tile"><div class="tile-title">n8n</div><div class="tile-desc">Visual workflow automation.</div></div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:0.875rem;color:rgba(255,255,255,0.6)">&hellip;plus a connector registry where Claude can search for and suggest additional connectors on demand.</p>
+  </div>
+</section>
+
+<!-- PROMPT LIBRARY -->
+<section class="section" id="prompts">
+  <div class="container-narrow">
+    <span class="eyebrow">Prompt library</span>
+    <h2 class="h2">Steal these prompts.</h2>
+    <p class="section-sub">Battle-tested starter prompts grouped by what you're trying to accomplish. Click to copy.</p>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-violet">Daily</span> Start your day</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Give me a morning briefing — what's on my calendar, what's unread in my email, and what's the single most important thing I should focus on today."><div class="prompt-text">Give me a morning briefing &mdash; what's on my calendar, what's unread in my email, and what's the single most important thing I should focus on today.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Triage my unread Slack DMs and email. Group by urgency. Tell me what needs a reply in the next hour."><div class="prompt-text">Triage my unread Slack DMs and email. Group by urgency. Tell me what needs a reply in the next hour.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-pink">Writing</span> Draft something</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Draft a follow-up email to [name] referencing our meeting on [date] and the action items we agreed to. Keep it under 100 words."><div class="prompt-text">Draft a follow-up email to [name] referencing our meeting on [date] and the action items we agreed to. Keep it under 100 words.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Turn my rough meeting notes (attached) into a one-page summary with decisions, owners, and next steps."><div class="prompt-text">Turn my rough meeting notes (attached) into a one-page summary with decisions, owners, and next steps.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Write three subject line options for a re-engagement email to customers who haven't logged in for 30 days."><div class="prompt-text">Write three subject line options for a re-engagement email to customers who haven't logged in for 30 days.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Draft a Slack message announcing a feature launch to the #general channel — friendly tone, includes a one-line value prop and a link."><div class="prompt-text">Draft a Slack message announcing a feature launch to the #general channel &mdash; friendly tone, includes a one-line value prop and a link.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-sky">Research</span> Investigate</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Research [company] — what do they sell, who's the buyer, what's their pricing model, and who are the three closest competitors? Format as a one-page brief."><div class="prompt-text">Research [company] &mdash; what do they sell, who's the buyer, what's their pricing model, and who are the three closest competitors? Format as a one-page brief.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Find me everything we've shipped, said, or written about [topic] across Slack, Notion, and Drive. Cite each source."><div class="prompt-text">Find me everything we've shipped, said, or written about [topic] across Slack, Notion, and Drive. Cite each source.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-amber">Files</span> Wrangle data</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Open every PDF invoice in this folder and pull out vendor, amount, date, and category into a single spreadsheet."><div class="prompt-text">Open every PDF invoice in this folder and pull out vendor, amount, date, and category into a single spreadsheet.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Take customer-feedback.csv and group every comment into themes. Tell me which themes are growing month over month."><div class="prompt-text">Take customer-feedback.csv and group every comment into themes. Tell me which themes are growing month over month.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-violet">Recurring</span> Automate</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Every Monday at 8am, look at last week's email and calendar and write me a brief recap of who I met with, what we decided, and what's outstanding."><div class="prompt-text">Every Monday at 8am, look at last week's email and calendar and write me a brief recap of who I met with, what we decided, and what's outstanding.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Each day at noon, check whether any of my Linear tickets have been waiting on someone else for more than 3 days, and remind me who to ping."><div class="prompt-text">Each day at noon, check whether any of my Linear tickets have been waiting on someone else for more than 3 days, and remind me who to ping.</div></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIPS & PATTERNS -->
+<section class="section" id="tips">
+  <div class="container-narrow">
+    <span class="eyebrow">Tips &amp; patterns</span>
+    <h2 class="h2">Get more out of Cowork.</h2>
+    <div style="height:1.5rem"></div>
+    <div class="tip-grid">
+      <div class="tip-card"><span class="pill pill-violet">Specificity</span><h3>Tell it what "done" looks like.</h3><p>"Summarize this" leaves Claude guessing about length, format, and audience. "Summarize this for a CFO in 5 bullets, under 100 words" gets you the right answer first try.</p></div>
+      <div class="tip-card"><span class="pill pill-pink">Iteration</span><h3>Treat the first draft as a starting point.</h3><p>Cowork is fast at revision. Don't try to nail it in one prompt &mdash; get a v1, then sharpen with "make it more direct", "cut the intro", "add a chart".</p></div>
+      <div class="tip-card"><span class="pill pill-sky">Context</span><h3>Connect more, prompt less.</h3><p>Every connector you add reduces what you need to type. Once Gmail and Calendar are connected, "prep me for tomorrow's meetings" becomes a one-liner.</p></div>
+      <div class="tip-card"><span class="pill pill-amber">Memory</span><h3>Train it on your preferences.</h3><p>When Claude does something well, say so. When it overdoes it, correct it. Both go into memory. Within a week it'll feel personalized.</p></div>
+      <div class="tip-card"><span class="pill pill-violet">Safety</span><h3>Verify before destructive actions.</h3><p>Before letting Claude bulk-rename, bulk-delete, or send emails to multiple people, ask for a dry run first: "show me what you'll do before doing it."</p></div>
+      <div class="tip-card"><span class="pill pill-pink">Delegate</span><h3>Push hard work to scheduled tasks.</h3><p>If you find yourself asking the same question every morning, every Monday, or every month &mdash; that's a scheduled task waiting to happen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-row">
+    <div>
+      <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+      <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+    </div>
+    <div class="footer-meta">Built with Claude Cowork &middot; v2</div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+const skills = {
+  sales: [
+    { name: 'Account research', desc: 'Dossier on any company or person — buyer, pricing, competitors.' },
+    { name: 'Call prep', desc: 'Pre-meeting brief with attendees and recommended agenda.' },
+    { name: 'Call summary', desc: 'Turn rough notes or a transcript into action items and follow-up.' },
+    { name: 'Pipeline review', desc: 'Health check on open deals with risks and next moves.' },
+    { name: 'Forecast', desc: 'Best/likely/worst scenarios with gap-to-quota analysis.' },
+    { name: 'Draft outreach', desc: 'Research + personalized cold email in one step.' },
+    { name: 'Competitive intelligence', desc: 'Battlecards comparing you to a competitor.' },
+    { name: 'Daily briefing', desc: 'Prioritized list of what to do today, ranked.' },
+    { name: 'Create an asset', desc: 'Generate one-pagers, decks, or landing pages from deal context.' },
+  ],
+  marketing: [
+    { name: 'Campaign plan', desc: 'Full brief with audience, channels, content calendar, KPIs.' },
+    { name: 'Draft content', desc: 'Blog, email, social, landing page, press release — channel-aware.' },
+    { name: 'Email sequence', desc: 'Multi-email flows with branching, timing, and A/B suggestions.' },
+    { name: 'SEO audit', desc: 'Site-wide audit with keyword gaps and prioritized fixes.' },
+    { name: 'Brand review', desc: 'Check copy against your voice, terminology, and claims policy.' },
+    { name: 'Competitive brief', desc: 'Positioning gaps and messaging angles competitors haven\'t claimed.' },
+    { name: 'Performance report', desc: 'Channel summary with wins, misses, and next-period priorities.' },
+  ],
+  product: [
+    { name: 'Write spec / PRD', desc: 'Turn an idea into a structured product spec with success metrics.' },
+    { name: 'Roadmap update', desc: 'Now/Next/Later view with reprioritization logic.' },
+    { name: 'Sprint planning', desc: 'Capacity, scope, and P0 vs. stretch for the next sprint.' },
+    { name: 'Metrics review', desc: 'Weekly or monthly review with insights and recommended actions.' },
+    { name: 'Synthesize research', desc: 'Themes and rankings from interview/survey notes.' },
+    { name: 'Competitive brief', desc: 'Where to differentiate vs. achieve parity.' },
+    { name: 'Stakeholder update', desc: 'Audience-tuned updates for exec, eng, or customer.' },
+    { name: 'Brainstorming', desc: 'Sharp thinking partner for product problems.' },
+  ],
+  engineering: [
+    { name: 'Code review', desc: 'Security, performance, and correctness check on a diff or PR.' },
+    { name: 'Debug', desc: 'Reproduce, isolate, diagnose, and fix.' },
+    { name: 'System design', desc: 'API design, data modeling, service boundaries.' },
+    { name: 'Architecture (ADR)', desc: 'Decision records with tradeoffs and consequences.' },
+    { name: 'Testing strategy', desc: 'Test plans and coverage approaches.' },
+    { name: 'Tech debt', desc: 'Identify and prioritize what to refactor.' },
+    { name: 'Documentation', desc: 'READMEs, runbooks, API docs, onboarding guides.' },
+    { name: 'Incident response', desc: 'Triage during an incident, postmortem after.' },
+    { name: 'Deploy checklist', desc: 'Pre-deployment verification with rollback triggers.' },
+    { name: 'Standup', desc: 'Yesterday/today/blockers from recent activity.' },
+  ],
+  design: [
+    { name: 'Design critique', desc: 'Structured feedback on usability and hierarchy.' },
+    { name: 'Accessibility review', desc: 'WCAG 2.1 AA audit on a design or page.' },
+    { name: 'UX copy', desc: 'Microcopy, error messages, empty states, CTAs.' },
+    { name: 'Design handoff', desc: 'Developer spec sheet with tokens and states.' },
+    { name: 'Design system', desc: 'Audit, document, or extend the system.' },
+    { name: 'User research', desc: 'Plan interviews, design surveys, write research questions.' },
+    { name: 'Research synthesis', desc: 'Themes and insights from research data.' },
+  ],
+  legal: [
+    { name: 'Triage NDA', desc: 'Green/yellow/red classification with escalation rules.' },
+    { name: 'Review contract', desc: 'Clause-by-clause analysis against your playbook with redlines.' },
+    { name: 'Vendor check', desc: 'Consolidated view of vendor agreements with gap analysis.' },
+    { name: 'Compliance check', desc: 'Applicable regs, required approvals, risk areas.' },
+    { name: 'Risk assessment', desc: 'Severity × likelihood matrix with escalation criteria.' },
+    { name: 'Legal response', desc: 'Templated replies with built-in escalation checks.' },
+    { name: 'Signature request', desc: 'Pre-signature checklist + e-sign routing.' },
+    { name: 'Meeting briefing', desc: 'Context + action tracking for legal-relevant meetings.' },
+  ],
+  ops: [
+    { name: 'Process doc', desc: 'Flowcharts, RACI, SOPs for any workflow.' },
+    { name: 'Status report', desc: 'KPIs, risks, action items for stakeholders.' },
+    { name: 'Capacity plan', desc: 'Workload analysis and utilization forecasting.' },
+    { name: 'Vendor review', desc: 'Cost, risk, and recommendation for a vendor.' },
+    { name: 'Risk assessment', desc: 'Risk register with mitigation plans.' },
+    { name: 'Compliance tracking', desc: 'SOC 2, ISO, GDPR audit prep and tracking.' },
+    { name: 'Runbook', desc: 'Step-by-step procedures with rollback paths.' },
+    { name: 'Change request', desc: 'Impact analysis and rollback plan for CAB approval.' },
+    { name: 'Process optimization', desc: 'Find bottlenecks and recommend fixes.' },
+  ],
+  support: [
+    { name: 'Ticket triage', desc: 'Categorize, prioritize (P1–P4), route, check for duplicates.' },
+    { name: 'Draft response', desc: 'Tailored customer reply matching situation and tone.' },
+    { name: 'Customer research', desc: 'Multi-source lookup with citations.' },
+    { name: 'Customer escalation', desc: 'Package issues for engineering with full context.' },
+    { name: 'KB article', desc: 'Self-service article from a resolved ticket.' },
+  ],
+  seo: [
+    { name: 'SEO audit', desc: 'Full site health check with prioritized issues.' },
+    { name: 'On-page SEO', desc: 'Optimize a specific page for a keyword.' },
+    { name: 'Technical SEO', desc: 'Core web vitals, crawlability, indexation.' },
+    { name: 'Keyword clustering', desc: 'Group keywords into topical pillars and pages.' },
+    { name: 'Content brief', desc: 'Structured outline before writing.' },
+    { name: 'Content strategy', desc: 'Calendar, gaps, editorial plan.' },
+    { name: 'Schema markup', desc: 'JSON-LD structured data for rich snippets.' },
+    { name: 'Internal linking', desc: 'Find orphan pages, improve link equity.' },
+    { name: 'AI visibility', desc: 'How your brand appears in ChatGPT / Claude / Perplexity.' },
+    { name: 'Broken links', desc: 'Find and fix 404s.' },
+    { name: 'Content translation', desc: 'Localize with hreflang and cultural adaptation.' },
+  ],
+};
+
+function renderSkills(role) {
+  const container = document.getElementById('role-content');
+  const list = skills[role] || [];
+  container.innerHTML = list.map(s => `
+    <div class="tile">
+      <div class="tile-title">${s.name}</div>
+      <div class="tile-desc">${s.desc}</div>
+    </div>
+  `).join('');
+}
+document.querySelectorAll('.role-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    renderSkills(tab.dataset.role);
+  });
+});
+renderSkills('sales');
+
+const toast = document.getElementById('toast');
+let toastTimer;
+function showToast(msg) {
+  toast.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+}
+document.querySelectorAll('.copy-prompt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const text = btn.dataset.prompt;
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(
+      () => showToast('Copied — paste into Claude'),
+      () => showToast('Copy failed')
+    );
+  });
+});
+</script>
+</body>
+</html>
