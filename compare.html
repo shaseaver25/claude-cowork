@@ -300,6 +300,154 @@
   </div>
 </section>
 
+<!-- FEATURE DEEP DIVE: CUSTOM ASSISTANTS + PROJECTS -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Going deeper</span>
+    <h2 class="h2">Custom assistants, projects, marketplaces.</h2>
+    <p class="section-sub" style="max-width:48rem">Two questions people consistently ask when comparing across vendors: <b style="color:#fff">what's the equivalent of Custom GPTs?</b> and <b style="color:#fff">what's the equivalent of ChatGPT Projects?</b> Both have answers in all three ecosystems &mdash; but the architectures are meaningfully different.</p>
+
+    <!-- Custom assistants comparison -->
+    <h3 style="font-size:1.25rem;font-weight:700;margin:2rem 0 0.5rem;color:#fff">Named, configurable assistants</h3>
+    <p style="font-size:0.9375rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:1.25rem">"I want to build a persistent helper for [task] and reuse it" &mdash; what each vendor calls that:</p>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width:18%">Vendor</th>
+            <th style="width:18%">What they call it</th>
+            <th>How it works</th>
+            <th style="width:22%">Marketplace?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b style="color:#6ee7b7">OpenAI</b></td>
+            <td><b style="color:#fff">Custom GPTs</b></td>
+            <td>A standalone assistant with name, description, instructions, up to 20 knowledge files, optional API actions. You "switch to" the GPT when you want to use it &mdash; it's a separate front door.</td>
+            <td><b>GPT Store</b> &mdash; public, browsable, anyone can publish; popular GPTs can earn revenue</td>
+          </tr>
+          <tr style="background:rgba(167,139,250,0.06)">
+            <td><b style="color:#c4b5fd">Anthropic</b></td>
+            <td><b style="color:#fff">Skills</b> (+ Plugins)</td>
+            <td>A recipe Claude follows, named with a slash command (e.g., <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(167,139,250,0.18);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#f5d0fe">/write-spec</code>). Skills activate on natural-language match or explicit slash command. <b>Skills layer into your Claude</b> rather than being separate entities.</td>
+            <td><b>Skills Directory</b> &mdash; you install skills into your Claude, not browse them as endpoints. No revenue model.</td>
+          </tr>
+          <tr>
+            <td><b style="color:#7dd3fc">Google</b></td>
+            <td><b style="color:#fff">Gems</b></td>
+            <td>Custom AI assistants in Gemini Advanced configured with instructions. Now can be attached to a Notebook for grounded knowledge, so a Gem becomes a "permanent expert" on a topic.</td>
+            <td><b>Workspace-only sharing</b> &mdash; share within your Google Workspace org; no public marketplace</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-callout" style="margin-top:1.25rem">
+      <b>The philosophical difference:</b> Custom GPTs and Gems are <b style="color:#fff">entities you talk to</b> &mdash; you "open" them, you "switch to" them. Claude Skills <b style="color:#fff">layer into your Claude</b> &mdash; you don't switch assistants, your prompt triggers the right skill. Both models have advantages. GPTs and Gems are easier to share and showcase; Skills compose better with everything else Claude is doing.
+    </div>
+
+    <!-- Workspace containers comparison -->
+    <h3 style="font-size:1.25rem;font-weight:700;margin:2.5rem 0 0.5rem;color:#fff">Project workspaces</h3>
+    <p style="font-size:0.9375rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:1.25rem">"I want a folder of related chats, shared instructions, and files all conversations can reference" &mdash; the three answers:</p>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width:18%">Vendor</th>
+            <th style="width:18%">Feature name</th>
+            <th>What's in it</th>
+            <th style="width:25%">Where files live</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b style="color:#6ee7b7">OpenAI</b></td>
+            <td><b style="color:#fff">ChatGPT Projects</b></td>
+            <td>Grouped chats, shared instructions, uploaded files, project-scoped memory</td>
+            <td>OpenAI cloud only &mdash; ChatGPT can read these files, not write back to them</td>
+          </tr>
+          <tr style="background:rgba(167,139,250,0.06)">
+            <td><b style="color:#c4b5fd">Anthropic</b></td>
+            <td><b style="color:#fff">Claude Projects</b> (web) &amp; <b style="color:#fff">Cowork Projects</b> (desktop)</td>
+            <td>Grouped chats, shared instructions, files, persistent memory. Cowork Projects additionally point at a folder on your Mac.</td>
+            <td>Web Projects: Anthropic cloud (read only).<br/><b style="color:#fff">Cowork Projects: a real folder on your Mac.</b> Claude reads AND writes there.</td>
+          </tr>
+          <tr>
+            <td><b style="color:#7dd3fc">Google</b></td>
+            <td><b style="color:#fff">Notebooks in Gemini</b> (shipped April 2026)</td>
+            <td>Dedicated project workspace organizing chats, files, and custom instructions. Syncs with NotebookLM. Can attach to a Gem for a "permanent expert."</td>
+            <td>Google cloud, synced between Gemini app and NotebookLM. Available to paid subscribers and Workspace Enterprise/Education accounts.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rec-callout" style="margin-top:1.25rem">
+      <div class="rec-callout-eyebrow">The single biggest practical difference</div>
+      <p><b>Only Claude Cowork Projects are filesystem-backed.</b> Both ChatGPT Projects and Gemini Notebooks live in their respective clouds. Cowork Projects point at a real folder on your Mac, so Claude can write deliverables back into that folder. For "I want AI to produce files I'll edit in their native apps" &mdash; reports, spreadsheets, presentations &mdash; Cowork is qualitatively different from the cloud-only competitors. For "I want everything in one cloud accessible from any device" &mdash; ChatGPT Projects and Gemini Notebooks are more portable.</p>
+    </div>
+
+    <!-- Quick scorecard -->
+    <h3 style="font-size:1.25rem;font-weight:700;margin:2.5rem 0 0.5rem;color:#fff">If you've been using one and want to switch</h3>
+    <p style="font-size:0.9375rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:1.25rem">Mappings between equivalent concepts, so you know what to look for:</p>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>The thing you want</th>
+            <th style="color:#6ee7b7">In ChatGPT, it's…</th>
+            <th style="color:#c4b5fd">In Claude, it's…</th>
+            <th style="color:#7dd3fc">In Gemini, it's…</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Configure a reusable AI assistant for a specific task</td>
+            <td>Custom GPT</td>
+            <td>Skill (build with <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(167,139,250,0.18);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#f5d0fe">/skill-creator</code>) or Plugin</td>
+            <td>Gem</td>
+          </tr>
+          <tr>
+            <td>Group chats + files + instructions around a project</td>
+            <td>Project</td>
+            <td>Project (web) / Cowork Project (desktop, filesystem)</td>
+            <td>Notebook</td>
+          </tr>
+          <tr>
+            <td>Browse and use assistants other people built</td>
+            <td>GPT Store</td>
+            <td>Skills Directory (install, don't browse-as-endpoints)</td>
+            <td>Workspace-shared Gems only &mdash; no public store</td>
+          </tr>
+          <tr>
+            <td>Have the AI write back to my real files</td>
+            <td>Not directly &mdash; cloud only</td>
+            <td><b style="color:#c4b5fd">Yes &mdash; Cowork Projects</b></td>
+            <td>Workspace integration writes back to Docs/Sheets</td>
+          </tr>
+          <tr>
+            <td>Synthesize across many uploaded source documents</td>
+            <td>ChatGPT Project + uploaded files</td>
+            <td>Claude Project / Cowork with folder of PDFs</td>
+            <td><b style="color:#7dd3fc">NotebookLM</b> (Google's strongest play here)</td>
+          </tr>
+          <tr>
+            <td>Build something a developer can call programmatically</td>
+            <td>OpenAI API + assistant ID</td>
+            <td>Anthropic API + system prompt or skill definition</td>
+            <td>Gemini API / Vertex AI</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
+
 <!-- DECISION TREE -->
 <section class="section">
   <div class="container-narrow">
