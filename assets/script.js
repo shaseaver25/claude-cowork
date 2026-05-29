@@ -399,3 +399,188 @@ document.querySelectorAll('details.acc').forEach(det => {
   }
   renderQuestion(0);
 })();
+
+// ============================================
+// PROMPT REWRITER MICROSIM
+// Runs on tips.html only — silently no-ops elsewhere
+// ============================================
+(function() {
+  const root = document.getElementById('prompt-rewriter');
+  if (!root) return;
+
+  const chipsEl = document.getElementById('rw-chips');
+  const tabsEl = document.getElementById('rw-tabs');
+  const displayEl = document.getElementById('rw-display');
+  const whyEl = document.getElementById('rw-why');
+  const copyBtn = document.getElementById('rw-copy');
+
+  const EXAMPLES = [
+    {
+      label: "Summarize a report",
+      versions: {
+        original: {
+          text: '<span class="filler">Could you please</span> summarize <span class="filler">this</span> report?',
+          plain: 'Could you please summarize this report?',
+          why: 'It works, but Claude has no idea who the summary is for, how long, what to emphasize, or what format. You\'ll get a generic 3-paragraph summary &mdash; usually not what you wanted, but you can\'t complain about what you didn\'t specify.'
+        },
+        terse: {
+          text: 'Summarize this report in 5 bullets.',
+          plain: 'Summarize this report in 5 bullets.',
+          why: '<b>Tighter is better.</b> Strip the "could you please" &mdash; Claude is not insulted. The "in 5 bullets" adds the single most useful constraint (length + format) without bloating the prompt. Often enough by itself.'
+        },
+        structured: {
+          text: '<span class="section-label">Goal:</span> Executive summary of this report.\n<span class="section-label">Audience:</span> CFO.\n<span class="section-label">Format:</span> 5 bullets, under 200 words total.\n<span class="section-label">Emphasis:</span> Financial implications. Skip product details.',
+          plain: 'Goal: Executive summary of this report.\nAudience: CFO.\nFormat: 5 bullets, under 200 words total.\nEmphasis: Financial implications. Skip product details.',
+          why: '<b>Structured prompts win for high-stakes outputs.</b> By naming the audience, you tell Claude which details matter and which to drop. By naming the format, you save yourself a revision round. The labels are obvious to Claude even if you don\'t use the same words.'
+        },
+        constrained: {
+          text: 'Summarize this report for our CFO in 5 bullets, under 200 words. <span class="added">Lead with the bottom line</span>; lead with what changed quarter-over-quarter. <span class="added">Skip product details</span>. <span class="added">If anything in the report would change our forecast, call it out explicitly</span>.',
+          plain: 'Summarize this report for our CFO in 5 bullets, under 200 words. Lead with the bottom line; lead with what changed quarter-over-quarter. Skip product details. If anything in the report would change our forecast, call it out explicitly.',
+          why: '<b>Constraints + decision-relevant framing.</b> "Lead with the bottom line" tells Claude how to order the bullets. "Skip product details" prevents wasted space. "Anything that would change our forecast" tells Claude what the CFO actually wants to know &mdash; the implication, not the catalog.'
+        }
+      }
+    },
+    {
+      label: "Draft an email",
+      versions: {
+        original: {
+          text: '<span class="filler">Can you help me</span> write an email to my boss <span class="filler">about</span> taking next Friday off?',
+          plain: 'Can you help me write an email to my boss about taking next Friday off?',
+          why: 'Vague enough that Claude will write a perfectly competent, perfectly generic email. You\'ll either send it as-is and sound like AI, or rewrite it &mdash; in which case why use AI?'
+        },
+        terse: {
+          text: 'Email my boss: I\'m taking next Friday off. Polite, brief, no apology.',
+          plain: 'Email my boss: I\'m taking next Friday off. Polite, brief, no apology.',
+          why: '<b>Direct request + tone instruction.</b> "Polite, brief, no apology" is three constraints in five words. The "no apology" matters &mdash; default-Claude apologizes a lot in emails. Naming what NOT to do is often as valuable as naming what to do.'
+        },
+        structured: {
+          text: '<span class="section-label">To:</span> My manager, [name].\n<span class="section-label">Subject:</span> Out of office next Friday.\n<span class="section-label">Goal:</span> Notify (not ask permission for) PTO on Friday, May 8.\n<span class="section-label">Coverage:</span> I\'ll hand off the X project to [colleague] beforehand.\n<span class="section-label">Tone:</span> Direct, respectful, 3-4 sentences max.',
+          plain: 'To: My manager, [name].\nSubject: Out of office next Friday.\nGoal: Notify (not ask permission for) PTO on Friday, May 8.\nCoverage: I\'ll hand off the X project to [colleague] beforehand.\nTone: Direct, respectful, 3-4 sentences max.',
+          why: '<b>Adds the meta you forgot you needed.</b> Subject line, coverage plan, the "notify not ask" framing &mdash; all the things you\'d have to revise after the first draft. Putting them upfront means the first draft is usable.'
+        },
+        constrained: {
+          text: 'Draft an email to my manager letting them know I\'ll be out Friday May 8. <span class="added">3 sentences max. No apology. No explanation of why</span>. State the date, mention I\'ll hand off the X project to [colleague] beforehand, offer to answer anything before I leave. <span class="added">End without a "thanks!" or exclamation point</span>.',
+          plain: 'Draft an email to my manager letting them know I\'ll be out Friday May 8. 3 sentences max. No apology. No explanation of why. State the date, mention I\'ll hand off the X project to [colleague] beforehand, offer to answer anything before I leave. End without a "thanks!" or exclamation point.',
+          why: '<b>The "what NOT to do" constraints carry most of the work.</b> "No apology, no explanation, no exclamation point" prevents three common AI-email tells. The sentence-count cap forces tightness. The "offer to answer" gives the message a confident closing without overexplaining.'
+        }
+      }
+    },
+    {
+      label: "Plan a meeting",
+      versions: {
+        original: {
+          text: '<span class="filler">Help me</span> plan a team offsite.',
+          plain: 'Help me plan a team offsite.',
+          why: 'Claude has no idea: how many people, when, where, budget, what the offsite is FOR, what success looks like. You\'ll get a generic 5-section template with [PLACEHOLDER] in 30 places.'
+        },
+        terse: {
+          text: 'Plan a 1-day offsite for 8 people in SF. Goals: team bonding + Q3 planning. Output as an agenda.',
+          plain: 'Plan a 1-day offsite for 8 people in SF. Goals: team bonding + Q3 planning. Output as an agenda.',
+          why: '<b>Five constraints in one sentence.</b> Duration, headcount, location, goals, output format. Claude can produce something specific. You\'ll still iterate, but the first draft is grounded in your reality, not in the average corporate offsite.'
+        },
+        structured: {
+          text: '<span class="section-label">Team:</span> 8 people, product team, mix of remote &amp; in-person.\n<span class="section-label">Duration:</span> 1 day, June, weekday.\n<span class="section-label">Location:</span> SF Bay Area, within 1hr drive of city.\n<span class="section-label">Budget:</span> $5K all-in (venue + food + activities).\n<span class="section-label">Goals (priority order):</span> 1. Q3 planning alignment, 2. Team bonding, 3. Fun.\n<span class="section-label">Output:</span> Hour-by-hour agenda + 2 venue options + meal plan.',
+          plain: 'Team: 8 people, product team, mix of remote & in-person.\nDuration: 1 day, June, weekday.\nLocation: SF Bay Area, within 1hr drive of city.\nBudget: $5K all-in (venue + food + activities).\nGoals (priority order): 1. Q3 planning alignment, 2. Team bonding, 3. Fun.\nOutput: Hour-by-hour agenda + 2 venue options + meal plan.',
+          why: '<b>Goals in priority order is the unlock.</b> Claude makes tradeoffs against your priorities &mdash; if it has to cut bonding for planning time, you told it that\'s the right call. Without priority order, Claude has to guess.'
+        },
+        constrained: {
+          text: 'Plan a 1-day product team offsite. 8 people. <span class="added">June, any weekday</span>. SF Bay Area, max 1hr from the city. $5K total budget. <span class="added">Primary goal is Q3 planning alignment</span>; team bonding is secondary; pure fun is third. Output: <span class="added">a 9am-5pm hour-by-hour agenda</span>, two venue suggestions with rough cost estimates, and a meal plan covering breakfast, lunch, and one snack. <span class="added">Each session under 90 minutes</span>. <span class="added">Build in 20-min breaks every 2 hours</span>.',
+          plain: 'Plan a 1-day product team offsite. 8 people. June, any weekday. SF Bay Area, max 1hr from the city. $5K total budget. Primary goal is Q3 planning alignment; team bonding is secondary; pure fun is third. Output: a 9am-5pm hour-by-hour agenda, two venue suggestions with rough cost estimates, and a meal plan covering breakfast, lunch, and one snack. Each session under 90 minutes. Build in 20-min breaks every 2 hours.',
+          why: '<b>This is what "told it what done looks like" actually looks like.</b> The result is a usable v1, not a template you\'ll edit. The session-length cap and break cadence are details a good facilitator knows &mdash; baking them in saves a revision round.'
+        }
+      }
+    },
+    {
+      label: "Prep for an interview",
+      versions: {
+        original: {
+          text: '<span class="filler">Help me</span> prep for <span class="filler">my</span> interview.',
+          plain: 'Help me prep for my interview.',
+          why: 'Claude doesn\'t know the role, the company, the stage of the process, what your strengths are, or what\'s scary about this one. You\'ll get a generic "top 10 common interview questions" list that doesn\'t help.'
+        },
+        terse: {
+          text: 'Final-round interview for Director of Product at a B2B SaaS startup. Generate 10 likely questions and a STAR answer for the 3 hardest.',
+          plain: 'Final-round interview for Director of Product at a B2B SaaS startup. Generate 10 likely questions and a STAR answer for the 3 hardest.',
+          why: '<b>Role + stage + ask.</b> "Final-round" is critical context &mdash; the questions will differ from a screen. "B2B SaaS startup" anchors the kind of questions. STAR format is a specific structure most interviewers expect.'
+        },
+        structured: {
+          text: '<span class="section-label">Role:</span> Director of Product, B2B SaaS startup (~50 people).\n<span class="section-label">Stage:</span> Final round with VP Product and CEO.\n<span class="section-label">My background:</span> 7 years PM at larger companies, this is my first director-level move.\n<span class="section-label">What I\'m worried about:</span> Leadership questions, scaling-down narrative, why startup now.\n<span class="section-label">Output:</span> 10 likely questions, ranked by likelihood. For the top 3 hardest, draft a STAR-format answer using my background.',
+          plain: 'Role: Director of Product, B2B SaaS startup (~50 people).\nStage: Final round with VP Product and CEO.\nMy background: 7 years PM at larger companies, this is my first director-level move.\nWhat I\'m worried about: Leadership questions, scaling-down narrative, why startup now.\nOutput: 10 likely questions, ranked by likelihood. For the top 3 hardest, draft a STAR-format answer using my background.',
+          why: '<b>Your worry list is gold.</b> Telling Claude what you\'re scared of focuses the prep where you actually need it. "Ranked by likelihood" is the discriminator &mdash; lists aren\'t prioritized by default.'
+        },
+        constrained: {
+          text: 'Generate 10 likely final-round interview questions for a Director of Product role at a B2B SaaS startup (~50 employees). My background: 7 years PM at companies of 500+. <span class="added">Rank questions by likelihood</span>. For the top 3 hardest (focus on leadership, scaling-down, and "why startup now"), <span class="added">draft my answer in STAR format, max 200 words each, using context from my attached resume</span>. <span class="added">For each answer, add 1 sentence of follow-up question I should expect</span>.',
+          plain: 'Generate 10 likely final-round interview questions for a Director of Product role at a B2B SaaS startup (~50 employees). My background: 7 years PM at companies of 500+. Rank questions by likelihood. For the top 3 hardest (focus on leadership, scaling-down, and "why startup now"), draft my answer in STAR format, max 200 words each, using context from my attached resume. For each answer, add 1 sentence of follow-up question I should expect.',
+          why: '<b>The "follow-up question" addition is the pro move.</b> Real interviewers probe. By asking Claude to predict the follow-up, you prep for the second-order question, not just the first one. This is the kind of detail you only think to ask after one bad prep session.'
+        }
+      }
+    }
+  ];
+
+  const TABS = [
+    { id: 'original', label: 'Original', badge: '<span class="badge-orig">●</span>' },
+    { id: 'terse', label: 'Terse', badge: '<span class="badge-better">●</span>' },
+    { id: 'structured', label: 'Structured', badge: '<span class="badge-better">●</span>' },
+    { id: 'constrained', label: 'With constraints', badge: '<span class="badge-better">●</span>' },
+  ];
+
+  let currentExample = 0;
+  let currentTab = 'original';
+
+  function renderChips() {
+    chipsEl.innerHTML = EXAMPLES.map((ex, i) =>
+      '<button class="rw-chip' + (i === currentExample ? ' active' : '') + '" data-i="' + i + '">' + ex.label + '</button>'
+    ).join('');
+    chipsEl.querySelectorAll('.rw-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        currentExample = parseInt(chip.dataset.i, 10);
+        currentTab = 'original';
+        renderAll();
+        if (typeof window.gtagTrack === 'function') {
+          window.gtagTrack('rewriter_example_selected', { example: EXAMPLES[currentExample].label });
+        }
+      });
+    });
+  }
+
+  function renderTabs() {
+    tabsEl.innerHTML = TABS.map(t =>
+      '<button class="rw-tab' + (t.id === currentTab ? ' active' : '') + '" data-tab="' + t.id + '">' + t.badge + t.label + '</button>'
+    ).join('');
+    tabsEl.querySelectorAll('.rw-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        currentTab = tab.dataset.tab;
+        renderDisplay();
+        if (typeof window.gtagTrack === 'function') {
+          window.gtagTrack('rewriter_version_viewed', {
+            example: EXAMPLES[currentExample].label,
+            version: currentTab
+          });
+        }
+      });
+    });
+  }
+
+  function renderDisplay() {
+    // Re-render tab styles
+    tabsEl.querySelectorAll('.rw-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.tab === currentTab);
+    });
+    const v = EXAMPLES[currentExample].versions[currentTab];
+    displayEl.innerHTML = v.text;
+    whyEl.innerHTML = '<div class="rw-why-label">Why this version</div>' + v.why;
+    copyBtn.dataset.prompt = v.plain;
+  }
+
+  function renderAll() {
+    renderChips();
+    renderTabs();
+    renderDisplay();
+  }
+
+  renderAll();
+
+  if (typeof window.gtagTrack === 'function') {
+    window.gtagTrack('rewriter_loaded', {});
+  }
+})();

@@ -43,6 +43,39 @@
       <div class="tip-card"><span class="pill pill-violet">Safety</span><h3>Verify before destructive actions.</h3><p>Before letting Claude bulk-rename, bulk-delete, or send emails to multiple people, ask for a dry run first: "show me what you'll do before doing it."</p></div>
       <div class="tip-card"><span class="pill pill-pink">Delegate</span><h3>Push hard work to scheduled tasks.</h3><p>If you find yourself asking the same question every morning, every Monday, or every month &mdash; that's a scheduled task waiting to happen.</p></div>
     </div>
+
+    <!-- ============================================
+         PROMPT REWRITER MICROSIM
+    ============================================= -->
+    <div class="rw-card" id="prompt-rewriter">
+      <div class="rw-eyebrow">Try it &middot; Specificity in practice</div>
+      <h3 class="rw-title">The prompt rewriter.</h3>
+      <p class="rw-sub">The first tip above is "tell it what done looks like" &mdash; easy to say, harder to do consistently. Below: four common vague prompts you'd actually send Claude, each shown with three improved versions. Watch what changes between them &mdash; the patterns are reusable.</p>
+
+      <div class="rw-step-label">Pick a vague prompt</div>
+      <div class="rw-chips" id="rw-chips">
+        <!-- chips injected by JS -->
+      </div>
+
+      <div class="rw-step-label">See how it could be rewritten</div>
+      <div class="rw-tabs" id="rw-tabs">
+        <!-- tabs injected by JS -->
+      </div>
+
+      <div class="rw-display" id="rw-display">
+        <!-- prompt text injected by JS -->
+      </div>
+
+      <button class="rw-copy copy-prompt" id="rw-copy" data-prompt="">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:0.875rem;height:0.875rem"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy this prompt
+      </button>
+
+      <div class="rw-why" id="rw-why" style="margin-top:1.25rem">
+        <!-- "why this works" injected by JS -->
+      </div>
+    </div>
+
   </div>
 </section>
 </main>
