@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Compare AI Tools &middot; Cowork Field Guide</title>
+<meta name="description" content="A side-by-side comparison of Claude products (Claude.ai, Cowork, Code, API) plus how Anthropic, OpenAI, and Google compare as of May 2026." />
+<link rel="stylesheet" href="assets/style.css" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NYBGFDSZDZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NYBGFDSZDZ', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+<style>
+  /* Compare-page-specific table styling */
+  .compare-table-wrap{overflow-x:auto;margin:1.5rem 0;border-radius:1rem;border:1px solid var(--border-strong)}
+  .compare-table{width:100%;border-collapse:collapse;font-size:0.875rem;min-width:640px;background:rgba(255,255,255,0.02)}
+  .compare-table th{text-align:left;padding:1rem 1.25rem;background:rgba(167,139,250,0.08);color:#fff;font-weight:600;font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.06em;border-bottom:1px solid var(--border-strong)}
+  .compare-table td{padding:1rem 1.25rem;color:rgba(255,255,255,0.78);line-height:1.55;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:top}
+  .compare-table tr:last-child td{border-bottom:none}
+  .compare-table tr:hover td{background:rgba(167,139,250,0.04)}
+  .compare-table .product-name{font-weight:600;color:#fff;display:block;margin-bottom:0.25rem}
+  .compare-table .product-tag{font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:#c4b5fd;display:inline-block;margin-bottom:0.25rem;padding:0.125rem 0.5rem;background:rgba(167,139,250,0.15);border-radius:0.25rem}
+  .vendor-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+  @media(min-width:768px){.vendor-grid{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+  .vendor-card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid var(--border-strong);border-radius:1rem;padding:1.5rem;display:flex;flex-direction:column}
+  .vendor-card.anthropic{border-color:rgba(167,139,250,0.4)}
+  .vendor-card.openai{border-color:rgba(16,185,129,0.4)}
+  .vendor-card.google{border-color:rgba(56,189,248,0.4)}
+  .vendor-name{font-size:1.375rem;font-weight:800;color:#fff;margin-bottom:0.25rem;letter-spacing:-0.02em}
+  .vendor-tagline{font-size:0.8125rem;color:rgba(255,255,255,0.55);margin-bottom:1rem;font-style:italic}
+  .vendor-section{margin-bottom:1rem}
+  .vendor-section h4{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;color:rgba(255,255,255,0.5)}
+  .vendor-section p,.vendor-section li{font-size:0.8125rem;color:rgba(255,255,255,0.78);line-height:1.55}
+  .vendor-section ul{padding-left:1.125rem;display:flex;flex-direction:column;gap:0.25rem;margin:0}
+  .vendor-card.anthropic .vendor-section h4{color:#c4b5fd}
+  .vendor-card.openai .vendor-section h4{color:#6ee7b7}
+  .vendor-card.google .vendor-section h4{color:#7dd3fc}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a><a href="compare.html" style="background:rgba(167,139,250,0.18);color:#fff">Compare</a><a href="stone-arch.html" style="color:#c4b5fd">Stone Arch</a></nav>
+
+<main>
+
+<!-- HERO -->
+<section class="section" style="padding-top:6rem">
+  <div class="container-narrow">
+    <span class="eyebrow">Decide before you commit</span>
+    <h1 class="h1 grad-text" style="font-size:clamp(2.25rem,6vw,3.75rem);margin-bottom:1.25rem">Which AI tool fits your work?</h1>
+    <p class="lead" style="margin-bottom:1.5rem">Two questions worth answering before you pick: <b style="color:#fff">which Claude product</b> matches what you're trying to do, and <b style="color:#fff">whether Claude is the right vendor</b> compared to OpenAI and Google. The landscape moves fast and the right answer depends on your actual workflow, not on whoever shipped the loudest feature last week.</p>
+    <p style="font-size:0.875rem;color:rgba(255,255,255,0.55);margin-bottom:2rem"><b>Disclosure:</b> This guide is hosted at <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.9em;background:rgba(255,255,255,0.08);padding:0.1rem 0.3rem;border-radius:0.25rem">claude-cowork</code> &mdash; we have an obvious Anthropic slant. We've tried to be honest about where the other vendors win.</p>
+  </div>
+</section>
+
+<!-- THE CLAUDE FAMILY -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">The Claude family</span>
+    <h2 class="h2">Anthropic's products, side by side.</h2>
+    <p class="section-sub" style="max-width:48rem">All of these run the same underlying Claude models (currently Opus 4.6, Sonnet 4.6, Haiku 4.5 as of May 2026). The differences are about where Claude lives and what it can touch.</p>
+
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="width:22%">Product</th>
+            <th>Best for</th>
+            <th>Where it runs</th>
+            <th>Plan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="product-tag">Web &amp; mobile</span>
+              <span class="product-name">Claude.ai</span>
+              The browser and mobile app version. The fastest way to start.
+            </td>
+            <td>Quick questions, drafting, explaining, working with text and images. Connectors and artifacts work here too.</td>
+            <td>Browser, iOS, Android</td>
+            <td>Free works for casual use; Pro+ removes most limits</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="product-tag">Desktop &middot; chat</span>
+              <span class="product-name">Claude desktop (Chat)</span>
+              Same as Claude.ai but as a native Mac/Windows app with quicker keyboard access.
+            </td>
+            <td>People who want Claude one keypress away while working in other apps. Same capabilities as the web.</td>
+            <td>macOS, Windows</td>
+            <td>Free works; Pro+ for higher usage</td>
+          </tr>
+          <tr style="background:rgba(167,139,250,0.06)">
+            <td>
+              <span class="product-tag" style="background:rgba(167,139,250,0.25);color:#fff">You are here</span>
+              <span class="product-name">Claude desktop (Cowork)</span>
+              The agentic mode of the desktop app. Reads and writes your files, drives apps, runs scheduled tasks, remembers context.
+            </td>
+            <td>Real work that touches your local files and tools &mdash; reports, briefings, multi-step jobs that span sessions.</td>
+            <td>macOS desktop app (Windows expected)</td>
+            <td><b style="color:#fff">All paid plans</b> &mdash; Pro, Max, Team, Enterprise</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="product-tag">Terminal</span>
+              <span class="product-name">Claude Code</span>
+              CLI tool for agentic coding. Lives in your terminal, works in your repo.
+            </td>
+            <td>Engineers &mdash; coding, refactors, debugging, running tests, opening PRs. Doubled rate limits in 2026.</td>
+            <td>macOS, Linux, Windows (terminal)</td>
+            <td>Included in Pro / Max / Team / Enterprise. Standalone CLI cost rolled into your Claude plan.</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="product-tag">Browser</span>
+              <span class="product-name">Claude in Chrome</span>
+              A Chrome extension that lets Claude see and act on web pages through the DOM.
+            </td>
+            <td>Web app automation that's faster than computer-use clicks &mdash; filling forms, scraping dashboards, navigating internal tools.</td>
+            <td>Chrome browser</td>
+            <td>Included with Pro+</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="product-tag">MS Office</span>
+              <span class="product-name">Claude for Excel / PowerPoint</span>
+              Beta integrations that put Claude inside Microsoft's apps.
+            </td>
+            <td>Spreadsheet and slide work without leaving the app you're already in.</td>
+            <td>Excel, PowerPoint (beta)</td>
+            <td>Pro+ (beta access)</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="product-tag">API</span>
+              <span class="product-name">Anthropic API</span>
+              The developer endpoint &mdash; build Claude into your own products.
+            </td>
+            <td>Anyone embedding Claude in software they ship. Direct access to all models with no chat UI in the way.</td>
+            <td>Developer SDK / REST</td>
+            <td>Pay-per-token, separate from Claude.ai subscription</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-callout" style="margin-top:1.5rem">
+      <b>The summary if you skip the table:</b> Claude.ai is the front door, Cowork is the desktop mode that does real work on your Mac, Code is for engineers, the API is for builders, and the MS Office and Chrome integrations are convenience layers that meet Claude where you already are. Most knowledge workers will use Claude.ai + Cowork together; most engineers will use Cowork + Code together.
+    </div>
+  </div>
+</section>
+
+<!-- CROSS-VENDOR COMPARISON -->
+<section class="section">
+  <div class="container">
+    <span class="eyebrow">Across vendors</span>
+    <h2 class="h2">Anthropic vs OpenAI vs Google.</h2>
+    <p class="section-sub" style="max-width:48rem">All three ship strong models. The right pick depends on what ecosystem your work lives in, what you need the AI to do, and how much of an enterprise platform you need around it.</p>
+
+    <div class="vendor-grid">
+
+      <div class="vendor-card anthropic">
+        <div class="vendor-name">Anthropic Claude</div>
+        <div class="vendor-tagline">"The thoughtful coworker"</div>
+
+        <div class="vendor-section">
+          <h4>Flagship products</h4>
+          <p>Claude.ai, Claude desktop (with Chat / Cowork / Code modes), Anthropic API, Claude in Chrome, Claude for Excel/PowerPoint (beta).</p>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Where it wins</h4>
+          <ul>
+            <li>Reasoning depth and writing quality</li>
+            <li>Safety and behavior consistency</li>
+            <li>Long context (up to 1M tokens on some models)</li>
+            <li>Coding (well-regarded for refactors and complex bugs)</li>
+            <li>Cowork mode for files + computer use</li>
+          </ul>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Where it's behind</h4>
+          <ul>
+            <li>No first-party image or video generation</li>
+            <li>Smaller voice-mode story</li>
+            <li>No "store" of third-party assistants like GPTs</li>
+            <li>Smaller mainstream consumer mindshare</li>
+          </ul>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Plans</h4>
+          <p>Free, Pro, Max ($100/$200), Team ($20&ndash;$100/seat), Enterprise. Cowork is included in <b style="color:#fff">all paid plans</b>.</p>
+        </div>
+
+        <div class="vendor-section" style="margin-top:auto;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.06)">
+          <h4>Reach for it when</h4>
+          <p>Work is text-heavy, files matter, and you want strong reasoning + agentic action without leaving Anthropic's stack.</p>
+        </div>
+      </div>
+
+      <div class="vendor-card openai">
+        <div class="vendor-name">OpenAI ChatGPT</div>
+        <div class="vendor-tagline">"The everything store"</div>
+
+        <div class="vendor-section">
+          <h4>Flagship products</h4>
+          <p>ChatGPT (web, mobile, desktop), GPT-5.5 model (launched April 2026), API, Sora (video), DALL-E/Images 2.0, the GPT Store, custom GPTs, ChatGPT Agents.</p>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Where it wins</h4>
+          <ul>
+            <li>Broadest ecosystem and feature surface</li>
+            <li>Best image and video generation (Images 2.0 at 2K, Sora)</li>
+            <li>Strongest voice mode</li>
+            <li>Custom GPTs and the GPT Store for shared assistants</li>
+            <li>Agent mode (computer-use, long-running tasks)</li>
+          </ul>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Where it's behind</h4>
+          <ul>
+            <li>Behavior can be less consistent across releases</li>
+            <li>Heavier surface = more learning curve for newcomers</li>
+            <li>Fewer first-party desktop-native tools (no direct Cowork analog)</li>
+            <li>Pricing has shifted upward in 2026</li>
+          </ul>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Plans</h4>
+          <p>Free, Go, Plus, Pro, Business, Enterprise. API pricing rose with GPT-5.5: standard $5/$30 per million tokens; Pro tier $30/$180.</p>
+        </div>
+
+        <div class="vendor-section" style="margin-top:auto;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.06)">
+          <h4>Reach for it when</h4>
+          <p>You want one tool for everything &mdash; chat, image, voice, video, custom assistants &mdash; or you need the broadest third-party ecosystem.</p>
+        </div>
+      </div>
+
+      <div class="vendor-card google">
+        <div class="vendor-name">Google Gemini</div>
+        <div class="vendor-tagline">"Where your work already lives"</div>
+
+        <div class="vendor-section">
+          <h4>Flagship products</h4>
+          <p>Gemini app (web, mobile), Gemini for Workspace (Docs/Gmail/Sheets/Meet), Gemini Enterprise Agent Platform (formerly Vertex AI), NotebookLM, Project Mariner (browsing agent), Workspace Studio.</p>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Where it wins</h4>
+          <ul>
+            <li>Deepest integration with Google Workspace</li>
+            <li>NotebookLM for research synthesis</li>
+            <li>Strongest enterprise agent platform (200+ models in Model Garden)</li>
+            <li>Aggressive pricing &mdash; Gemini 3.5 Flash cheaper than GPT-5.5</li>
+            <li>Bundled into Workspace plans (Business Standard+)</li>
+          </ul>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Where it's behind</h4>
+          <ul>
+            <li>Standalone chat experience feels less polished than ChatGPT</li>
+            <li>Confusing product naming (frequent rebrands &mdash; Bard &rarr; Gemini &rarr; AI Studio &rarr; Vertex &rarr; now Enterprise Agent Platform)</li>
+            <li>Outside Workspace, less obvious choice</li>
+            <li>Smaller third-party developer ecosystem</li>
+          </ul>
+        </div>
+
+        <div class="vendor-section">
+          <h4>Plans</h4>
+          <p>Google AI Plus ($7.99), Pro ($19.99), Ultra ($99.99 &mdash; cut from $249.99). Gemini included in Workspace Business Standard, Plus, Enterprise.</p>
+        </div>
+
+        <div class="vendor-section" style="margin-top:auto;padding-top:0.75rem;border-top:1px solid rgba(255,255,255,0.06)">
+          <h4>Reach for it when</h4>
+          <p>Your work is already in Google Workspace, you want enterprise-scale agent infrastructure, or you need the best price-per-token at scale.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- DECISION TREE -->
+<section class="section">
+  <div class="container-narrow">
+    <span class="eyebrow">Quick decision tree</span>
+    <h2 class="h2">If you just want one answer.</h2>
+    <p class="section-sub" style="max-width:42rem">A rough sorting hat. Real life is messier &mdash; you might end up using two of these together &mdash; but if you're starting from zero, here's where to lean.</p>
+
+    <div class="pitfall-grid" style="margin-top:1.5rem">
+
+      <div class="pitfall-card" style="border-color:rgba(167,139,250,0.3);border-left-color:rgba(167,139,250,0.6)">
+        <div class="symptom" style="color:#c4b5fd">If you...</div>
+        <h3 style="font-family:-apple-system,sans-serif">Need an AI that does real work on your computer</h3>
+        <div class="fix" style="background:rgba(167,139,250,0.08);border-left-color:rgba(167,139,250,0.5)">
+          <b style="color:#c4b5fd">&rarr; Claude (Cowork mode).</b> Cowork is the most developed desktop-native AI coworker among the three vendors. ChatGPT has agents, but they're cloud-side; Gemini's strongest agent story is enterprise-platform. For "AI on my Mac touching my actual files," Claude is the most direct answer.
+        </div>
+      </div>
+
+      <div class="pitfall-card" style="border-color:rgba(167,139,250,0.3);border-left-color:rgba(167,139,250,0.6)">
+        <div class="symptom" style="color:#c4b5fd">If you...</div>
+        <h3 style="font-family:-apple-system,sans-serif">Write code professionally</h3>
+        <div class="fix" style="background:rgba(167,139,250,0.08);border-left-color:rgba(167,139,250,0.5)">
+          <b style="color:#c4b5fd">&rarr; Claude Code &mdash; or pair Code with Cursor/GitHub Copilot.</b> Claude is the model most engineers reach for on hard refactors and complex bugs. GPT-5.5 is excellent and OpenAI's Codex spinout is competitive. Google's Code Assist is fine if you're already in their stack.
+        </div>
+      </div>
+
+      <div class="pitfall-card" style="border-color:rgba(16,185,129,0.3);border-left-color:rgba(16,185,129,0.6)">
+        <div class="symptom" style="color:#6ee7b7">If you...</div>
+        <h3 style="font-family:-apple-system,sans-serif">Want one tool for chat, images, voice, video, and custom assistants</h3>
+        <div class="fix" style="background:rgba(16,185,129,0.08);border-left-color:rgba(16,185,129,0.5)">
+          <b style="color:#6ee7b7">&rarr; ChatGPT.</b> The widest feature surface in one subscription. Images 2.0, Sora for video, robust voice mode, custom GPTs, the GPT Store. Pay attention to the agent features &mdash; they got significantly better in 2026.
+        </div>
+      </div>
+
+      <div class="pitfall-card" style="border-color:rgba(56,189,248,0.3);border-left-color:rgba(56,189,248,0.6)">
+        <div class="symptom" style="color:#7dd3fc">If you...</div>
+        <h3 style="font-family:-apple-system,sans-serif">Live in Google Workspace</h3>
+        <div class="fix" style="background:rgba(56,189,248,0.08);border-left-color:rgba(56,189,248,0.5)">
+          <b style="color:#7dd3fc">&rarr; Gemini.</b> If Docs, Gmail, Sheets, and Meet are where you work, having AI built in beats switching tools. Gemini is bundled into Workspace Business Standard and up. Side benefit: NotebookLM is the best research-synthesis tool any vendor ships.
+        </div>
+      </div>
+
+      <div class="pitfall-card" style="border-color:rgba(56,189,248,0.3);border-left-color:rgba(56,189,248,0.6)">
+        <div class="symptom" style="color:#7dd3fc">If you...</div>
+        <h3 style="font-family:-apple-system,sans-serif">Are building an enterprise agent platform</h3>
+        <div class="fix" style="background:rgba(56,189,248,0.08);border-left-color:rgba(56,189,248,0.5)">
+          <b style="color:#7dd3fc">&rarr; Gemini Enterprise Agent Platform.</b> Google's 2026 consolidation of Vertex AI into a unified agent platform is the most complete enterprise offering &mdash; 200+ models in the Model Garden (including Claude), A2A protocol, partner agents from Box / Workday / Salesforce / ServiceNow.
+        </div>
+      </div>
+
+      <div class="pitfall-card" style="border-color:rgba(167,139,250,0.3);border-left-color:rgba(167,139,250,0.6)">
+        <div class="symptom" style="color:#c4b5fd">If you...</div>
+        <h3 style="font-family:-apple-system,sans-serif">Care most about safety, reasoning quality, and long-context work</h3>
+        <div class="fix" style="background:rgba(167,139,250,0.08);border-left-color:rgba(167,139,250,0.5)">
+          <b style="color:#c4b5fd">&rarr; Claude.</b> Claude has the strongest reputation among regulated industries (legal, healthcare, finance) and for tasks that require holding a lot of context (long documents, complex multi-step reasoning).
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- "USE TWO" SECTION -->
+<section class="section">
+  <div class="container-narrow">
+    <span class="eyebrow">In practice</span>
+    <h2 class="h2">Most pros use two.</h2>
+    <p class="section-sub">In reality, very few people commit to one vendor exclusively. The two most common combinations:</p>
+
+    <div class="feat-row" style="margin-top:1.5rem">
+      <div class="feat-card">
+        <div class="feat-icon ic-violet">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Claude (Cowork) + ChatGPT</h3>
+        <p>Claude for the day job &mdash; reasoning, files, scheduled tasks, computer use. ChatGPT for image generation, voice conversations, and anything where Custom GPTs save time. Pay $20-30/month for each; total still less than the equivalent in headcount or other software.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon ic-sky">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Gemini (in Workspace) + Claude</h3>
+        <p>Gemini does the in-app work in Docs / Gmail / Sheets where it's already there. Claude handles everything that needs deeper reasoning, agentic file work, or the Cowork-style scheduled tasks Gemini doesn't match.</p>
+      </div>
+    </div>
+
+    <div class="rec-callout" style="margin-top:2rem">
+      <div class="rec-callout-eyebrow">Most underrated combo</div>
+      <p><b>Claude Cowork + ChatGPT voice mode.</b> Cowork does the heavy lifting on your Mac while ChatGPT's voice mode handles thinking-out-loud conversations during walks or commutes. Different interaction modes, different use cases &mdash; they don't compete.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE "VERIFY BEFORE YOU COMMIT" CAVEAT -->
+<section class="section">
+  <div class="container-narrow">
+    <span class="eyebrow">A note on freshness</span>
+    <h2 class="h2">This will be wrong in six months.</h2>
+    <p class="section-sub" style="max-width:42rem">The AI landscape moves fast enough that any comparison page has a half-life of about a quarter. Before you sign up for a plan based on what's here:</p>
+
+    <div class="note-callout">
+      <b>Verify current pricing and product lineups directly:</b>
+      <ul style="margin-top:0.625rem;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.375rem">
+        <li><a href="https://claude.com/pricing" class="xref">claude.com/pricing</a> &mdash; Anthropic plans</li>
+        <li><a href="https://chatgpt.com/pricing/" class="xref">chatgpt.com/pricing</a> &mdash; OpenAI plans</li>
+        <li><a href="https://gemini.google/pricing/" class="xref">gemini.google/pricing</a> &mdash; Google Gemini plans</li>
+        <li><a href="https://cloud.google.com/products/gemini-enterprise-agent-platform/pricing" class="xref">cloud.google.com/.../gemini-enterprise-agent-platform</a> &mdash; Google enterprise agent platform</li>
+      </ul>
+    </div>
+
+    <p style="font-size:0.8125rem;color:rgba(255,255,255,0.55);margin-top:1.5rem;line-height:1.65">
+      <b>Last updated:</b> May 2026, based on public product announcements through Q2 2026. Includes Claude Opus 4.6 / Sonnet 4.6 / Haiku 4.5, OpenAI GPT-5.5 (launched April 2026), and Google Gemini 3.5 Flash (launched May 2026). If you're reading this six months later, treat the specific model names and prices as historical &mdash; the structural comparison (where each vendor wins) is what tends to hold.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Home</a>
+          <a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Install</a>
+          <a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Quick Start</a>
+          <a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Trust</a>
+          <a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Tutorials</a>
+          <a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Example</a>
+          <a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Projects</a>
+          <a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Output Examples</a>
+          <a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Pitfalls</a>
+          <a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Reference</a>
+          <a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Glossary</a>
+          <a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Cheat Sheet</a>
+          <a href="compare.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block">Compare AI Tools</a>
+          <a href="stone-arch.html" style="color:#c4b5fd;text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;font-weight:600">Stone Arch</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
