@@ -9,5 +9,8 @@
 *.swp
 *~
 
+# Original uncropped screenshots (kept locally, not in repo)
+screenshots/Image*.png
+
 # OS
 Thumbs.db

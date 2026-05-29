@@ -235,6 +235,28 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
 .callout-skill b{color:#f0abfc}
 .callout-skill code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:0.875rem;background:rgba(217,70,239,0.18);padding:0.125rem 0.375rem;border-radius:0.25rem;color:#f5d0fe}
 
+/* Projects section */
+.projects-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:768px){.projects-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
+.project-card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid var(--border-strong);border-radius:1rem;padding:1.5rem;transition:all 0.25s ease;display:flex;flex-direction:column}
+.project-card:hover{transform:translateY(-3px);border-color:rgba(167,139,250,0.4);box-shadow:0 16px 40px -16px rgba(167,139,250,0.3)}
+.project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.875rem;gap:1rem}
+.project-num{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:0.8125rem;color:rgba(255,255,255,0.4);font-weight:600;letter-spacing:0.06em;padding-top:0.125rem}
+.project-pills{display:flex;gap:0.375rem;flex-wrap:wrap;justify-content:flex-end}
+.project-title{font-size:1.125rem;font-weight:600;margin-bottom:0.5rem;color:#fff;line-height:1.3}
+.project-aha{font-size:0.875rem;color:#c4b5fd;font-style:italic;line-height:1.55;margin-bottom:0.875rem}
+.project-desc{font-size:0.875rem;color:rgba(255,255,255,0.72);line-height:1.6;margin-bottom:1rem;flex:1}
+.project-prompt{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:0.75rem;padding:0.875rem 1rem;margin-top:auto;cursor:pointer;transition:all 0.2s ease;text-align:left;display:block;width:100%;color:inherit}
+.project-prompt:hover{border-color:rgba(167,139,250,0.45);background:rgba(167,139,250,0.06)}
+.project-prompt .prompt-label{font-size:0.6875rem;color:rgba(255,255,255,0.5);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.375rem}
+.project-prompt .prompt-text{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:0.8125rem;line-height:1.55;color:#f5f5f7}
+.project-prompt:hover .prompt-text{color:#fff}
+
+.rec-callout{background:linear-gradient(135deg,rgba(167,139,250,0.12),rgba(236,72,153,0.08));border:1px solid rgba(167,139,250,0.32);border-radius:1rem;padding:1.25rem 1.5rem;margin-bottom:2rem}
+.rec-callout-eyebrow{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#c4b5fd;margin-bottom:0.5rem}
+.rec-callout p{font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65}
+.rec-callout b{color:#fff;font-weight:600}
+
 /* Scrollbar */
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -260,6 +282,7 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
   <a href="#capabilities">Capabilities</a>
   <a href="#walkthroughs">Tutorials</a>
   <a href="#activate-bundle">Worked example</a>
+  <a href="#projects">Projects</a>
   <a href="#skills">Skills</a>
   <a href="#connectors">Connectors</a>
   <a href="#prompts">Prompts</a>
@@ -824,6 +847,160 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
 
     <div class="note-callout" style="margin-top:2rem">
       <b>One more thing &mdash; making your own.</b> The plugin marketplace is the easy path, but you can also build custom skills. From Customize &rarr; Skills, click <span class="kbd">+</span> and pick <b>Create with Claude</b> (conversational builder), <b>Write skill instructions</b> (a form for the name, description, and instructions), or <b>Upload a skill</b> (drop in a <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(245,158,11,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#fde68a">.skill</code> zip). Custom skills activate the same way as bundled ones &mdash; natural language match or slash command.
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS — BUILD SOMETHING -->
+<section class="section" id="projects">
+  <div class="container-narrow">
+    <span class="eyebrow">Hands-on</span>
+    <h2 class="h2">Now go build something.</h2>
+    <p class="section-sub">Reading about Cowork is orientation. Building with Cowork is when it becomes useful. Eight projects below, each teaching a different aha. Pick one, ladder up.</p>
+
+    <div class="rec-callout">
+      <div class="rec-callout-eyebrow">Where to start</div>
+      <p>If you only do one: <b>#1 Morning briefing</b> &mdash; scheduled tasks are Cowork's productivity unlock and most people don't reach for them naturally. If you've got time for three, ladder <b>#1 &rarr; #5 (custom skill) &rarr; #3 (live artifact)</b>. That sequence takes you from "Cowork shows up for you" to "Cowork is yours to shape" to "Cowork ships things that keep working."</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">01</span>
+          <div class="project-pills">
+            <span class="pill pill-violet">30 min</span>
+            <span class="pill">Beginner</span>
+          </div>
+        </div>
+        <h3 class="project-title">Morning briefing on autopilot</h3>
+        <p class="project-aha">The aha: scheduled tasks are the real productivity unlock &mdash; Cowork shows up for you instead of you remembering to ask.</p>
+        <p class="project-desc">Wire up a daily-running task that pulls from your calendar, email, and any open task tracker. Every morning at the time you set, Cowork delivers a 30-second read on what matters today. Once you have one, you stop opening apps to check.</p>
+        <button class="project-prompt copy-prompt" data-prompt="Every weekday at 7am, check my calendar and unread email. Tell me the three meetings I should prep for and the two emails that need a reply today.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Every weekday at 7am, check my calendar and unread email. Tell me the three meetings I should prep for and the two emails that need a reply today.</div>
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">02</span>
+          <div class="project-pills">
+            <span class="pill pill-pink">1 hr</span>
+            <span class="pill">Beginner</span>
+          </div>
+        </div>
+        <h3 class="project-title">AI inbox triage across three apps</h3>
+        <p class="project-aha">The aha: multi-connector synthesis collapses three apps into one prompt &mdash; "what's on fire" becomes a one-liner.</p>
+        <p class="project-desc">Connect Gmail, Slack, and Calendar. Practice prompts that pull across all three at once &mdash; unanswered threads, conflicting holds, overdue replies. The real skill you build: phrasing asks that demand synthesized answers, not single-source lookups.</p>
+        <button class="project-prompt copy-prompt" data-prompt="Cross-reference my unread email and unread Slack from this week. Tell me which conversations the same person is reaching out about across both channels.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Cross-reference my unread email and unread Slack from this week. Tell me which conversations the same person is reaching out about across both channels.</div>
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">03</span>
+          <div class="project-pills">
+            <span class="pill pill-amber">1 hr</span>
+            <span class="pill">Intermediate</span>
+          </div>
+        </div>
+        <h3 class="project-title">Live project tracker artifact</h3>
+        <p class="project-aha">The aha: live artifacts beat static reports &mdash; the data refreshes itself every time you open the page.</p>
+        <p class="project-desc">Pick a tracker you already use (Linear, Asana, Notion, ClickUp). Build a live artifact that shows your open items grouped however you think about them, with the data pulled fresh each time you open the page. Sharable URL. Replaces "let me check Linear" with "open the page."</p>
+        <button class="project-prompt copy-prompt" data-prompt="Build me a live artifact showing my open Linear tickets, grouped by project, with the priority and last-updated date for each. Add a refresh button at the top.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Build me a live artifact showing my open Linear tickets, grouped by project, with the priority and last-updated date for each. Add a refresh button at the top.</div>
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">04</span>
+          <div class="project-pills">
+            <span class="pill pill-sky">1.5 hr</span>
+            <span class="pill">Intermediate</span>
+          </div>
+        </div>
+        <h3 class="project-title">Meeting prep system</h3>
+        <p class="project-aha">The aha: Cowork chains tools without you orchestrating it &mdash; calendar + email + history + transcripts assemble into a brief on their own.</p>
+        <p class="project-desc">Pick a meeting on your calendar tomorrow. Ask Cowork to build a one-page brief: who's attending, what you've discussed before, what's outstanding, what to ask. Once the pattern works, schedule it to auto-run the evening before each weekday.</p>
+        <button class="project-prompt copy-prompt" data-prompt="Build me a one-page brief for tomorrow's first meeting. Pull attendees from my calendar, recent email threads with each of them, and any shared docs we've opened together. End with three questions I should be ready to answer.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Build me a one-page brief for tomorrow's first meeting. Pull attendees from my calendar, recent email threads with each of them, and any shared docs we've opened together. End with three questions I should be ready to answer.</div>
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">05</span>
+          <div class="project-pills">
+            <span class="pill pill-violet">1 hr</span>
+            <span class="pill">Intermediate</span>
+          </div>
+        </div>
+        <h3 class="project-title">Build your first custom skill</h3>
+        <p class="project-aha">The aha: when you turn a recurring prompt into a skill, Cowork stops being a tool and starts being your collaborator.</p>
+        <p class="project-desc">Pick a task you ask Cowork to do at least once a week. Capture how you want it done &mdash; tone, format, what to include, what to skip &mdash; and save it as a custom skill. Next time you describe the task, the skill activates automatically. Test, refine instructions, refine again.</p>
+        <button class="project-prompt copy-prompt" data-prompt="Help me turn my weekly team update into a custom skill. The output should always be: 3 wins, 3 blockers, 3 next-week priorities. Tone is direct, no marketing language. Walk me through capturing this as a skill I can trigger weekly.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Help me turn my weekly team update into a custom skill. The output should always be: 3 wins, 3 blockers, 3 next-week priorities. Tone is direct, no marketing language. Walk me through capturing this as a skill I can trigger weekly.</div>
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">06</span>
+          <div class="project-pills">
+            <span class="pill pill-violet">1 hr</span>
+            <span class="pill">Beginner</span>
+          </div>
+        </div>
+        <h3 class="project-title">Document Q&amp;A across a folder</h3>
+        <p class="project-aha">The aha: files + skills together turn 50 PDFs into a searchable knowledge base &mdash; no upload UI, no embedding setup, no chunking.</p>
+        <p class="project-desc">Drop a folder of source documents (research papers, internal docs, vendor contracts, whatever). Practice asking questions across them &mdash; "find every mention of X," "summarize the three documents that discuss Y," "compare the pricing in these contracts." Useful sub-skill: telling Cowork to cite which file each answer came from.</p>
+        <button class="project-prompt copy-prompt" data-prompt="Read every PDF in this folder. Tell me the three most-cited claims across them and which paper makes the strongest case for each. Cite each claim with the filename.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Read every PDF in this folder. Tell me the three most-cited claims across them and which paper makes the strongest case for each. Cite each claim with the filename.</div>
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">07</span>
+          <div class="project-pills">
+            <span class="pill pill-sky">2 hr</span>
+            <span class="pill">Advanced</span>
+          </div>
+        </div>
+        <h3 class="project-title">Quarterly review compiler</h3>
+        <p class="project-aha">The aha: cross-tool synthesis at scale &mdash; Cowork pulls from git, Linear, Slack, and calendar, then turns the raw history into a polished review doc.</p>
+        <p class="project-desc">At the end of a quarter, ask Cowork to compile everything you shipped. Closed tickets, commits, key threads, notable meeting notes. Output a Word doc with sections for shipped work, themes, lessons learned, recommendations. The output is sharable as-is or becomes the source for your actual review write-up.</p>
+        <button class="project-prompt copy-prompt" data-prompt="Compile a Q3 review document for me. Pull my closed Linear tickets, my git commits, and the Notion docs I authored this quarter. Group by theme. Output as a Word doc with sections for shipped work, themes, lessons learned, and recommendations.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Compile a Q3 review document for me. Pull my closed Linear tickets, my git commits, and the Notion docs I authored this quarter. Group by theme. Output as a Word doc with sections for shipped work, themes, lessons learned, and recommendations.</div>
+        </button>
+      </div>
+
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-num">08</span>
+          <div class="project-pills">
+            <span class="pill pill-amber">2 hr</span>
+            <span class="pill">Advanced</span>
+          </div>
+        </div>
+        <h3 class="project-title">Connect a custom MCP</h3>
+        <p class="project-aha">The aha: the MCP registry is the unlock for non-mainstream tools &mdash; Cowork extends to whatever you need, not just what's pre-built.</p>
+        <p class="project-desc">Pick a tool you use that Cowork doesn't have an official connector for. Search the MCP registry to see if a community MCP exists. If yes, install and connect. If no, this is the project: use the <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(245,158,11,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#fde68a">mcp-builder</code> skill to build a minimal MCP for it. Result: Cowork can now reach a system it couldn't before.</p>
+        <button class="project-prompt copy-prompt" data-prompt="Search the MCP registry for [tool you use]. If nothing useful exists there, walk me through using the mcp-builder skill to create a minimal MCP for it from its API docs.">
+          <div class="prompt-label">Starter prompt</div>
+          <div class="prompt-text">Search the MCP registry for [tool you use]. If nothing useful exists there, walk me through using the mcp-builder skill to create a minimal MCP for it from its API docs.</div>
+        </button>
+      </div>
+
     </div>
   </div>
 </section>
