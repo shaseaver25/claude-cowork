@@ -257,6 +257,89 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
 .rec-callout p{font-size:0.9375rem;color:rgba(255,255,255,0.85);line-height:1.65}
 .rec-callout b{color:#fff;font-weight:600}
 
+/* "Is this for you?" comparison */
+.compare-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:768px){.compare-grid{grid-template-columns:repeat(3,1fr);gap:1.25rem}}
+.compare-card{background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid var(--border-strong);border-radius:1rem;padding:1.5rem;display:flex;flex-direction:column;transition:all 0.25s ease}
+.compare-card.featured{border-color:rgba(167,139,250,0.45);background:linear-gradient(180deg,rgba(167,139,250,0.12),rgba(236,72,153,0.04))}
+.compare-card:hover{transform:translateY(-3px)}
+.compare-eyebrow{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.5);margin-bottom:0.5rem}
+.compare-card.featured .compare-eyebrow{color:#c4b5fd}
+.compare-card h3{font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;color:#fff}
+.compare-card .pick-if{font-size:0.875rem;color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:1rem;flex:1}
+.compare-card .pick-list{font-size:0.8125rem;color:rgba(255,255,255,0.65);line-height:1.55;display:flex;flex-direction:column;gap:0.375rem}
+.compare-card .pick-list span{display:flex;gap:0.5rem;align-items:flex-start}
+.compare-card .pick-list span::before{content:"•";color:#c4b5fd;font-weight:700}
+
+/* Privacy / trust callout */
+.trust-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:768px){.trust-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
+.trust-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:1rem;padding:1.25rem 1.5rem}
+.trust-card.green{border-color:rgba(16,185,129,0.3);background:rgba(16,185,129,0.05)}
+.trust-card.yellow{border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.05)}
+.trust-card h3{font-size:1rem;font-weight:600;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;color:#fff}
+.trust-card.green h3 .trust-dot{background:#10b981}
+.trust-card.yellow h3 .trust-dot{background:#f59e0b}
+.trust-dot{width:0.5rem;height:0.5rem;border-radius:50%;flex-shrink:0}
+.trust-card p,.trust-card li{font-size:0.875rem;color:rgba(255,255,255,0.75);line-height:1.6}
+.trust-card ul{padding-left:1.25rem;display:flex;flex-direction:column;gap:0.375rem;margin-top:0.5rem}
+
+/* Output example mockups (terminal-like, chat-like, doc-like) */
+.output-mockup{background:#0c0c14;border:1px solid var(--border);border-radius:0.875rem;padding:1.25rem 1.5rem;margin:1rem 0;font-family:-apple-system,BlinkMacSystemFont,"Inter",sans-serif;line-height:1.6}
+.output-mockup-header{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.45);margin-bottom:0.75rem;padding-bottom:0.75rem;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;align-items:center;gap:0.5rem}
+.output-mockup-header .mock-dots{display:inline-flex;gap:0.25rem}
+.output-mockup-header .mock-dots span{width:0.5rem;height:0.5rem;border-radius:50%;background:rgba(255,255,255,0.18)}
+.output-mockup-header .mock-dots span:first-child{background:#f87171}
+.output-mockup-header .mock-dots span:nth-child(2){background:#fbbf24}
+.output-mockup-header .mock-dots span:nth-child(3){background:#34d399}
+.output-mockup p{font-size:0.875rem;color:rgba(255,255,255,0.85);margin-bottom:0.625rem;line-height:1.65}
+.output-mockup p:last-child{margin-bottom:0}
+.output-mockup b{color:#fff;font-weight:600}
+.output-mockup .meta-line{font-size:0.75rem;color:rgba(255,255,255,0.5);font-style:italic}
+.output-mockup ul{padding-left:1.25rem;display:flex;flex-direction:column;gap:0.375rem;margin:0.625rem 0;color:rgba(255,255,255,0.8);font-size:0.875rem}
+.output-mockup .label{font-size:0.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#c4b5fd;margin-bottom:0.25rem;display:block}
+
+/* Pitfall cards */
+.pitfall-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+@media(min-width:768px){.pitfall-grid{grid-template-columns:repeat(2,1fr);gap:1.25rem}}
+.pitfall-card{background:linear-gradient(180deg,rgba(244,63,94,0.06),rgba(255,255,255,0.02));border:1px solid rgba(244,63,94,0.25);border-radius:1rem;padding:1.5rem;border-left:3px solid rgba(244,63,94,0.6)}
+.pitfall-card .symptom{font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#fda4af;margin-bottom:0.5rem}
+.pitfall-card h3{font-size:1rem;font-weight:600;margin-bottom:0.625rem;color:#fff;font-family:"JetBrains Mono",ui-monospace,monospace}
+.pitfall-card .cause{font-size:0.875rem;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:0.75rem}
+.pitfall-card .fix{font-size:0.875rem;color:rgba(255,255,255,0.85);line-height:1.6;padding:0.75rem 1rem;background:rgba(16,185,129,0.08);border-radius:0.625rem;border-left:2px solid rgba(16,185,129,0.5)}
+.pitfall-card .fix b{color:#6ee7b7}
+
+/* Glossary cards */
+.gloss-grid{display:grid;grid-template-columns:1fr;gap:0.75rem}
+@media(min-width:640px){.gloss-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.gloss-grid{grid-template-columns:repeat(3,1fr)}}
+.gloss-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:0.75rem;padding:1rem 1.125rem;transition:all 0.2s ease}
+.gloss-card:hover{border-color:rgba(167,139,250,0.4);background:rgba(167,139,250,0.04)}
+.gloss-term{font-size:0.9375rem;font-weight:700;color:#c4b5fd;margin-bottom:0.375rem;font-family:"JetBrains Mono",ui-monospace,monospace}
+.gloss-def{font-size:0.8125rem;color:rgba(255,255,255,0.72);line-height:1.55}
+
+/* Cheat sheet — print-friendly */
+.cheat-sheet{background:#fefefe;color:#111;border-radius:1rem;padding:2rem 2.25rem;margin-top:1.5rem;box-shadow:0 20px 60px -20px rgba(0,0,0,0.5)}
+.cheat-sheet h3{color:#111;font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:2px solid #111}
+.cheat-sheet h4{color:#111;font-size:0.875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin:1.25rem 0 0.5rem}
+.cheat-sheet h4:first-of-type{margin-top:0.5rem}
+.cheat-sheet p,.cheat-sheet li,.cheat-sheet td{color:#333;font-size:0.875rem;line-height:1.55}
+.cheat-sheet .cheat-grid{display:grid;grid-template-columns:1fr;gap:1.5rem}
+@media(min-width:768px){.cheat-sheet .cheat-grid{grid-template-columns:repeat(2,1fr)}}
+.cheat-sheet ul{padding-left:1.125rem;margin:0;display:flex;flex-direction:column;gap:0.375rem}
+.cheat-sheet code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:0.85em;background:#f0f0f5;padding:0.1rem 0.375rem;border-radius:0.25rem;color:#5b21b6;font-weight:500}
+.cheat-sheet b{color:#111;font-weight:700}
+.cheat-sheet .cheat-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:2px solid #111}
+.cheat-sheet .cheat-header h2{color:#111;font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;margin:0}
+.cheat-sheet .cheat-header span{color:#666;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em}
+
+@media print{
+  body{background:#fff;color:#111}
+  .nav,.hero,.ambient,.noise,.feat-row,.steps,.cap-grid,.accordion,.role-tabs,.tile-grid,.skills-grid,.prompts-grid,.projects-grid,.compare-grid,.trust-grid,.pitfall-grid,.gloss-grid,.toast,footer,#decide,#install,#start,#trust,#capabilities,#walkthroughs,#activate-bundle,#projects,#looks-like,#pitfalls,#skills,#connectors,#prompts,#tips,#glossary,.section:not(#cheat-sheet){display:none !important}
+  #cheat-sheet{padding:0;display:block !important}
+  .cheat-sheet{box-shadow:none;border-radius:0;padding:1rem}
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -278,15 +361,18 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
 <!-- NAV -->
 <nav class="nav" id="top-anchor">
   <a href="#top" class="brand"><span class="nav-dot"></span>Cowork Guide</a>
-  <a href="#start">Get Started</a>
-  <a href="#capabilities">Capabilities</a>
+  <a href="#decide">Right for you?</a>
+  <a href="#install">Install</a>
+  <a href="#start">Quick Start</a>
+  <a href="#trust">Trust &amp; Data</a>
   <a href="#walkthroughs">Tutorials</a>
   <a href="#activate-bundle">Worked example</a>
   <a href="#projects">Projects</a>
+  <a href="#looks-like">What it looks like</a>
+  <a href="#pitfalls">Pitfalls</a>
   <a href="#skills">Skills</a>
-  <a href="#connectors">Connectors</a>
-  <a href="#prompts">Prompts</a>
-  <a href="#tips">Tips</a>
+  <a href="#glossary">Glossary</a>
+  <a href="#cheat-sheet">Cheat sheet</a>
 </nav>
 
 <!-- HERO -->
@@ -308,6 +394,119 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
       <div class="stat"><div class="stat-num grad-text-soft">30+</div><div class="stat-label">App connectors</div></div>
       <div class="stat"><div class="stat-num grad-text-soft">&infin;</div><div class="stat-label">Memory across sessions</div></div>
       <div class="stat"><div class="stat-num grad-text-soft">1</div><div class="stat-label">App on your Mac</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- IS COWORK RIGHT FOR YOU? -->
+<section class="section" id="decide">
+  <div class="container">
+    <span class="eyebrow">Before you commit</span>
+    <h2 class="h2">Is Cowork the right Claude for you?</h2>
+    <p class="section-sub">Anthropic ships three different ways to work with Claude, and they're not interchangeable. If you read this whole guide and then realize you actually wanted Claude.ai or Claude Code, that's an hour you can't get back. Quick disambiguation first.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-eyebrow">Web &amp; mobile</div>
+        <h3>Claude.ai</h3>
+        <p class="pick-if">Pick this if you want pure conversation &mdash; chat with Claude, paste in text or images, get answers. No files, no app installs, no real-world action.</p>
+        <div class="pick-list">
+          <span>Browser-based, also iOS and Android apps</span>
+          <span>Best for questions, drafting, explaining</span>
+          <span>Can use connectors and artifacts</span>
+          <span>Won't touch your local files or apps</span>
+        </div>
+      </div>
+
+      <div class="compare-card featured">
+        <div class="compare-eyebrow">You are here</div>
+        <h3>Claude Cowork</h3>
+        <p class="pick-if">Pick this if you want Claude alongside you on your real Mac &mdash; reading and writing your files, driving your apps, remembering your projects, running on a schedule.</p>
+        <div class="pick-list">
+          <span>Native macOS desktop app</span>
+          <span>Best for work that touches your files and tools</span>
+          <span>Has memory, scheduled tasks, computer use, MCP</span>
+          <span>You give it folder access and connector permissions per use</span>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-eyebrow">Terminal</div>
+        <h3>Claude Code</h3>
+        <p class="pick-if">Pick this if you write software &mdash; Claude as an agentic coding partner inside your terminal, working in your repo, running tests, opening PRs.</p>
+        <div class="pick-list">
+          <span>CLI tool, runs in your terminal</span>
+          <span>Best for code, tests, refactors, deploys</span>
+          <span>Knows git, runs commands, edits files</span>
+          <span>Built for engineers, not general users</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-callout" style="margin-top:2rem">
+      <div class="rec-callout-eyebrow">Quick decision tree</div>
+      <p><b>Do you write code for a living?</b> &rarr; Claude Code probably fits better, though Cowork can complement it. <b>Are you trying to get conversational answers without touching files?</b> &rarr; Claude.ai is lighter. <b>Are you trying to make Claude do real work across your apps, files, and calendar &mdash; like a coworker would?</b> &rarr; You're in the right place. Keep reading.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL COWORK -->
+<section class="section" id="install">
+  <div class="container">
+    <span class="eyebrow">Day zero</span>
+    <h2 class="h2">Install Cowork.</h2>
+    <p class="section-sub">Five steps from "I don't have it" to "I'm running my first task." Maybe 10 minutes if your downloads are fast and you're already signed into Claude.</p>
+
+    <div class="steps">
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Check that Cowork is available to you</h3>
+          <p>Cowork is currently a macOS desktop application from Anthropic, distributed via the Claude.ai download page. Availability and plan requirements may vary by region and over time &mdash; before downloading, confirm at <b style="color:#fff">claude.com</b> or your account dashboard that Cowork is available on your plan.</p>
+          <div class="note"><b>Heads up:</b> Cowork is a desktop app, not a browser feature. If you're on a Chromebook, iPad, or Linux, the desktop app won't run. Use Claude.ai on the web instead.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Download and install the desktop app</h3>
+          <p>From the Claude downloads page, grab the macOS installer. It'll be a <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(255,255,255,0.08);padding:0.1rem 0.3rem;border-radius:0.25rem">.dmg</code> file you double-click. Drag the Claude app icon into your Applications folder when prompted.</p>
+          <p style="margin-top:0.75rem">On first launch, macOS may ask whether you really want to open an app downloaded from the internet. Confirm yes. The app icon will appear in your Dock and menu bar.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Sign in to your Claude account</h3>
+          <p>Use the same login you'd use at claude.ai. The desktop app uses your Claude account for sync, plan recognition, and connector OAuth. If your plan doesn't include Cowork access, you'll see Chat mode but not Cowork mode. Upgrade or switch plans from your account settings.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Switch to Cowork mode</h3>
+          <p>Once signed in, the app opens to Chat mode by default. Look at the top of the conversation pane: there's a tab switcher with <b style="color:#fff">Chat</b>, <b style="color:#fff">Cowork</b>, and <b style="color:#fff">Code</b>. Click <b style="color:#fff">Cowork</b>.</p>
+          <p style="margin-top:0.75rem">The first time you switch to Cowork, you'll see a brief intro and a "Let's knock something off your list" landing page. From here you can start a new task, open Projects, see Scheduled tasks, browse Live artifacts, or open the Customize panel.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Pick a working folder and try a task</h3>
+          <p>Before doing real work, give Cowork a folder to read and write in. Make a folder called something obvious &mdash; <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(255,255,255,0.08);padding:0.1rem 0.3rem;border-radius:0.25rem">~/Documents/CoworkDemo</code> works fine for a first test &mdash; and select it when Cowork asks.</p>
+          <p style="margin-top:0.75rem">Then run a real task. Don't test with a toy prompt &mdash; ask Cowork to do something you'd otherwise do yourself this morning. <a href="#start" class="xref">The Quick Start section</a> walks through three example first tasks.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-callout" style="margin-top:2rem">
+      <b>Connectors and permissions come later.</b> You don't need to set up Gmail, Slack, or any other connector to start. Cowork works with just a folder. Add connectors as you discover you want them &mdash; each one is a separate OAuth approval, takes about a minute, and can be revoked anytime. <a href="#trust" class="xref">The Trust &amp; Data section</a> covers the security model in detail.
     </div>
   </div>
 </section>
@@ -393,6 +592,61 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
   </div>
 </section>
 
+<!-- TRUST & DATA -->
+<section class="section" id="trust">
+  <div class="container">
+    <span class="eyebrow">Permissions &amp; data</span>
+    <h2 class="h2">What Cowork can &mdash; and can't &mdash; do with your stuff.</h2>
+    <p class="section-sub">If you're going to give an AI access to your email, calendar, files, and screen, you should know exactly what it sees and what it doesn't. This is the trust model in plain English. For the legal version, check Anthropic's privacy policy and DPA.</p>
+
+    <div class="trust-grid">
+      <div class="trust-card green">
+        <h3><span class="trust-dot"></span>Folder access is bounded</h3>
+        <p>When you select a folder for Cowork to work in, it can read and write files in <b style="color:#fff">that folder only</b>. Files elsewhere on your Mac &mdash; Desktop, other Documents folders, system files &mdash; are off-limits unless you explicitly grant access to them too.</p>
+      </div>
+
+      <div class="trust-card green">
+        <h3><span class="trust-dot"></span>Connectors use OAuth, not passwords</h3>
+        <p>When you connect Gmail, Slack, Notion, etc., you approve access through that service's standard OAuth flow. Cowork never sees your password &mdash; just a scoped token from the service. You can revoke any token from your account dashboard for that service at any time.</p>
+      </div>
+
+      <div class="trust-card green">
+        <h3><span class="trust-dot"></span>Per-app desktop permissions</h3>
+        <p>Computer use (driving native apps via clicks/screenshots) requires you to explicitly approve each app you let Cowork control. Approvals are scoped per session by default and shown in a dialog you click. You can deny any app and Cowork respects it.</p>
+      </div>
+
+      <div class="trust-card green">
+        <h3><span class="trust-dot"></span>Memory is local-first</h3>
+        <p>Cowork's persistent memory (what it remembers about you across sessions) lives as files on your Mac, inside Anthropic's app data folder. You can read, edit, or delete those files directly. Uninstalling the app removes the local memory.</p>
+      </div>
+
+      <div class="trust-card yellow">
+        <h3><span class="trust-dot"></span>Conversations go to Anthropic's servers</h3>
+        <p>Like Claude.ai, your prompts and Cowork's responses are processed by Anthropic's models. That includes file contents Cowork reads on your behalf when responding to a prompt. Don't share content with Cowork that you wouldn't share with a third-party AI provider &mdash; the same way you'd treat any cloud tool.</p>
+      </div>
+
+      <div class="trust-card yellow">
+        <h3><span class="trust-dot"></span>Training-on-data depends on your plan</h3>
+        <p>Whether your inputs and outputs are used to improve Claude's models depends on your plan and account settings. Pro, Team, and Enterprise plans generally have stricter defaults than Free. Check your account's data settings to confirm the current behavior, and review Anthropic's privacy policy for the authoritative answer.</p>
+      </div>
+
+      <div class="trust-card yellow">
+        <h3><span class="trust-dot"></span>Some actions are off-limits even if you ask</h3>
+        <p>By design, Cowork won't execute trades, send money, initiate transfers, modify security permissions, or delete things in ways that can't be undone &mdash; even when explicitly asked. It'll route you to do those yourself. This is intentional safety, not a bug.</p>
+      </div>
+
+      <div class="trust-card yellow">
+        <h3><span class="trust-dot"></span>Verify before destructive operations</h3>
+        <p>Bulk renames, batch deletes, mass email sends, file moves &mdash; Cowork will do these, but you should ask for a dry run first ("show me what you'd do before doing it"). That's not Cowork being cautious; it's you protecting yourself from a misunderstood prompt.</p>
+      </div>
+    </div>
+
+    <div class="note-callout" style="margin-top:2rem">
+      <b>For specifics:</b> Anthropic's <a href="https://www.anthropic.com/legal/privacy" class="xref">privacy policy</a> and <a href="https://www.anthropic.com/legal/aup" class="xref">acceptable use policy</a> are the authoritative documents. This section is plain-English orientation, not legal text. If you're handling regulated data (HIPAA, FERPA, GDPR-covered, etc.), check with your organization's compliance team before connecting work accounts.
+    </div>
+  </div>
+</section>
+
 <!-- CAPABILITIES GRID -->
 <section class="section" id="capabilities">
   <div class="container">
@@ -453,6 +707,10 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
             <button class="prompt copy-prompt" data-prompt="Take the data in sales-q1.xlsx and build a one-page executive summary as a Word doc. Include a chart showing revenue by region."><div class="prompt-label">Build a deliverable from data</div><div class="prompt-text">Take the data in sales-q1.xlsx and build a one-page executive summary as a Word doc. Include a chart showing revenue by region.</div></button>
             <button class="prompt copy-prompt" data-prompt="Convert every .docx in this folder to PDF and put them in a /pdf subfolder. Keep the originals."><div class="prompt-label">Batch convert</div><div class="prompt-text">Convert every .docx in this folder to PDF and put them in a /pdf subfolder. Keep the originals.</div></button>
             <button class="prompt copy-prompt" data-prompt="Clean up this messy CSV — fix the misaligned headers, standardize dates to YYYY-MM-DD, and split it into one file per region."><div class="prompt-label">Clean and split</div><div class="prompt-text">Clean up this messy CSV &mdash; fix the misaligned headers, standardize dates to YYYY-MM-DD, and split it into one file per region.</div></button>
+          </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/02-projects.png" class="screenshot" alt="Cowork Projects view showing project cards" />
+            <p class="screenshot-caption">Projects view. Each project is a folder Cowork can work in. Click one to set it as the active workspace for a conversation.</p>
           </div>
         </div>
       </details>
@@ -569,6 +827,10 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
             <button class="prompt copy-prompt" data-prompt="What connectors do I have set up? Suggest three more I should add given that I work in marketing."><div class="prompt-label">Audit your connectors</div><div class="prompt-text">What connectors do I have set up? Suggest three more I should add given that I work in marketing.</div></button>
             <button class="prompt copy-prompt" data-prompt="Cross-reference my open Linear tickets with the threads in #engineering on Slack — flag anything where there's been discussion that hasn't made it into the ticket."><div class="prompt-label">Cross-tool work</div><div class="prompt-text">Cross-reference my open Linear tickets with the threads in #engineering on Slack &mdash; flag anything where there's been discussion that hasn't made it into the ticket.</div></button>
           </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/12-connectors-marketplace.png" class="screenshot" alt="Cowork Connectors directory showing Canva, Microsoft 365, Gmail, Figma, Google Drive, Notion, Google Calendar, Atlassian Rovo, Zoom for Claude, Slack" />
+            <p class="screenshot-caption">The Connectors directory. Each tile is a service you can connect via OAuth &mdash; one approval flow per connector, takes about a minute.</p>
+          </div>
         </div>
       </details>
 
@@ -599,6 +861,10 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
             <button class="prompt copy-prompt" data-prompt="Run an SEO audit on my website. The URL is in my notes."><div class="prompt-label">Trigger the SEO audit skill</div><div class="prompt-text">Run an SEO audit on my website. The URL is in my notes.</div></button>
           </div>
           <div style="margin-top:1rem;font-size:0.875rem;color:rgba(255,255,255,0.65)"><b style="color:#fff">&rarr;</b> See the full list of skills by role in the <a href="#skills" class="xref">Skills</a> section below.</div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/14-skills-marketplace.png" class="screenshot" alt="Cowork Skills directory showing canvas-design, web-artifacts-builder, mcp-builder, brand-guidelines, doc-coauthoring, skill-creator, theme-factory, internal-comms, algorithmic-art, slack-gif-creator" />
+            <p class="screenshot-caption">The Skills directory. Each tile is an individual skill you can install standalone &mdash; outside any plugin bundle.</p>
+          </div>
         </div>
       </details>
 
@@ -685,6 +951,10 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
             <button class="prompt copy-prompt" data-prompt="Every weekday at 7am, summarize my unread email and tell me which threads need a reply today."><div class="prompt-label">Morning email digest</div><div class="prompt-text">Every weekday at 7am, summarize my unread email and tell me which threads need a reply today.</div></button>
             <button class="prompt copy-prompt" data-prompt="Each Friday at 4pm, give me a weekly recap — what I shipped, what's still open, and what I should prep for next week."><div class="prompt-label">Weekly recap</div><div class="prompt-text">Each Friday at 4pm, give me a weekly recap &mdash; what I shipped, what's still open, and what I should prep for next week.</div></button>
           </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/04-scheduled-create.png" class="screenshot" alt="Create scheduled task modal in Cowork with fields for name, description, prompt body, frequency dropdown set to Manual" />
+            <p class="screenshot-caption">The Create scheduled task modal. Name + description + the prompt body + a frequency (Manual, recurring cron, or one-time future fire).</p>
+          </div>
         </div>
       </details>
 
@@ -714,6 +984,10 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
             <button class="prompt copy-prompt" data-prompt="Build me a live artifact that shows my open Linear tickets, grouped by project, with a button to mark each as done."><div class="prompt-label">Personal task dashboard</div><div class="prompt-text">Build me a live artifact that shows my open Linear tickets, grouped by project, with a button to mark each as done.</div></button>
             <button class="prompt copy-prompt" data-prompt="Make a live artifact that shows my calendar for the next 7 days plus a prep checklist for each meeting that hasn't started yet."><div class="prompt-label">Weekly briefing page</div><div class="prompt-text">Make a live artifact that shows my calendar for the next 7 days plus a prep checklist for each meeting that hasn't started yet.</div></button>
           </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/16-live-artifact.png" class="screenshot" alt="A live artifact in action: Twin Cities AI Services Competitor Pricing Monitor with pricing cards and a watchlist of competitors that refreshes" />
+            <p class="screenshot-caption">A real live artifact: a competitor pricing monitor that pulls fresh data from each competitor's site every time the page is opened. The user owns the watchlist; the data updates itself.</p>
+          </div>
         </div>
       </details>
 
@@ -735,6 +1009,39 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
           <div class="prompts-grid">
             <button class="prompt copy-prompt" data-prompt="Draw me a flowchart of how a new customer goes from website signup to onboarding email to first product use."><div class="prompt-label">Process diagram</div><div class="prompt-text">Draw me a flowchart of how a new customer goes from website signup to onboarding email to first product use.</div></button>
             <button class="prompt copy-prompt" data-prompt="Mock up a settings page for a habit-tracker app — show me three layout options side by side."><div class="prompt-label">UI mockup</div><div class="prompt-text">Mock up a settings page for a habit-tracker app &mdash; show me three layout options side by side.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Dispatch -->
+      <details class="acc" id="cap-dispatch">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-emerald"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></div>
+            <div><div class="acc-title">Dispatch <span class="pill" style="margin-left:0.5rem;font-size:0.65rem;background:rgba(16,185,129,0.16);border-color:rgba(16,185,129,0.35);color:#6ee7b7">Beta</span></div><div class="acc-sub">Long-running tasks Cowork works on in the background while you do other things.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label emerald">What it is</div><div class="acc-text">Dispatch hands a task off to Cowork as a persistent background thread. You give it a goal, optional context, and permissions for which apps it can use. Cowork works on it asynchronously &mdash; you can check in from anywhere as the work continues.</div></div>
+            <div><div class="acc-label emerald">When to reach for it</div><div class="acc-text">Anything that takes longer than a normal back-and-forth chat &mdash; researching across many sources, building a multi-step plan, working through a long document. Also useful when you want to start a task on your laptop and check progress later on your phone.</div></div>
+          </div>
+          <div class="acc-label emerald">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Click <b style="color:#fff">Dispatch</b> in the Cowork sidebar (currently marked Beta).</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Describe the task in plain language. The right side has a Settings panel where you toggle Keep awake, Mobile notifications, Allow all browser actions, Computer use, and Code permissions.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Hit send. Cowork starts the dispatch as a persistent thread that survives across sessions.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Check in anytime &mdash; from another conversation, another device. Outputs the dispatch produces (markdown docs, files, summaries) get linked in the Outputs panel.</div></li>
+          </ol>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/15-dispatch.png" class="screenshot" alt="Dispatch view in Cowork with Settings panel showing Keep awake, Mobile notifications, Allow all browser actions, Computer use, Code permissions; an Outputs section showing a generated markdown file; and a conversation about MCP architecture" />
+            <p class="screenshot-caption">A Dispatch in flight. Left: settings and outputs. Right: the ongoing conversation thread, which can pick up days later from any device.</p>
+          </div>
+          <div class="acc-label emerald" style="margin-top:1.25rem">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Dispatch: Research the 10 best customer onboarding flows for B2B SaaS companies under 50 employees. Write up findings as a markdown doc with screenshots and links. Take your time — I'll check in tomorrow."><div class="prompt-label">Long-form research</div><div class="prompt-text">Dispatch: Research the 10 best customer onboarding flows for B2B SaaS companies under 50 employees. Write up findings as a markdown doc with screenshots and links. Take your time &mdash; I'll check in tomorrow.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Dispatch: Read every PDF in this folder, extract the key claims, and build a comparison matrix. Ping me when done."><div class="prompt-label">Document analysis</div><div class="prompt-text">Dispatch: Read every PDF in this folder, extract the key claims, and build a comparison matrix. Ping me when done.</div></button>
           </div>
         </div>
       </details>
@@ -1005,6 +1312,138 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
   </div>
 </section>
 
+<!-- WHAT IT LOOKS LIKE — OUTPUT EXAMPLES -->
+<section class="section" id="looks-like">
+  <div class="container-narrow">
+    <span class="eyebrow">What good looks like</span>
+    <h2 class="h2">Examples of what Cowork actually produces.</h2>
+    <p class="section-sub">Reading about a morning briefing is one thing. Seeing what one actually reads like makes the value obvious. Below: real-shape outputs for four common Cowork workflows. None of these are screenshots &mdash; they're the kind of plain text Cowork will hand you when the task lands.</p>
+
+    <div class="output-mockup">
+      <div class="output-mockup-header"><span class="mock-dots"><span></span><span></span><span></span></span> Morning briefing &mdash; delivered at 7:00 AM</div>
+      <p><span class="label">Today's calendar</span></p>
+      <p>Three meetings, two back-to-back at 11 (Acme renewal call) and 11:45 (1:1 with Priya). Open afternoon. <b>Heads up:</b> the Acme renewal call has an outstanding deck Acme asked for last Thursday &mdash; not yet sent.</p>
+      <p><span class="label">Email needing action</span></p>
+      <ul>
+        <li><b>Priya, 6:18 AM</b> &mdash; "can we move our 1:1 to Thursday?" Reply needed before your 11 AM.</li>
+        <li><b>Legal team, yesterday 4:42 PM</b> &mdash; redlines on the Acme contract. They want sign-off by EOD today.</li>
+      </ul>
+      <p><span class="label">The one thing to do first</span></p>
+      <p>Send Acme the deck before the 11 AM. You won't have time between meetings.</p>
+      <p class="meta-line">Auto-generated by daily-briefing scheduled task &middot; <a href="#" style="color:#a78bfa;text-decoration:none">view conversation</a></p>
+    </div>
+
+    <div class="output-mockup">
+      <div class="output-mockup-header"><span class="mock-dots"><span></span><span></span><span></span></span> Cross-tool synthesis &mdash; "what's on fire today"</div>
+      <p>I scanned your unread email (12 threads), unread Slack DMs (4 conversations), and channel mentions (6). Cross-referencing for the same people reaching out across both:</p>
+      <p><span class="label">Both channels, same person</span></p>
+      <p><b>Marcus (@marcus.k)</b> sent a Slack DM Friday and a follow-up email Monday morning, both about the Q3 forecast deck. He's blocked on you. <b>Suggested reply:</b> "I'll have the deck to you by EOD Wednesday &mdash; finalizing the regional numbers now."</p>
+      <p><span class="label">Time-sensitive (not yet replied)</span></p>
+      <ul>
+        <li><b>Legal</b> &mdash; redlines waiting on you, deadline today</li>
+        <li><b>Acme</b> &mdash; renewal call at 11, deck still owed</li>
+      </ul>
+      <p><span class="label">Can wait til Thursday</span></p>
+      <p>Five threads about Q4 planning. All have replies coming from teammates &mdash; you're not the bottleneck.</p>
+    </div>
+
+    <div class="output-mockup">
+      <div class="output-mockup-header"><span class="mock-dots"><span></span><span></span><span></span></span> Generated PRD &mdash; opening section</div>
+      <p><b>Product Requirements: Cross-platform social composer</b></p>
+      <p><span class="label">Problem</span></p>
+      <p>Users scheduling posts across LinkedIn and Twitter currently maintain two parallel workflows. Each platform has different character limits, link preview behavior, and image requirements. The result: same content gets rewritten twice, tone drifts between platforms, and posts get scheduled at non-optimal times because the user is tired of the second pass.</p>
+      <p><span class="label">Goals</span></p>
+      <ul>
+        <li>One composer that handles both platforms with per-platform adjustments</li>
+        <li>Preview shows what each version will look like before scheduling</li>
+        <li>Optimal-time suggestions based on the user's engagement history</li>
+      </ul>
+      <p><span class="label">Non-goals</span></p>
+      <ul>
+        <li>Direct message scheduling (separate feature)</li>
+        <li>Reply / comment management (out of scope)</li>
+        <li>Threading / multi-post sequences (v2 candidate)</li>
+      </ul>
+      <p class="meta-line">Generated by /write-spec skill from a 2-line prompt; full doc was 4 pages.</p>
+    </div>
+
+    <div class="output-mockup">
+      <div class="output-mockup-header"><span class="mock-dots"><span></span><span></span><span></span></span> Memory file &mdash; what Cowork remembers about you</div>
+      <p style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.8125rem;line-height:1.7;color:rgba(255,255,255,0.85)">---<br/>name: user-role<br/>type: user<br/>updated: 2026-05-29<br/>---<br/><br/><b>Role:</b> Director of Curriculum at RealPath Learning, also independent consulting via Stone Arch Collective. Two distinct contexts &mdash; when projects come up, ask which one if it's not obvious.<br/><br/><b>Style preferences:</b> Senior-practitioner tone. No fluff. Decision-first. Hates "great question" and reflexive validation. Push back when I'm heading toward a mistake.<br/><br/><b>Tools:</b> Notion (primary docs), Linear (rare), Google Workspace, Slack for community work, Canva for visuals.</p>
+      <p class="meta-line">Lives at ~/Library/Application Support/Claude/.../memory/user-role.md &middot; editable and deletable by you</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHEN THINGS GO SIDEWAYS — PITFALLS -->
+<section class="section" id="pitfalls">
+  <div class="container-narrow">
+    <span class="eyebrow">When things go sideways</span>
+    <h2 class="h2">Common pitfalls &mdash; with the actual fix.</h2>
+    <p class="section-sub">Things break, configurations get weird, prompts don't trigger the skill you expected. The catalog below covers the most common failure modes a new user hits in their first month. Each entry: symptom, root cause, fix.</p>
+
+    <div class="pitfall-grid">
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"Cowork can't see my emails."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> The Gmail OAuth token expired (this happens periodically by design) or the original connection scope didn't include the mailbox you're asking about.</p>
+        <div class="fix"><b>Fix:</b> Open Customize &rarr; Connectors &rarr; Gmail. Disconnect and reconnect. When the OAuth dialog appears, make sure you're approving for the right Google account &mdash; if you have multiple, the picker defaults to your last-used.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"My scheduled task didn't fire."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Your laptop was asleep or shut down at the scheduled time. Cowork's scheduled tasks run while the computer is awake &mdash; they don't fire from the cloud.</p>
+        <div class="fix"><b>Fix:</b> In Cowork &rarr; Scheduled, toggle <b>Keep awake</b> on. This prevents sleep when a task is approaching. Plug in if the task fires overnight. For tasks that really need to fire when you're away, the cloud-scheduled approach lives on the roadmap; for now, dedicate a machine that stays on.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"Cowork wrote a file but I can't find it."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Cowork has two file areas &mdash; your selected working folder (visible to you) and a hidden scratchpad (where it drafts things you don't need to see). It dropped the file in the scratchpad, not your folder.</p>
+        <div class="fix"><b>Fix:</b> Tell it explicitly where to put outputs. "Save the final report to my working folder" or "put it in this folder" usually does the trick. Final deliverables should always come back with a clickable link in chat &mdash; if there's no link, it didn't land in your folder.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"The skill I expected didn't activate."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Your prompt didn't match the skill's description closely enough, so Cowork didn't auto-trigger it. Skills fire based on description match, not feature lists.</p>
+        <div class="fix"><b>Fix:</b> Use the slash command explicitly. <code>/design-critique</code> forces the design critique skill regardless of phrasing. Or rephrase your prompt to include the verbs the skill expects ("critique," "review," "audit," etc.).</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"Cowork refused to do something on my desktop."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> The app you asked it to drive isn't in the current session's permission allowlist. Computer-use access is per-app, per-session, and Cowork won't act outside what you've approved.</p>
+        <div class="fix"><b>Fix:</b> Cowork will request access for the app it needs. Approve the dialog when it appears. If the app is in a restricted tier (browsers and IDEs default to read-only for safety), use the Claude in Chrome extension or run shell commands instead, depending on the task.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"My memory seems wrong or outdated."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> A memory file captured a fact when it was true and Cowork hasn't realized it's changed. Memory doesn't auto-expire.</p>
+        <div class="fix"><b>Fix:</b> Just tell Cowork: "Update your memory &mdash; my role is now X, not Y." Or audit memory directly: ask "show me your memory files" and edit or delete entries that are stale. The files live as plain text on disk; you can edit them in any text editor too.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"A connector keeps logging me out."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Some services (Microsoft 365 in particular) have shorter token lifetimes for security reasons, so connections expire and need refreshing.</p>
+        <div class="fix"><b>Fix:</b> Reconnect when prompted. If it's happening often, check whether your organization's IT has set tighter token policies &mdash; that overrides the default lifetime.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"I gave Cowork a big task and it stopped halfway."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> You hit a usage limit (token quota for your plan) or the conversation got too long and ran out of context. Both are common on long agentic tasks.</p>
+        <div class="fix"><b>Fix:</b> For limits, wait til reset (you'll see a message with the reset time) or upgrade your plan. For long tasks, use Dispatch instead of a regular conversation &mdash; it handles long-running work better. For huge research tasks, break into stages: have Cowork hand off intermediate state as files between stages.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- SKILLS BY ROLE -->
 <section class="section" id="skills">
   <div class="container">
@@ -1115,6 +1554,36 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
   </div>
 </section>
 
+<!-- GLOSSARY -->
+<section class="section" id="glossary">
+  <div class="container">
+    <span class="eyebrow">Reference</span>
+    <h2 class="h2">Glossary.</h2>
+    <p class="section-sub">Every term Cowork uses, in plain English. Bookmark or print this if you're new &mdash; the vocabulary moves fast in the rest of the guide.</p>
+
+    <div class="gloss-grid">
+      <div class="gloss-card"><div class="gloss-term">Cowork</div><div class="gloss-def">The mode of the Claude desktop app that gives Claude access to your files, computer, and connected tools. Distinct from Chat mode (conversation-only) and Code mode (Claude Code).</div></div>
+      <div class="gloss-card"><div class="gloss-term">Project</div><div class="gloss-def">A folder + a set of instructions Cowork associates with ongoing work. Memory and context build up over time. Equivalent of a workspace.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Working folder</div><div class="gloss-def">The specific folder on your Mac Cowork can read and write in for a given conversation. Files outside it are off-limits unless you grant separate access.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Skill</div><div class="gloss-def">A recipe Claude follows to do a specific kind of task &mdash; writing a PRD, critiquing a design, triaging an NDA. Skills activate on natural-language match or slash command.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Slash command</div><div class="gloss-def">An explicit way to invoke a skill by typing <code>/skill-name</code>. Use when you want to force a specific skill regardless of how your prompt is phrased.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Plugin</div><div class="gloss-def">A bundle of related skills plus recommended connectors, usually role-themed (Design, Sales, Engineering). Installing a plugin activates all its skills at once.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Connector</div><div class="gloss-def">An integration with an external service (Gmail, Slack, Notion, etc.) that gives Cowork read/write access through that service's API. Authorized via OAuth.</div></div>
+      <div class="gloss-card"><div class="gloss-term">MCP</div><div class="gloss-def">Model Context Protocol &mdash; the open standard Anthropic uses for connectors. Means you can also build or install community-made integrations for tools Anthropic doesn't ship official connectors for.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Memory</div><div class="gloss-def">Persistent notes Cowork keeps about you across sessions: your role, preferences, feedback you've given, references to external systems. Lives as text files on your Mac.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Scheduled task</div><div class="gloss-def">A task that fires on a recurring cadence (every weekday at 7 AM) or at a future time (in an hour). Runs while your computer is awake.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Dispatch</div><div class="gloss-def">A long-running background task Cowork works on asynchronously. You give it a goal, walk away, check in later. Beta feature.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Live artifact</div><div class="gloss-def">A self-contained HTML page Cowork builds that persists and refreshes its data each time you open it. Good for trackers, dashboards, recurring reports.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Subagent</div><div class="gloss-def">A specialized helper Cowork can dispatch in parallel for heavy work (deep research, cross-codebase search, independent code review). You usually won't summon them directly &mdash; Cowork picks them automatically.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Computer use</div><div class="gloss-def">Cowork's ability to take screenshots of your screen and drive native apps with mouse and keyboard. Permission-gated per app.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Customize panel</div><div class="gloss-def">The configuration area in Cowork (briefcase icon, left sidebar) where you manage Skills, Connectors, and Plugins.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Directory</div><div class="gloss-def">The marketplace inside Cowork where you browse and install skills, connectors, and plugins published by Anthropic and partners.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Artifact (Chat)</div><div class="gloss-def">Distinct from "Live artifact." In Chat mode, an artifact is just a generated document or piece of code shown alongside the conversation, with no live data refresh.</div></div>
+      <div class="gloss-card"><div class="gloss-term">OAuth</div><div class="gloss-def">The standard way connectors authenticate. You approve access through the service's own login page; Cowork gets a scoped token, never your password. Revocable anytime.</div></div>
+    </div>
+  </div>
+</section>
+
 <!-- TIPS & PATTERNS -->
 <section class="section" id="tips">
   <div class="container-narrow">
@@ -1128,6 +1597,92 @@ footer{padding:4rem 1.5rem;border-top:1px solid rgba(255,255,255,0.05);margin-to
       <div class="tip-card"><span class="pill pill-amber">Memory</span><h3>Train it on your preferences.</h3><p>When Claude does something well, say so. When it overdoes it, correct it. Both go into memory. Within a week it'll feel personalized.</p></div>
       <div class="tip-card"><span class="pill pill-violet">Safety</span><h3>Verify before destructive actions.</h3><p>Before letting Claude bulk-rename, bulk-delete, or send emails to multiple people, ask for a dry run first: "show me what you'll do before doing it."</p></div>
       <div class="tip-card"><span class="pill pill-pink">Delegate</span><h3>Push hard work to scheduled tasks.</h3><p>If you find yourself asking the same question every morning, every Monday, or every month &mdash; that's a scheduled task waiting to happen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CHEAT SHEET — PRINTABLE -->
+<section class="section" id="cheat-sheet">
+  <div class="container-narrow">
+    <span class="eyebrow">Take it with you</span>
+    <h2 class="h2">The cheat sheet.</h2>
+    <p class="section-sub">One page. Everything you'll actually reach for once you've used Cowork for a week. Print it (cmd+P from your browser &mdash; the print stylesheet hides everything except this section), or screenshot it for your second monitor.</p>
+
+    <div class="cheat-sheet">
+      <div class="cheat-header">
+        <h2>Cowork Cheat Sheet</h2>
+        <span>v1 &middot; claude-cowork</span>
+      </div>
+
+      <div class="cheat-grid">
+        <div>
+          <h4>Sidebar map</h4>
+          <ul>
+            <li><b>New task</b> &mdash; start a fresh conversation</li>
+            <li><b>Projects</b> &mdash; folders + ongoing work</li>
+            <li><b>Scheduled</b> &mdash; recurring + one-off tasks</li>
+            <li><b>Live artifacts</b> &mdash; HTML pages with fresh data</li>
+            <li><b>Dispatch</b> &mdash; long-running background work (Beta)</li>
+            <li><b>Customize</b> &mdash; skills, connectors, plugins</li>
+          </ul>
+
+          <h4>Keyboard shortcuts</h4>
+          <ul>
+            <li><code>cmd+N</code> &mdash; new conversation in current window</li>
+            <li><code>/</code> in input &mdash; trigger a specific skill explicitly</li>
+            <li><code>+</code> in input &mdash; attach a file</li>
+          </ul>
+
+          <h4>When to use which</h4>
+          <ul>
+            <li>Quick question, no files &rarr; <b>Chat mode</b></li>
+            <li>Real work touching files/tools &rarr; <b>Cowork</b></li>
+            <li>Long task that runs while you do other things &rarr; <b>Dispatch</b></li>
+            <li>Recurring work &rarr; <b>Scheduled task</b></li>
+            <li>Data that changes over time &rarr; <b>Live artifact</b></li>
+            <li>Multiple parallel tasks &rarr; <b>Subagents</b> (Cowork picks them)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Top 10 prompts</h4>
+          <ul>
+            <li>"Give me a morning briefing &mdash; calendar, email, what matters today."</li>
+            <li>"Prep me for tomorrow's first meeting with attendee and history context."</li>
+            <li>"Triage my unread Slack and email. Group by urgency."</li>
+            <li>"Every weekday at 7am, run the morning briefing above."</li>
+            <li>"Build me a live artifact showing my open [tracker] tickets."</li>
+            <li>"Read every PDF in this folder and summarize each in one line."</li>
+            <li>"Research [company] &mdash; one-page brief."</li>
+            <li>"Critique this design / write a PRD for X / run an SEO audit on Y" (skill triggers)</li>
+            <li>"Remember that I prefer [tone/format/preference]."</li>
+            <li>"What do you currently remember about me?"</li>
+          </ul>
+
+          <h4>Skill patterns to know</h4>
+          <ul>
+            <li><code>/write-spec</code> &mdash; turn an idea into a structured PRD</li>
+            <li><code>/design-critique</code>, <code>/accessibility-review</code> &mdash; design feedback</li>
+            <li><code>/review-contract</code>, <code>/triage-nda</code> &mdash; legal triage</li>
+            <li><code>/account-research</code>, <code>/call-prep</code> &mdash; sales prep</li>
+            <li><code>/campaign-plan</code>, <code>/brand-review</code> &mdash; marketing</li>
+            <li><code>/skill-creator</code> &mdash; build your own skill</li>
+          </ul>
+
+          <h4>Safety patterns</h4>
+          <ul>
+            <li>Before bulk operations: <b>"show me what you'd do before doing it"</b></li>
+            <li>Before sending: <b>"draft, don't send"</b></li>
+            <li>Before deleting: <b>"move to a quarantine folder first, don't delete"</b></li>
+            <li>Memory check: <b>"show me your memory files"</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>The 5-minute setup</h4>
+      <p>1. Pick a working folder &mdash; <code>~/Documents/CoworkDemo</code> is fine for tests. 2. Connect one tool you live in (Gmail, Calendar, or Slack). 3. Run a real task &mdash; don't test with a toy prompt. 4. If it worked, schedule it. 5. As friction comes up, connect more tools.</p>
+
+      <p style="margin-top:1rem;font-size:0.75rem;color:#666"><b>Made with Cowork.</b> Full guide: claude-cowork (GitHub) &middot; print this page from cmd+P</p>
     </div>
   </div>
 </section>
