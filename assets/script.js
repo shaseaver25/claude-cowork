@@ -182,3 +182,220 @@ document.querySelectorAll('details.acc').forEach(det => {
     }
   });
 });
+
+// ============================================
+// PICK-YOUR-CLAUDE DIAGNOSTIC MICROSIM
+// Runs on index.html only — silently no-ops elsewhere
+// ============================================
+(function() {
+  const root = document.getElementById('claude-diagnostic');
+  if (!root) return;
+
+  const body = document.getElementById('diag-body');
+  const dotsEl = document.getElementById('diag-dots');
+  const stepLabel = document.getElementById('diag-step-label');
+  const resetBtn = document.getElementById('diag-reset');
+
+  // Each option awards points to one or more products
+  const QUESTIONS = [
+    {
+      q: "What's the work you mostly want AI to help with?",
+      options: [
+        { title: "Quick questions, drafts, brainstorming",
+          desc: "Researching, writing, explaining, thinking out loud",
+          score: { ai: 3, cowork: 0, code: 0, api: 0 } },
+        { title: "Real work that touches my files and apps",
+          desc: "Reading documents, writing reports, driving software on my computer",
+          score: { ai: 0, cowork: 3, code: 0, api: 0 } },
+        { title: "Writing software in a codebase",
+          desc: "Refactoring, fixing bugs, running tests, opening PRs",
+          score: { ai: 0, cowork: 0, code: 3, api: 0 } },
+        { title: "Building Claude into a product I ship",
+          desc: "Embedding Claude into software my customers use",
+          score: { ai: 0, cowork: 0, code: 0, api: 3 } },
+      ]
+    },
+    {
+      q: "Where do you want Claude to live?",
+      options: [
+        { title: "In my browser or on my phone",
+          desc: "Open a tab, ask, close. Available anywhere with a network connection.",
+          score: { ai: 2, cowork: 0, code: 0, api: 0 } },
+        { title: "A native Mac app with access to my files",
+          desc: "Read and write files in folders I select; drive other apps with my permission",
+          score: { ai: 0, cowork: 2, code: 0, api: 0 } },
+        { title: "In my terminal, where my repo is",
+          desc: "CLI tool that runs git, runs tests, edits source files",
+          score: { ai: 0, cowork: 0, code: 2, api: 0 } },
+        { title: "Behind an API, called from my own code",
+          desc: "I'll handle the user interface myself; I just want the model endpoint",
+          score: { ai: 0, cowork: 0, code: 0, api: 2 } },
+      ]
+    },
+    {
+      q: "What best describes your situation?",
+      options: [
+        { title: "Curious individual or light personal use",
+          desc: "Mostly trying things out, hobby projects, occasional drafting",
+          score: { ai: 1, cowork: 0, code: 0, api: 0 } },
+        { title: "Professional knowledge work, used daily",
+          desc: "Marketing, ops, product, legal, education, consulting, etc.",
+          score: { ai: 0, cowork: 2, code: 0, api: 0 } },
+        { title: "Engineer working in a codebase daily",
+          desc: "Software engineer, ML engineer, devops, data engineer",
+          score: { ai: 0, cowork: 1, code: 2, api: 0 } },
+        { title: "Builder shipping AI features to end users",
+          desc: "Indie hacker, startup founder, applied ML engineer",
+          score: { ai: 0, cowork: 0, code: 1, api: 2 } },
+      ]
+    },
+  ];
+
+  const RESULTS = {
+    ai: {
+      name: "Claude.ai",
+      eyebrow: "Your fit",
+      reason: "Quick access, no setup, works from any device. For conversation-first work where you don't need Claude touching your files or driving your apps, Claude.ai is the fastest path. Available free; Pro+ for higher usage.",
+      runnerUp: "If you find yourself wanting to give it access to files or run it on a schedule, the upgrade is <b>Cowork mode</b> in the desktop app — same conversations, more capabilities.",
+      ctas: [
+        { label: "Go to Claude.ai", href: "https://claude.ai", primary: true, external: true },
+        { label: "See the comparison →", href: "compare.html", primary: false }
+      ]
+    },
+    cowork: {
+      name: "Claude Cowork",
+      eyebrow: "Your fit — and you're already here",
+      reason: "Real work that touches your files, calendar, email, and apps is exactly what Cowork was built for. You get persistent memory, scheduled tasks, file read/write, and direct integration with the tools you already use. Included in all paid Claude plans.",
+      runnerUp: "If you also write code professionally, pair Cowork with <b>Claude Code</b> — they work well together. If your work is mostly conversational, the simpler <b>Claude.ai</b> may be enough.",
+      ctas: [
+        { label: "Install Cowork", href: "install.html", primary: true },
+        { label: "Quick Start →", href: "quickstart.html", primary: false }
+      ]
+    },
+    code: {
+      name: "Claude Code",
+      eyebrow: "Your fit",
+      reason: "Engineering-shaped work belongs in the terminal where your repo lives. Claude Code runs git commands, edits files, runs tests, and opens PRs as an agentic coding partner. Included in Pro+ plans.",
+      runnerUp: "For non-coding work that touches your files (briefings, reports, scheduled tasks), pair Code with <b>Cowork</b> — both are included in the same plan.",
+      ctas: [
+        { label: "Get Claude Code", href: "https://claude.com/code", primary: true, external: true },
+        { label: "Compare to other tools →", href: "compare.html", primary: false }
+      ]
+    },
+    api: {
+      name: "the Anthropic API",
+      eyebrow: "Your fit",
+      reason: "Direct access to Claude models for embedding in software you ship. No chat UI in the way, no subscription overhead — pay per token, scale as needed. Choose the model that fits your task (Opus for hardest reasoning, Sonnet for balance, Haiku for cost-efficient at speed).",
+      runnerUp: "If you also want a chat UI for your team to use Claude day-to-day, add a <b>Claude.ai Team plan</b> alongside. The API and chat products are separate.",
+      ctas: [
+        { label: "Anthropic API docs", href: "https://docs.anthropic.com", primary: true, external: true },
+        { label: "Pricing details →", href: "compare.html", primary: false }
+      ]
+    }
+  };
+
+  let currentStep = 0;
+  let scores = { ai: 0, cowork: 0, code: 0, api: 0 };
+
+  function renderQuestion(idx) {
+    const q = QUESTIONS[idx];
+    let html = '<div class="diag-question">' + q.q + '</div>';
+    html += '<div class="diag-options">';
+    q.options.forEach((opt, i) => {
+      html += '<button class="diag-option" data-idx="' + i + '">';
+      html += '<span class="diag-option-title">' + opt.title + '</span>';
+      html += '<span class="diag-option-desc">' + opt.desc + '</span>';
+      html += '</button>';
+    });
+    html += '</div>';
+    body.innerHTML = html;
+
+    // wire up clicks
+    body.querySelectorAll('.diag-option').forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        const opt = q.options[i];
+        Object.keys(opt.score).forEach(k => scores[k] += opt.score[k]);
+
+        // GA tracking
+        if (typeof window.gtagTrack === 'function') {
+          window.gtagTrack('diagnostic_answer', {
+            question_index: idx + 1,
+            answer_title: opt.title
+          });
+        }
+
+        currentStep++;
+        if (currentStep < QUESTIONS.length) {
+          updateProgress();
+          renderQuestion(currentStep);
+        } else {
+          renderResult();
+        }
+      });
+    });
+  }
+
+  function updateProgress() {
+    const dots = dotsEl.querySelectorAll('.diag-dot');
+    dots.forEach((d, i) => {
+      d.classList.remove('active', 'done');
+      if (i < currentStep) d.classList.add('done');
+      else if (i === currentStep) d.classList.add('active');
+    });
+    if (currentStep < QUESTIONS.length) {
+      stepLabel.textContent = 'Question ' + (currentStep + 1) + ' of ' + QUESTIONS.length;
+    } else {
+      stepLabel.textContent = 'Your recommendation';
+    }
+  }
+
+  function renderResult() {
+    updateProgress();
+    resetBtn.style.display = 'inline-block';
+
+    // Find the winner
+    const winner = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
+    const result = RESULTS[winner];
+
+    if (typeof window.gtagTrack === 'function') {
+      window.gtagTrack('diagnostic_completed', {
+        recommendation: result.name,
+        scores: JSON.stringify(scores)
+      });
+    }
+
+    let html = '<div class="diag-result">';
+    html += '<div class="diag-result-eyebrow">' + result.eyebrow + '</div>';
+    html += '<div class="diag-result-title">Try <span class="product-name">' + result.name + '</span>.</div>';
+    html += '<p class="diag-result-reason">' + result.reason + '</p>';
+    html += '<div class="diag-result-runner-up"><b>Also worth knowing:</b> ' + result.runnerUp + '</div>';
+    html += '<div class="diag-result-actions">';
+    result.ctas.forEach(cta => {
+      const cls = 'diag-result-cta ' + (cta.primary ? 'primary' : 'secondary');
+      const target = cta.external ? ' target="_blank" rel="noopener"' : '';
+      html += '<a href="' + cta.href + '" class="' + cls + '"' + target + '>' + cta.label + '</a>';
+    });
+    html += '</div></div>';
+    body.innerHTML = html;
+  }
+
+  function reset() {
+    currentStep = 0;
+    scores = { ai: 0, cowork: 0, code: 0, api: 0 };
+    resetBtn.style.display = 'none';
+    updateProgress();
+    renderQuestion(0);
+
+    if (typeof window.gtagTrack === 'function') {
+      window.gtagTrack('diagnostic_reset', {});
+    }
+  }
+
+  resetBtn.addEventListener('click', reset);
+
+  // Initialize
+  if (typeof window.gtagTrack === 'function') {
+    window.gtagTrack('diagnostic_started', {});
+  }
+  renderQuestion(0);
+})();

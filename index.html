@@ -79,7 +79,25 @@
   <div class="container">
     <span class="eyebrow">Before you commit</span>
     <h2 class="h2">Is Cowork the right Claude for you?</h2>
-    <p class="section-sub">Anthropic ships three different ways to work with Claude, and they're not interchangeable. If you read this whole guide and then realize you actually wanted Claude.ai or Claude Code, that's an hour you can't get back. Quick disambiguation first.</p>
+    <p class="section-sub">Anthropic ships several different ways to work with Claude and they're not interchangeable. If you read this whole guide and then realize you actually wanted Claude.ai or Claude Code, that's an hour you can't get back. Three quick questions below to figure out which one fits.</p>
+
+    <!-- ====== INTERACTIVE DIAGNOSTIC ====== -->
+    <div class="diag-card" id="claude-diagnostic" style="margin-bottom:2.5rem">
+      <div class="diag-progress">
+        <div class="diag-dots" id="diag-dots">
+          <span class="diag-dot active"></span>
+          <span class="diag-dot"></span>
+          <span class="diag-dot"></span>
+        </div>
+        <span class="diag-step-label" id="diag-step-label">Question 1 of 3</span>
+        <button class="diag-reset" id="diag-reset" style="display:none">Start over</button>
+      </div>
+      <div id="diag-body">
+        <!-- Question content gets injected here by script.js -->
+      </div>
+    </div>
+
+    <p style="font-size:0.875rem;color:rgba(255,255,255,0.55);margin-bottom:1.5rem;text-align:center">Or skip the diagnostic and browse all four side by side &mdash;</p>
 
     <div class="compare-grid">
       <div class="compare-card">
