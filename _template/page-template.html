@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- TODO: update title and description for this page -->
+<title>Page Title &middot; Site Name</title>
+<meta name="description" content="One-sentence description of what's on this page." />
+
+<link rel="stylesheet" href="assets/style.css" />
+
+<!-- Google Analytics 4 — replace G-XXXXXXXXXX with your real Measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<!-- Ambient background blobs -->
+<div class="ambient"><div class="blob3"></div></div>
+
+<!-- ==================== NAV ====================
+     Copy the nav from any existing page and add a link to THIS page.
+     Match the order across all pages so nav doesn't jump around.
+-->
+<nav class="nav">
+  <a href="index.html" class="brand"><span class="nav-dot"></span>Site Name</a>
+  <a href="page-1.html">Page 1</a>
+  <a href="page-2.html">Page 2</a>
+  <!-- add more links as needed -->
+</nav>
+
+<!-- ==================== MAIN CONTENT ====================
+     This is the only part that's unique per page.
+     Use the component classes from ARCHITECTURE.md.
+-->
+<main>
+
+  <section class="section" id="my-section">
+    <div class="container-narrow">
+      <span class="eyebrow">Eyebrow label</span>
+      <h2 class="h2">Main heading.</h2>
+      <p class="section-sub">Intro paragraph that sets up what this page is for and who it's for. One or two sentences max.</p>
+
+      <!-- =======================================
+           Example: numbered step cards (good for guides)
+      ======================================== -->
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>First step heading</h3>
+            <p>Body text explaining what to do. Keep paragraphs short.</p>
+          </div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>Second step heading</h3>
+            <p>Body text.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- =======================================
+           Example: grid of feature/service cards
+      ======================================== -->
+      <div class="feat-row" style="margin-top:2rem">
+        <div class="feat-card">
+          <div class="feat-icon ic-violet">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <!-- SVG icon path here -->
+              <circle cx="12" cy="12" r="10"/>
+            </svg>
+          </div>
+          <h3>Service or feature name</h3>
+          <p>One-paragraph description of what this is and who it's for.</p>
+        </div>
+        <!-- repeat .feat-card for each item -->
+      </div>
+
+      <!-- =======================================
+           Example: glass card with internal structure
+      ======================================== -->
+      <div class="rec-callout" style="margin-top:2rem">
+        <div class="rec-callout-eyebrow">Highlight</div>
+        <p>Important point that deserves visual emphasis. Use sparingly &mdash; one per page maximum.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================== FOOTER ====================
+     Copy the footer from any existing page.
+     Update the sitemap to include this new page.
+-->
+<footer>
+  <div class="footer-row">
+    <div>
+      <div class="footer-brand"><span class="nav-dot"></span> Site Name</div>
+      <p class="footer-desc">Tagline or brief description.</p>
+    </div>
+    <div class="footer-meta">Built with Claude Cowork</div>
+  </div>
+</footer>
+
+<!-- Copy-to-clipboard toast notification -->
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<!-- Shared behavior + GA event handlers -->
+<script src="assets/script.js"></script>
+</body>
+</html>
