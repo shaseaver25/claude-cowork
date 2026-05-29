@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skills, Connectors & Prompts &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; Reference." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html" style="background:rgba(167,139,250,0.18);color:#fff">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a></nav>
+
+<main>
+<section class="section" id="skills">
+  <div class="container">
+    <span class="eyebrow">Skills library</span>
+    <h2 class="h2">Pick a role. See what Claude can do.</h2>
+    <p class="section-sub">Each role bundles skills you'd reach for in that job. You don't have to install them by name &mdash; they activate when your prompt matches.</p>
+
+    <div class="role-tabs" id="role-tabs">
+      <button class="role-tab active" data-role="sales">Sales</button>
+      <button class="role-tab" data-role="marketing">Marketing</button>
+      <button class="role-tab" data-role="product">Product</button>
+      <button class="role-tab" data-role="engineering">Engineering</button>
+      <button class="role-tab" data-role="design">Design</button>
+      <button class="role-tab" data-role="legal">Legal</button>
+      <button class="role-tab" data-role="ops">Ops</button>
+      <button class="role-tab" data-role="support">Support</button>
+      <button class="role-tab" data-role="seo">SEO</button>
+    </div>
+    <div id="role-content" class="skills-grid"></div>
+  </div>
+</section>
+<section class="section" id="connectors">
+  <div class="container">
+    <span class="eyebrow">Connector library</span>
+    <h2 class="h2">Connect what you already use.</h2>
+    <p class="section-sub">These all run on MCP. Each persists once connected and respects your existing access permissions.</p>
+
+    <div class="tile-grid">
+      <div class="tile"><div class="tile-title">Gmail</div><div class="tile-desc">Read, search, draft, label email and threads.</div></div>
+      <div class="tile"><div class="tile-title">Google Calendar</div><div class="tile-desc">View, create, edit, respond to events.</div></div>
+      <div class="tile"><div class="tile-title">Google Drive</div><div class="tile-desc">Read, create, search docs and folders.</div></div>
+      <div class="tile"><div class="tile-title">Slack</div><div class="tile-desc">Read channels, search, send messages, create canvases.</div></div>
+      <div class="tile"><div class="tile-title">Notion</div><div class="tile-desc">Read and write pages, databases, blocks.</div></div>
+      <div class="tile"><div class="tile-title">Linear</div><div class="tile-desc">Triage, create, and update issues and projects.</div></div>
+      <div class="tile"><div class="tile-title">Atlassian (Jira)</div><div class="tile-desc">Issues, sprints, and Confluence pages.</div></div>
+      <div class="tile"><div class="tile-title">Asana</div><div class="tile-desc">Tasks, projects, assignments.</div></div>
+      <div class="tile"><div class="tile-title">ClickUp</div><div class="tile-desc">Multi-workspace task management.</div></div>
+      <div class="tile"><div class="tile-title">Monday</div><div class="tile-desc">Boards, items, status updates.</div></div>
+      <div class="tile"><div class="tile-title">Figma</div><div class="tile-desc">Inspect files, components, and design tokens.</div></div>
+      <div class="tile"><div class="tile-title">Miro</div><div class="tile-desc">Build diagrams, docs, tables on boards.</div></div>
+      <div class="tile"><div class="tile-title">Canva</div><div class="tile-desc">Generate and edit designs from prompts.</div></div>
+      <div class="tile"><div class="tile-title">Apollo</div><div class="tile-desc">Lead enrichment, prospecting, sequences.</div></div>
+      <div class="tile"><div class="tile-title">Close / Outreach</div><div class="tile-desc">Sales CRM and outbound workflows.</div></div>
+      <div class="tile"><div class="tile-title">Intercom</div><div class="tile-desc">Conversations, contacts, support context.</div></div>
+      <div class="tile"><div class="tile-title">Pendo / Amplitude</div><div class="tile-desc">Product analytics and user behavior.</div></div>
+      <div class="tile"><div class="tile-title">Fireflies / Granola</div><div class="tile-desc">Meeting transcripts and notes.</div></div>
+      <div class="tile"><div class="tile-title">DocuSign</div><div class="tile-desc">Route documents for signature.</div></div>
+      <div class="tile"><div class="tile-title">Egnyte / Box</div><div class="tile-desc">Enterprise file storage and search.</div></div>
+      <div class="tile"><div class="tile-title">Ahrefs / Supermetrics</div><div class="tile-desc">SEO and marketing analytics data.</div></div>
+      <div class="tile"><div class="tile-title">Klaviyo / Postiz</div><div class="tile-desc">Email marketing and social scheduling.</div></div>
+      <div class="tile"><div class="tile-title">Vercel / Supabase</div><div class="tile-desc">Hosting, databases, edge functions.</div></div>
+      <div class="tile"><div class="tile-title">n8n</div><div class="tile-desc">Visual workflow automation.</div></div>
+    </div>
+    <p style="margin-top:1.5rem;font-size:0.875rem;color:rgba(255,255,255,0.6)">&hellip;plus a connector registry where Claude can search for and suggest additional connectors on demand.</p>
+  </div>
+</section>
+<section class="section" id="prompts">
+  <div class="container-narrow">
+    <span class="eyebrow">Prompt library</span>
+    <h2 class="h2">Steal these prompts.</h2>
+    <p class="section-sub">Battle-tested starter prompts grouped by what you're trying to accomplish. Click to copy.</p>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-violet">Daily</span> Start your day</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Give me a morning briefing — what's on my calendar, what's unread in my email, and what's the single most important thing I should focus on today."><div class="prompt-text">Give me a morning briefing &mdash; what's on my calendar, what's unread in my email, and what's the single most important thing I should focus on today.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Triage my unread Slack DMs and email. Group by urgency. Tell me what needs a reply in the next hour."><div class="prompt-text">Triage my unread Slack DMs and email. Group by urgency. Tell me what needs a reply in the next hour.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-pink">Writing</span> Draft something</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Draft a follow-up email to [name] referencing our meeting on [date] and the action items we agreed to. Keep it under 100 words."><div class="prompt-text">Draft a follow-up email to [name] referencing our meeting on [date] and the action items we agreed to. Keep it under 100 words.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Turn my rough meeting notes (attached) into a one-page summary with decisions, owners, and next steps."><div class="prompt-text">Turn my rough meeting notes (attached) into a one-page summary with decisions, owners, and next steps.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Write three subject line options for a re-engagement email to customers who haven't logged in for 30 days."><div class="prompt-text">Write three subject line options for a re-engagement email to customers who haven't logged in for 30 days.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Draft a Slack message announcing a feature launch to the #general channel — friendly tone, includes a one-line value prop and a link."><div class="prompt-text">Draft a Slack message announcing a feature launch to the #general channel &mdash; friendly tone, includes a one-line value prop and a link.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-sky">Research</span> Investigate</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Research [company] — what do they sell, who's the buyer, what's their pricing model, and who are the three closest competitors? Format as a one-page brief."><div class="prompt-text">Research [company] &mdash; what do they sell, who's the buyer, what's their pricing model, and who are the three closest competitors? Format as a one-page brief.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Find me everything we've shipped, said, or written about [topic] across Slack, Notion, and Drive. Cite each source."><div class="prompt-text">Find me everything we've shipped, said, or written about [topic] across Slack, Notion, and Drive. Cite each source.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-amber">Files</span> Wrangle data</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Open every PDF invoice in this folder and pull out vendor, amount, date, and category into a single spreadsheet."><div class="prompt-text">Open every PDF invoice in this folder and pull out vendor, amount, date, and category into a single spreadsheet.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Take customer-feedback.csv and group every comment into themes. Tell me which themes are growing month over month."><div class="prompt-text">Take customer-feedback.csv and group every comment into themes. Tell me which themes are growing month over month.</div></button>
+      </div>
+    </div>
+
+    <div class="cat-section">
+      <div class="cat-header"><span class="pill pill-violet">Recurring</span> Automate</div>
+      <div class="prompts-grid">
+        <button class="prompt copy-prompt" data-prompt="Every Monday at 8am, look at last week's email and calendar and write me a brief recap of who I met with, what we decided, and what's outstanding."><div class="prompt-text">Every Monday at 8am, look at last week's email and calendar and write me a brief recap of who I met with, what we decided, and what's outstanding.</div></button>
+        <button class="prompt copy-prompt" data-prompt="Each day at noon, check whether any of my Linear tickets have been waiting on someone else for more than 3 days, and remind me who to ping."><div class="prompt-text">Each day at noon, check whether any of my Linear tickets have been waiting on someone else for more than 3 days, and remind me who to ping.</div></button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

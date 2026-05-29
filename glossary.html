@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Glossary &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; Vocab." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html" style="background:rgba(167,139,250,0.18);color:#fff">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a></nav>
+
+<main>
+<section class="section" id="glossary">
+  <div class="container">
+    <span class="eyebrow">Reference</span>
+    <h2 class="h2">Glossary.</h2>
+    <p class="section-sub">Every term Cowork uses, in plain English. Bookmark or print this if you're new &mdash; the vocabulary moves fast in the rest of the guide.</p>
+
+    <div class="gloss-grid">
+      <div class="gloss-card"><div class="gloss-term">Cowork</div><div class="gloss-def">The mode of the Claude desktop app that gives Claude access to your files, computer, and connected tools. Distinct from Chat mode (conversation-only) and Code mode (Claude Code).</div></div>
+      <div class="gloss-card"><div class="gloss-term">Project</div><div class="gloss-def">A folder + a set of instructions Cowork associates with ongoing work. Memory and context build up over time. Equivalent of a workspace.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Working folder</div><div class="gloss-def">The specific folder on your Mac Cowork can read and write in for a given conversation. Files outside it are off-limits unless you grant separate access.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Skill</div><div class="gloss-def">A recipe Claude follows to do a specific kind of task &mdash; writing a PRD, critiquing a design, triaging an NDA. Skills activate on natural-language match or slash command.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Slash command</div><div class="gloss-def">An explicit way to invoke a skill by typing <code>/skill-name</code>. Use when you want to force a specific skill regardless of how your prompt is phrased.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Plugin</div><div class="gloss-def">A bundle of related skills plus recommended connectors, usually role-themed (Design, Sales, Engineering). Installing a plugin activates all its skills at once.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Connector</div><div class="gloss-def">An integration with an external service (Gmail, Slack, Notion, etc.) that gives Cowork read/write access through that service's API. Authorized via OAuth.</div></div>
+      <div class="gloss-card"><div class="gloss-term">MCP</div><div class="gloss-def">Model Context Protocol &mdash; the open standard Anthropic uses for connectors. Means you can also build or install community-made integrations for tools Anthropic doesn't ship official connectors for.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Memory</div><div class="gloss-def">Persistent notes Cowork keeps about you across sessions: your role, preferences, feedback you've given, references to external systems. Lives as text files on your Mac.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Scheduled task</div><div class="gloss-def">A task that fires on a recurring cadence (every weekday at 7 AM) or at a future time (in an hour). Runs while your computer is awake.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Dispatch</div><div class="gloss-def">A long-running background task Cowork works on asynchronously. You give it a goal, walk away, check in later. Beta feature.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Live artifact</div><div class="gloss-def">A self-contained HTML page Cowork builds that persists and refreshes its data each time you open it. Good for trackers, dashboards, recurring reports.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Subagent</div><div class="gloss-def">A specialized helper Cowork can dispatch in parallel for heavy work (deep research, cross-codebase search, independent code review). You usually won't summon them directly &mdash; Cowork picks them automatically.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Computer use</div><div class="gloss-def">Cowork's ability to take screenshots of your screen and drive native apps with mouse and keyboard. Permission-gated per app.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Customize panel</div><div class="gloss-def">The configuration area in Cowork (briefcase icon, left sidebar) where you manage Skills, Connectors, and Plugins.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Directory</div><div class="gloss-def">The marketplace inside Cowork where you browse and install skills, connectors, and plugins published by Anthropic and partners.</div></div>
+      <div class="gloss-card"><div class="gloss-term">Artifact (Chat)</div><div class="gloss-def">Distinct from "Live artifact." In Chat mode, an artifact is just a generated document or piece of code shown alongside the conversation, with no live data refresh.</div></div>
+      <div class="gloss-card"><div class="gloss-term">OAuth</div><div class="gloss-def">The standard way connectors authenticate. You approve access through the service's own login page; Cowork gets a scoped token, never your password. Revocable anytime.</div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

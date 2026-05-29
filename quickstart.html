@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quick Start &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; First 5 minutes." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html" style="background:rgba(167,139,250,0.18);color:#fff">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a></nav>
+
+<main>
+<section class="section" id="start">
+  <div class="container">
+    <span class="eyebrow">Quick start</span>
+    <h2 class="h2">Get to your first win in five minutes.</h2>
+    <p class="section-sub">If you do nothing else from this guide, do these three things. After that, Cowork can already do useful work.</p>
+
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Pick a folder for Claude to work in</h3>
+          <p>Cowork needs a workspace. Pick a folder where finished outputs should land &mdash; a project folder, a Documents subfolder, anything sensible. Claude can read and write files there. Files outside that folder are off-limits unless you grant access.</p>
+          <div class="try-card">
+            <div class="prompt-label">Try saying</div>
+            <div class="prompt-text">"Let's use my <span class="accent">~/Documents/Projects/marketing</span> folder for this session."</div>
+          </div>
+          <div class="note"><b>Heads up:</b> Cowork has two file areas. The folder you pick (where your real work lives) and a hidden temporary scratchpad (where Claude drafts things you don't need to see). Final outputs always land in your folder with a clickable link.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Connect one tool you use every day</h3>
+          <p>A connected tool turns Claude from a smart chat into a coworker. Start with the one you live in. Gmail, Calendar, Slack, Notion, or Linear are common first picks.</p>
+          <div class="try-card">
+            <div class="prompt-label">Try saying</div>
+            <div class="prompt-text">"Connect Gmail so you can help me triage email."</div>
+          </div>
+          <div class="note"><b>How it works:</b> Claude opens an OAuth flow in your browser. You approve, and the connection persists across sessions. You can revoke it anytime.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Run one real task end to end</h3>
+          <p>Don't test Cowork with a toy prompt. Ask it to do something you'd otherwise do yourself today. The point is to see it complete a real loop &mdash; read source data, do the work, hand you a deliverable.</p>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Summarize my unread email from this week and flag anything I need to act on.">
+              <div class="prompt-label">If you connected Gmail</div>
+              <div class="prompt-text">Summarize my unread email from this week and flag anything I need to act on.</div>
+            </button>
+            <button class="prompt copy-prompt" data-prompt="Prep me for tomorrow — what's on my calendar, who's attending, and what should I prepare for each meeting?">
+              <div class="prompt-label">If you connected Calendar</div>
+              <div class="prompt-text">Prep me for tomorrow &mdash; what's on my calendar, who's attending, and what should I prepare for each meeting?</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

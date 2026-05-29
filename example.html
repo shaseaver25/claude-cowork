@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Worked Example: Activate a Role Bundle &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; Worked example." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html" style="background:rgba(167,139,250,0.18);color:#fff">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a></nav>
+
+<main>
+<section class="section" id="activate-bundle">
+  <div class="container-narrow">
+    <span class="eyebrow">Worked example</span>
+    <h2 class="h2">Activate a role-bundle plugin.</h2>
+    <p class="section-sub">Five steps, real screenshots. We're using the <b style="color:#f0abfc">Design</b> plugin in this walkthrough &mdash; the exact same flow works for Sales, Marketing, Engineering, Legal, Ops, Product Management, Customer Support, or Brand Voice. Pick whichever matches your role.</p>
+
+    <div class="steps">
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Open Customize</h3>
+          <p>From any Cowork window, click <b style="color:#fff">Customize</b> in the left sidebar (briefcase icon, near the bottom). You'll land on the page below.</p>
+          <div class="screenshot-frame">
+            <img src="screenshots/06-customize-landing.png" class="screenshot" alt="Customize Claude landing page with three cards: Connect your apps, Create new skills, Browse plugins" />
+            <p class="screenshot-caption">The "Customize Claude" landing page. Three cards correspond to the three ways to extend Cowork &mdash; connectors, skills, and plugins.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Click "Browse plugins"</h3>
+          <p>The Directory opens to the Plugins tab, showing role bundles from Anthropic &amp; Partners. Each card lists the publisher, install count, and a one-line description of what the bundle covers.</p>
+          <div class="screenshot-frame">
+            <img src="screenshots/13-plugin-marketplace.png" class="screenshot" alt="Directory page showing plugin cards: Design, Productivity, Marketing, Engineering, Product management, Operations, Sales, Legal, Brand voice, Customer support" />
+            <p class="screenshot-caption">Ten role bundles available right now. Each one packages 5&ndash;10 skills plus recommended connectors for that job function.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Open the plugin you want</h3>
+          <p>Click any plugin card to see what's inside. The detail view shows:</p>
+          <ul class="steps-list" style="margin-top:0.5rem">
+            <li><span class="step-num step-num-sm">&middot;</span><div><b style="color:#fff">"Try asking&hellip;" examples</b> &mdash; sample prompts that fire each skill, so you can see what the bundle actually does.</div></li>
+            <li><span class="step-num step-num-sm">&middot;</span><div><b style="color:#fff">Skills chips</b> &mdash; the slash-command names you can use to trigger each skill directly.</div></li>
+            <li><span class="step-num step-num-sm">&middot;</span><div><b style="color:#fff">Connectors chips</b> &mdash; tools the plugin works best with. Not required, but the skills get richer when these are connected.</div></li>
+          </ul>
+          <div class="screenshot-frame">
+            <img src="screenshots/10-plugin-detail.png" class="screenshot" alt="Design plugin detail page showing Try asking section with 5 example prompts, 7 skills including /accessibility-review, /design-critique, /design-handoff, /design-system, /research-synthesis, /user-research, /ux-copy, and 9 connectors" />
+            <p class="screenshot-caption">The Design plugin: 5 example prompts, 7 skills (<code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.8rem;background:rgba(217,70,239,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#f5d0fe">/design-critique</code>, <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.8rem;background:rgba(217,70,239,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#f5d0fe">/accessibility-review</code>, and 5 more), and 9 recommended connectors (Slack, Figma, Linear, Asana, Atlassian, Notion, Intercom, Google Calendar, +1).</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Hit Install</h3>
+          <p>Top-right of the plugin detail view: an <span class="kbd">Install</span> button. Click it. The plugin downloads and registers all its skills in your Cowork instance.</p>
+          <p style="margin-top:0.75rem">If you've already installed the plugin, the button reads <span class="kbd">Uninstall</span> and a second <span class="kbd">Manage</span> button appears next to it. <b style="color:#fff">Manage</b> lets you turn individual skills on/off without uninstalling the whole bundle &mdash; useful when you want, say, 5 of the 7 Design skills but not all.</p>
+          <p style="margin-top:0.75rem">Connectors aren't auto-installed. To finish the setup, switch to the Connectors tab in the Directory and connect the tools the plugin recommends. OAuth flow per service, one minute each. Skip any you don't use.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h3>Use it &mdash; two ways</h3>
+          <p>Once installed, the plugin shows up in your left sidebar under <b style="color:#fff">Personal plugins</b>, with every skill nested below it. Skills activate in two ways:</p>
+
+          <div class="callout-skill" style="margin-top:1rem">
+            <b>Natural language (default).</b> Just describe what you need. Each skill has a description telling Cowork when to fire. "Critique this design for me &mdash; I'm worried about hierarchy" auto-activates <code>/design-critique</code> without you naming it.
+          </div>
+
+          <div class="callout-skill">
+            <b>Slash command (explicit).</b> Type the skill's name with a leading slash to force it. <code>/design-handoff</code> jumps straight into the developer handoff workflow even if your prompt was ambiguous about which skill to use. Best for when you know exactly what you want.
+          </div>
+
+          <p style="margin-top:1rem">That's it. The plugin is live. Skills will trigger on their own from now on whenever your prompts match their patterns &mdash; no further setup needed.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="note-callout" style="margin-top:2rem">
+      <b>One more thing &mdash; making your own.</b> The plugin marketplace is the easy path, but you can also build custom skills. From Customize &rarr; Skills, click <span class="kbd">+</span> and pick <b>Create with Claude</b> (conversational builder), <b>Write skill instructions</b> (a form for the name, description, and instructions), or <b>Upload a skill</b> (drop in a <code style="font-family:'JetBrains Mono',ui-monospace,monospace;font-size:0.85em;background:rgba(245,158,11,0.15);padding:0.1rem 0.3rem;border-radius:0.25rem;color:#fde68a">.skill</code> zip). Custom skills activate the same way as bundled ones &mdash; natural language match or slash command.
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Capability Tutorials &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; Learn." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html" style="background:rgba(167,139,250,0.18);color:#fff">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a></nav>
+
+<main>
+<section class="section" id="walkthroughs">
+  <div class="container-narrow">
+    <span class="eyebrow">Tutorials</span>
+    <h2 class="h2">Tutorial walkthroughs.</h2>
+    <p class="section-sub">Click any section to expand. Each tutorial has: what it is, when to reach for it, a step-by-step walkthrough, and copy-paste prompts.</p>
+
+    <div class="accordion">
+
+      <!-- Files -->
+      <details class="acc" id="cap-files">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-violet"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+            <div><div class="acc-title">Files &amp; folders</div><div class="acc-sub">Read, write, edit, and reorganize files in a folder you pick.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label">What it is</div><div class="acc-text">Claude can read every file in the folder you select (Word, Excel, PowerPoint, PDF, CSV, code, plain text, images) and create or edit files in that same folder. New deliverables show up as clickable links right in chat.</div></div>
+            <div><div class="acc-label">When to reach for it</div><div class="acc-text">Any time the work touches files you'd otherwise open by hand. Reports, spreadsheet cleanup, batch renames, format conversions, content drafts that live as documents.</div></div>
+          </div>
+          <div class="acc-label">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Open Cowork and select a folder. Claude can now see what's in it.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Ask a question about the contents ("what's in this folder?", "summarize the deck named Q2 launch").</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Ask for an output. Claude builds the file in your folder and gives you a link to open it.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Iterate. "Make the executive summary tighter." "Add a chart for the regional breakdown."</div></li>
+          </ol>
+          <div class="acc-label">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Read every file in this folder and give me a one-line summary of each. Group similar files together."><div class="prompt-label">Audit a folder</div><div class="prompt-text">Read every file in this folder and give me a one-line summary of each. Group similar files together.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Take the data in sales-q1.xlsx and build a one-page executive summary as a Word doc. Include a chart showing revenue by region."><div class="prompt-label">Build a deliverable from data</div><div class="prompt-text">Take the data in sales-q1.xlsx and build a one-page executive summary as a Word doc. Include a chart showing revenue by region.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Convert every .docx in this folder to PDF and put them in a /pdf subfolder. Keep the originals."><div class="prompt-label">Batch convert</div><div class="prompt-text">Convert every .docx in this folder to PDF and put them in a /pdf subfolder. Keep the originals.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Clean up this messy CSV — fix the misaligned headers, standardize dates to YYYY-MM-DD, and split it into one file per region."><div class="prompt-label">Clean and split</div><div class="prompt-text">Clean up this messy CSV &mdash; fix the misaligned headers, standardize dates to YYYY-MM-DD, and split it into one file per region.</div></button>
+          </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/02-projects.png" class="screenshot" alt="Cowork Projects view showing project cards" />
+            <p class="screenshot-caption">Projects view. Each project is a folder Cowork can work in. Click one to set it as the active workspace for a conversation.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Code -->
+      <details class="acc" id="cap-code">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-pink"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+            <div><div class="acc-title">Run code in a sandbox</div><div class="acc-sub">A real Linux environment for Python, Node, and shell scripts.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label pink">What it is</div><div class="acc-text">An isolated Linux environment with Python, Node, and common CLI tools. Claude can install packages, process data, run analyses, and emit files into your workspace.</div></div>
+            <div><div class="acc-label pink">When to reach for it</div><div class="acc-text">Anything computational: cleaning datasets, transforming files, running statistical analysis, generating charts, scraping structured data, or one-off scripts you'd otherwise write by hand.</div></div>
+          </div>
+          <div class="acc-label pink">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Hand Claude a file (CSV, JSON, log, anything) or describe a computation.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Claude writes the script and runs it. You see the output (and the code, if you ask).</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Results get written back into your folder &mdash; a new spreadsheet, a chart image, a cleaned dataset.</div></li>
+          </ol>
+          <div class="acc-label pink">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Load survey-results.csv and tell me the top 3 themes in the open-ended responses. Then build a bar chart of NPS by segment."><div class="prompt-label">Analyze survey data</div><div class="prompt-text">Load survey-results.csv and tell me the top 3 themes in the open-ended responses. Then build a bar chart of NPS by segment.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Take all the JSON files in /logs and aggregate the error counts by day. Output a CSV and a line chart."><div class="prompt-label">Aggregate logs</div><div class="prompt-text">Take all the JSON files in /logs and aggregate the error counts by day. Output a CSV and a line chart.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Computer use -->
+      <details class="acc" id="cap-computer">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-sky"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div><div class="acc-title">Control your computer</div><div class="acc-sub">Screenshots, clicks, typing in native desktop apps.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label sky">What it is</div><div class="acc-text">Claude can take a screenshot of your screen and drive your computer with mouse and keyboard. Useful for native apps like Notes, Finder, Maps, System Settings, Photos, or any third-party desktop app without an API.</div></div>
+            <div><div class="acc-label sky">When to reach for it</div><div class="acc-text">When the work is in a desktop app and there's no MCP for it. Cross-app workflows (drag from one app to another). Anything where the only interface is the GUI.</div></div>
+          </div>
+          <div class="acc-label sky">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude to do something on your desktop. It will request permission for the apps it needs.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Approve each app explicitly. Some apps get restricted tiers (browsers and IDEs are visible but read-only or click-only by default &mdash; for safety).</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Claude takes screenshots to look at your screen, then clicks and types. You can watch it work.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>You can interrupt anytime by moving the mouse or telling it to stop.</div></li>
+          </ol>
+          <div class="note-callout"><b>Safety guardrails:</b> Claude will not execute trades, send money, or initiate transfers &mdash; even in apps where it has full access. For browsers it defaults to read-only (use the Chrome extension for navigation).</div>
+          <div class="acc-label sky">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Open Finder, find every screenshot I took this week in ~/Desktop, and move them into a 'Screenshots/2026-W21' folder."><div class="prompt-label">Tidy desktop</div><div class="prompt-text">Open Finder, find every screenshot I took this week in ~/Desktop, and move them into a 'Screenshots/2026-W21' folder.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Walk me through how to set up Focus mode in System Settings — show me each click."><div class="prompt-label">Teach mode</div><div class="prompt-text">Walk me through how to set up Focus mode in System Settings &mdash; show me each click.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Browser -->
+      <details class="acc" id="cap-browser">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-amber"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+            <div><div class="acc-title">Drive your browser</div><div class="acc-sub">Navigate, fill forms, extract page content via Claude in Chrome.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label amber">What it is</div><div class="acc-text">A Chrome extension that lets Claude see and act on web pages through the DOM, not by clicking pixels. Much faster and more reliable than computer use for web apps.</div></div>
+            <div><div class="acc-label amber">When to reach for it</div><div class="acc-text">Any web app that doesn't have its own MCP. Booking flights, filling expense reports, scraping a SaaS dashboard, navigating internal tools.</div></div>
+          </div>
+          <div class="acc-label amber">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Install the Claude in Chrome extension (Claude will prompt you the first time).</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Ask Claude to do something in a browser. It will open or use an existing tab.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>It reads the page, clicks the right elements, fills inputs, and reports back what it did.</div></li>
+          </ol>
+          <div class="acc-label amber">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Go to my Concur expense page, find every receipt from May that hasn't been categorized, and categorize them based on the vendor."><div class="prompt-label">Tame expenses</div><div class="prompt-text">Go to my Concur expense page, find every receipt from May that hasn't been categorized, and categorize them based on the vendor.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Pull the top 50 results from this Zillow search and put them in a spreadsheet with price, beds, sqft, and the link."><div class="prompt-label">Scrape a result list</div><div class="prompt-text">Pull the top 50 results from this Zillow search and put them in a spreadsheet with price, beds, sqft, and the link.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Connectors -->
+      <details class="acc" id="cap-connectors">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-emerald"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 10a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+            <div><div class="acc-title">Connect your apps (MCP)</div><div class="acc-sub">Gmail, Slack, Notion, Linear, Figma, Drive &mdash; 30+ connectors.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label emerald">What it is</div><div class="acc-text">MCP (Model Context Protocol) connectors are official integrations with apps you already use. Each gives Claude read and write access through proper APIs &mdash; fast, structured, permission-gated.</div></div>
+            <div><div class="acc-label emerald">When to reach for it</div><div class="acc-text">Whenever you'd otherwise alt-tab into an app to look something up, paste it somewhere, or send something. Connect it once, then ask Claude.</div></div>
+          </div>
+          <div class="acc-label emerald">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude what connectors are available, or directly ask it to connect a specific tool.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Claude opens an OAuth approval page in your browser. Confirm.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>That connector now persists across sessions. Claude can use it any time.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>To revoke, ask Claude to disconnect it (or do it from the connectors panel).</div></li>
+          </ol>
+          <div class="acc-label emerald">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="What connectors do I have set up? Suggest three more I should add given that I work in marketing."><div class="prompt-label">Audit your connectors</div><div class="prompt-text">What connectors do I have set up? Suggest three more I should add given that I work in marketing.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Cross-reference my open Linear tickets with the threads in #engineering on Slack — flag anything where there's been discussion that hasn't made it into the ticket."><div class="prompt-label">Cross-tool work</div><div class="prompt-text">Cross-reference my open Linear tickets with the threads in #engineering on Slack &mdash; flag anything where there's been discussion that hasn't made it into the ticket.</div></button>
+          </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/12-connectors-marketplace.png" class="screenshot" alt="Cowork Connectors directory showing Canva, Microsoft 365, Gmail, Figma, Google Drive, Notion, Google Calendar, Atlassian Rovo, Zoom for Claude, Slack" />
+            <p class="screenshot-caption">The Connectors directory. Each tile is a service you can connect via OAuth &mdash; one approval flow per connector, takes about a minute.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Skills -->
+      <details class="acc" id="cap-skills">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-fuchsia"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 7.36H22l-6.18 4.49 2.36 7.36L12 16.7l-6.18 4.51 2.36-7.36L2 9.36h7.61z"/></svg></div>
+            <div><div class="acc-title">Skills</div><div class="acc-sub">Pre-built playbooks for specific kinds of work.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label fuchsia">What it is</div><div class="acc-text">Skills are recipes Claude knows how to follow. Each one packages domain expertise &mdash; how a marketer writes a campaign brief, how a lawyer triages an NDA, how an engineer writes a postmortem &mdash; and turns it into a repeatable workflow.</div></div>
+            <div><div class="acc-label fuchsia">When to reach for it</div><div class="acc-text">When the output has an industry-standard shape. Claude knows what good looks like and produces structured, complete deliverables instead of generic prose.</div></div>
+          </div>
+          <div class="acc-label fuchsia">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>You don't have to memorize skill names. Phrase the ask naturally &mdash; "write a PRD for X", "review this contract" &mdash; and Claude picks the right skill automatically.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>The skill kicks in and asks any clarifying questions it needs.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>You get a structured deliverable &mdash; PRD, brief, audit report, etc. &mdash; formatted the way that kind of doc is supposed to look.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>If you want to see what's installed, ask: "what skills do I have?"</div></li>
+          </ol>
+          <div class="acc-label fuchsia">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Write a PRD for a feature that lets users schedule social posts across LinkedIn and Twitter from one composer."><div class="prompt-label">Trigger the PRD skill</div><div class="prompt-text">Write a PRD for a feature that lets users schedule social posts across LinkedIn and Twitter from one composer.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Run an SEO audit on my website. The URL is in my notes."><div class="prompt-label">Trigger the SEO audit skill</div><div class="prompt-text">Run an SEO audit on my website. The URL is in my notes.</div></button>
+          </div>
+          <div style="margin-top:1rem;font-size:0.875rem;color:rgba(255,255,255,0.65)"><b style="color:#fff">&rarr;</b> See the full list of skills by role in the <a href="reference.html#skills" class="xref">Skills</a> section below.</div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/14-skills-marketplace.png" class="screenshot" alt="Cowork Skills directory showing canvas-design, web-artifacts-builder, mcp-builder, brand-guidelines, doc-coauthoring, skill-creator, theme-factory, internal-comms, algorithmic-art, slack-gif-creator" />
+            <p class="screenshot-caption">The Skills directory. Each tile is an individual skill you can install standalone &mdash; outside any plugin bundle.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Plugins -->
+      <details class="acc" id="cap-plugins">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-indigo"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div><div class="acc-title">Plugins</div><div class="acc-sub">Installable bundles of skills and connectors, often role-matched.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label indigo">What it is</div><div class="acc-text">Plugins are pre-bundled sets of skills + connectors. Install the "Sales" plugin and you get pipeline review, call prep, outreach drafting, plus relevant connectors (Apollo, Close, Outreach) in one shot.</div></div>
+            <div><div class="acc-label indigo">When to reach for it</div><div class="acc-text">When you're setting up Cowork for a specific role or workflow. Avoids the "what skills do I need?" question.</div></div>
+          </div>
+          <div class="acc-label indigo">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude what plugins are available, or pick one by role (Sales, Marketing, Engineering, Legal, Ops, etc.).</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Install. Skills and connector options appear.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Connect the tools the plugin uses. You're now set up for that workflow.</div></li>
+          </ol>
+          <div class="acc-label indigo">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Suggest plugins I should install given that I'm a product manager at a B2B SaaS startup."><div class="prompt-label">Get a recommendation</div><div class="prompt-text">Suggest plugins I should install given that I'm a product manager at a B2B SaaS startup.</div></button>
+            <button class="prompt copy-prompt" data-prompt="What plugins do I already have installed?"><div class="prompt-label">Inventory check</div><div class="prompt-text">What plugins do I already have installed?</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Memory -->
+      <details class="acc" id="cap-memory">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-rose"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+            <div><div class="acc-title">Persistent memory</div><div class="acc-sub">Remembers facts about you across sessions &mdash; preferences, projects, feedback.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label rose">What it is</div><div class="acc-text">A file-based memory system that survives across conversations. Claude builds up a picture of who you are, how you like to work, what projects you're in, and what feedback you've given.</div></div>
+            <div><div class="acc-label rose">When to reach for it</div><div class="acc-text">It runs automatically. You can also explicitly tell Claude to remember (or forget) something.</div></div>
+          </div>
+          <div class="acc-label rose">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Just work with Claude. As you go, it quietly notes things &mdash; your role, your projects, preferences you've stated.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Next session, it already knows the context. No re-onboarding.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Be explicit when something matters: "remember that I prefer terse responses with no trailing summaries."</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Audit any time: "what do you remember about me?" or "show me your memory file for project X."</div></li>
+          </ol>
+          <div class="acc-label rose">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Remember that I work across two companies — Acme (B2B SaaS) and Beta Lab (consumer app). When I mention a project, ask which one if it's not obvious."><div class="prompt-label">Teach it your context</div><div class="prompt-text">Remember that I work across two companies &mdash; Acme (B2B SaaS) and Beta Lab (consumer app). When I mention a project, ask which one if it's not obvious.</div></button>
+            <button class="prompt copy-prompt" data-prompt="What do you currently remember about me? Show me the index of your memory files."><div class="prompt-label">Audit memory</div><div class="prompt-text">What do you currently remember about me? Show me the index of your memory files.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Schedule -->
+      <details class="acc" id="cap-schedule">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-teal"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div><div class="acc-title">Scheduled tasks</div><div class="acc-sub">Run on a cadence &mdash; daily briefings, weekly digests, future reminders.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label teal">What it is</div><div class="acc-text">Tasks that run on a schedule, either recurring (daily at 6am) or one-off in the future (in an hour, tomorrow at 3pm).</div></div>
+            <div><div class="acc-label teal">When to reach for it</div><div class="acc-text">Anything you'd benefit from receiving without asking each time. Morning briefings, weekly metric digests, alerts when something changes.</div></div>
+          </div>
+          <div class="acc-label teal">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Tell Claude the cadence in natural language: "every morning", "each Monday at 9am", "in an hour".</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Tell it what to do when the task fires.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Claude creates the schedule. You'll see it run in Cowork at the appointed time.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>List, edit, or remove schedules anytime.</div></li>
+          </ol>
+          <div class="acc-label teal">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Every weekday at 7am, summarize my unread email and tell me which threads need a reply today."><div class="prompt-label">Morning email digest</div><div class="prompt-text">Every weekday at 7am, summarize my unread email and tell me which threads need a reply today.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Each Friday at 4pm, give me a weekly recap — what I shipped, what's still open, and what I should prep for next week."><div class="prompt-label">Weekly recap</div><div class="prompt-text">Each Friday at 4pm, give me a weekly recap &mdash; what I shipped, what's still open, and what I should prep for next week.</div></button>
+          </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/04-scheduled-create.png" class="screenshot" alt="Create scheduled task modal in Cowork with fields for name, description, prompt body, frequency dropdown set to Manual" />
+            <p class="screenshot-caption">The Create scheduled task modal. Name + description + the prompt body + a frequency (Manual, recurring cron, or one-time future fire).</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Artifacts -->
+      <details class="acc" id="cap-artifacts">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-orange"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+            <div><div class="acc-title">Live artifacts</div><div class="acc-sub">HTML pages that persist and refresh data each time you open them.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label orange">What it is</div><div class="acc-text">Self-contained interactive pages that Cowork saves and re-opens later. Each time you open one, it can pull fresh data from your connected tools.</div></div>
+            <div><div class="acc-label orange">When to reach for it</div><div class="acc-text">When the answer to your question changes over time. Status pages, project trackers, pipeline views, weekly metric dashboards. Anything you'd want to re-open instead of re-asking.</div></div>
+          </div>
+          <div class="acc-label orange">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Ask Claude something that turns into a list, table, or dashboard.</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>If it'll be useful later, ask: "turn this into a live artifact I can re-open."</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Claude builds the HTML page. It shows up in your artifacts list and is sharable.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Reopen any time &mdash; the page calls your connectors and shows the latest data.</div></li>
+          </ol>
+          <div class="acc-label orange">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Build me a live artifact that shows my open Linear tickets, grouped by project, with a button to mark each as done."><div class="prompt-label">Personal task dashboard</div><div class="prompt-text">Build me a live artifact that shows my open Linear tickets, grouped by project, with a button to mark each as done.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Make a live artifact that shows my calendar for the next 7 days plus a prep checklist for each meeting that hasn't started yet."><div class="prompt-label">Weekly briefing page</div><div class="prompt-text">Make a live artifact that shows my calendar for the next 7 days plus a prep checklist for each meeting that hasn't started yet.</div></button>
+          </div>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/16-live-artifact.png" class="screenshot" alt="A live artifact in action: Twin Cities AI Services Competitor Pricing Monitor with pricing cards and a watchlist of competitors that refreshes" />
+            <p class="screenshot-caption">A real live artifact: a competitor pricing monitor that pulls fresh data from each competitor's site every time the page is opened. The user owns the watchlist; the data updates itself.</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Viz -->
+      <details class="acc" id="cap-viz">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-yellow"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div>
+            <div><div class="acc-title">Inline visualizations</div><div class="acc-sub">Diagrams, charts, mockups, interactive widgets right in chat.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label yellow">What it is</div><div class="acc-text">Claude can render visuals inline in the conversation &mdash; flowcharts, system diagrams, charts, UI mockups, illustrations, even small interactive demos.</div></div>
+            <div><div class="acc-label yellow">When to reach for it</div><div class="acc-text">When a picture makes the answer 10x clearer. Explaining architecture, comparing options, prototyping a UI, walking through a process.</div></div>
+          </div>
+          <div class="acc-label yellow">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Draw me a flowchart of how a new customer goes from website signup to onboarding email to first product use."><div class="prompt-label">Process diagram</div><div class="prompt-text">Draw me a flowchart of how a new customer goes from website signup to onboarding email to first product use.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Mock up a settings page for a habit-tracker app — show me three layout options side by side."><div class="prompt-label">UI mockup</div><div class="prompt-text">Mock up a settings page for a habit-tracker app &mdash; show me three layout options side by side.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Dispatch -->
+      <details class="acc" id="cap-dispatch">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-emerald"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg></div>
+            <div><div class="acc-title">Dispatch <span class="pill" style="margin-left:0.5rem;font-size:0.65rem;background:rgba(16,185,129,0.16);border-color:rgba(16,185,129,0.35);color:#6ee7b7">Beta</span></div><div class="acc-sub">Long-running tasks Cowork works on in the background while you do other things.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label emerald">What it is</div><div class="acc-text">Dispatch hands a task off to Cowork as a persistent background thread. You give it a goal, optional context, and permissions for which apps it can use. Cowork works on it asynchronously &mdash; you can check in from anywhere as the work continues.</div></div>
+            <div><div class="acc-label emerald">When to reach for it</div><div class="acc-text">Anything that takes longer than a normal back-and-forth chat &mdash; researching across many sources, building a multi-step plan, working through a long document. Also useful when you want to start a task on your laptop and check progress later on your phone.</div></div>
+          </div>
+          <div class="acc-label emerald">Walkthrough</div>
+          <ol class="steps-list">
+            <li><span class="step-num step-num-sm">1</span><div>Click <b style="color:#fff">Dispatch</b> in the Cowork sidebar (currently marked Beta).</div></li>
+            <li><span class="step-num step-num-sm">2</span><div>Describe the task in plain language. The right side has a Settings panel where you toggle Keep awake, Mobile notifications, Allow all browser actions, Computer use, and Code permissions.</div></li>
+            <li><span class="step-num step-num-sm">3</span><div>Hit send. Cowork starts the dispatch as a persistent thread that survives across sessions.</div></li>
+            <li><span class="step-num step-num-sm">4</span><div>Check in anytime &mdash; from another conversation, another device. Outputs the dispatch produces (markdown docs, files, summaries) get linked in the Outputs panel.</div></li>
+          </ol>
+          <div class="screenshot-frame" style="margin-top:1.25rem">
+            <img src="screenshots/15-dispatch.png" class="screenshot" alt="Dispatch view in Cowork with Settings panel showing Keep awake, Mobile notifications, Allow all browser actions, Computer use, Code permissions; an Outputs section showing a generated markdown file; and a conversation about MCP architecture" />
+            <p class="screenshot-caption">A Dispatch in flight. Left: settings and outputs. Right: the ongoing conversation thread, which can pick up days later from any device.</p>
+          </div>
+          <div class="acc-label emerald" style="margin-top:1.25rem">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Dispatch: Research the 10 best customer onboarding flows for B2B SaaS companies under 50 employees. Write up findings as a markdown doc with screenshots and links. Take your time — I'll check in tomorrow."><div class="prompt-label">Long-form research</div><div class="prompt-text">Dispatch: Research the 10 best customer onboarding flows for B2B SaaS companies under 50 employees. Write up findings as a markdown doc with screenshots and links. Take your time &mdash; I'll check in tomorrow.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Dispatch: Read every PDF in this folder, extract the key claims, and build a comparison matrix. Ping me when done."><div class="prompt-label">Document analysis</div><div class="prompt-text">Dispatch: Read every PDF in this folder, extract the key claims, and build a comparison matrix. Ping me when done.</div></button>
+          </div>
+        </div>
+      </details>
+
+      <!-- Subagents -->
+      <details class="acc" id="cap-agents">
+        <summary>
+          <div class="acc-head">
+            <div class="acc-icon ic-cyan"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div><div class="acc-title">Subagents</div><div class="acc-sub">Delegate heavy work &mdash; research, code review, parallel searches.</div></div>
+          </div>
+          <svg class="acc-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </summary>
+        <div class="acc-body">
+          <div class="acc-grid">
+            <div><div class="acc-label cyan">What it is</div><div class="acc-text">Specialized helper agents that Claude can dispatch in parallel for heavy work &mdash; searching a large codebase, doing deep research on a topic, reviewing a PR independently.</div></div>
+            <div><div class="acc-label cyan">When to reach for it</div><div class="acc-text">When work is parallelizable, or when you want an independent second opinion. Claude usually picks them automatically &mdash; you'll see them in the task list.</div></div>
+          </div>
+          <div class="acc-label cyan">Copy a prompt</div>
+          <div class="prompts-grid">
+            <button class="prompt copy-prompt" data-prompt="Research the top 5 competitors to my company and write a competitive brief. Have separate agents handle each competitor in parallel."><div class="prompt-label">Parallel research</div><div class="prompt-text">Research the top 5 competitors to my company and write a competitive brief. Have separate agents handle each competitor in parallel.</div></button>
+            <button class="prompt copy-prompt" data-prompt="Get a second opinion on my migration plan from another agent — I want an independent read on whether it's safe."><div class="prompt-label">Second opinion</div><div class="prompt-text">Get a second opinion on my migration plan from another agent &mdash; I want an independent read on whether it's safe.</div></button>
+          </div>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

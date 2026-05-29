@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Common Pitfalls &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; Troubleshooting." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html" style="background:rgba(167,139,250,0.18);color:#fff">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a></nav>
+
+<main>
+<section class="section" id="pitfalls">
+  <div class="container-narrow">
+    <span class="eyebrow">When things go sideways</span>
+    <h2 class="h2">Common pitfalls &mdash; with the actual fix.</h2>
+    <p class="section-sub">Things break, configurations get weird, prompts don't trigger the skill you expected. The catalog below covers the most common failure modes a new user hits in their first month. Each entry: symptom, root cause, fix.</p>
+
+    <div class="pitfall-grid">
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"Cowork can't see my emails."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> The Gmail OAuth token expired (this happens periodically by design) or the original connection scope didn't include the mailbox you're asking about.</p>
+        <div class="fix"><b>Fix:</b> Open Customize &rarr; Connectors &rarr; Gmail. Disconnect and reconnect. When the OAuth dialog appears, make sure you're approving for the right Google account &mdash; if you have multiple, the picker defaults to your last-used.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"My scheduled task didn't fire."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Your laptop was asleep or shut down at the scheduled time. Cowork's scheduled tasks run while the computer is awake &mdash; they don't fire from the cloud.</p>
+        <div class="fix"><b>Fix:</b> In Cowork &rarr; Scheduled, toggle <b>Keep awake</b> on. This prevents sleep when a task is approaching. Plug in if the task fires overnight. For tasks that really need to fire when you're away, the cloud-scheduled approach lives on the roadmap; for now, dedicate a machine that stays on.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"Cowork wrote a file but I can't find it."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Cowork has two file areas &mdash; your selected working folder (visible to you) and a hidden scratchpad (where it drafts things you don't need to see). It dropped the file in the scratchpad, not your folder.</p>
+        <div class="fix"><b>Fix:</b> Tell it explicitly where to put outputs. "Save the final report to my working folder" or "put it in this folder" usually does the trick. Final deliverables should always come back with a clickable link in chat &mdash; if there's no link, it didn't land in your folder.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"The skill I expected didn't activate."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Your prompt didn't match the skill's description closely enough, so Cowork didn't auto-trigger it. Skills fire based on description match, not feature lists.</p>
+        <div class="fix"><b>Fix:</b> Use the slash command explicitly. <code>/design-critique</code> forces the design critique skill regardless of phrasing. Or rephrase your prompt to include the verbs the skill expects ("critique," "review," "audit," etc.).</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"Cowork refused to do something on my desktop."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> The app you asked it to drive isn't in the current session's permission allowlist. Computer-use access is per-app, per-session, and Cowork won't act outside what you've approved.</p>
+        <div class="fix"><b>Fix:</b> Cowork will request access for the app it needs. Approve the dialog when it appears. If the app is in a restricted tier (browsers and IDEs default to read-only for safety), use the Claude in Chrome extension or run shell commands instead, depending on the task.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"My memory seems wrong or outdated."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> A memory file captured a fact when it was true and Cowork hasn't realized it's changed. Memory doesn't auto-expire.</p>
+        <div class="fix"><b>Fix:</b> Just tell Cowork: "Update your memory &mdash; my role is now X, not Y." Or audit memory directly: ask "show me your memory files" and edit or delete entries that are stale. The files live as plain text on disk; you can edit them in any text editor too.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"A connector keeps logging me out."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> Some services (Microsoft 365 in particular) have shorter token lifetimes for security reasons, so connections expire and need refreshing.</p>
+        <div class="fix"><b>Fix:</b> Reconnect when prompted. If it's happening often, check whether your organization's IT has set tighter token policies &mdash; that overrides the default lifetime.</div>
+      </div>
+
+      <div class="pitfall-card">
+        <div class="symptom">Symptom</div>
+        <h3>"I gave Cowork a big task and it stopped halfway."</h3>
+        <p class="cause"><b style="color:#fff">Likely cause:</b> You hit a usage limit (token quota for your plan) or the conversation got too long and ran out of context. Both are common on long agentic tasks.</p>
+        <div class="fix"><b>Fix:</b> For limits, wait til reset (you'll see a message with the reset time) or upgrade your plan. For long tasks, use Dispatch instead of a regular conversation &mdash; it handles long-running work better. For huge research tasks, break into stages: have Cowork hand off intermediate state as files between stages.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cheat Sheet &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; Take it with you." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html" style="background:rgba(167,139,250,0.18);color:#fff">Cheat Sheet</a></nav>
+
+<main>
+<section class="section" id="cheat-sheet">
+  <div class="container-narrow">
+    <span class="eyebrow">Take it with you</span>
+    <h2 class="h2">The cheat sheet.</h2>
+    <p class="section-sub">One page. Everything you'll actually reach for once you've used Cowork for a week. Print it (cmd+P from your browser &mdash; the print stylesheet hides everything except this section), or screenshot it for your second monitor.</p>
+
+    <div class="cheat-sheet">
+      <div class="cheat-header">
+        <h2>Cowork Cheat Sheet</h2>
+        <span>v1 &middot; claude-cowork</span>
+      </div>
+
+      <div class="cheat-grid">
+        <div>
+          <h4>Sidebar map</h4>
+          <ul>
+            <li><b>New task</b> &mdash; start a fresh conversation</li>
+            <li><b>Projects</b> &mdash; folders + ongoing work</li>
+            <li><b>Scheduled</b> &mdash; recurring + one-off tasks</li>
+            <li><b>Live artifacts</b> &mdash; HTML pages with fresh data</li>
+            <li><b>Dispatch</b> &mdash; long-running background work (Beta)</li>
+            <li><b>Customize</b> &mdash; skills, connectors, plugins</li>
+          </ul>
+
+          <h4>Keyboard shortcuts</h4>
+          <ul>
+            <li><code>cmd+N</code> &mdash; new conversation in current window</li>
+            <li><code>/</code> in input &mdash; trigger a specific skill explicitly</li>
+            <li><code>+</code> in input &mdash; attach a file</li>
+          </ul>
+
+          <h4>When to use which</h4>
+          <ul>
+            <li>Quick question, no files &rarr; <b>Chat mode</b></li>
+            <li>Real work touching files/tools &rarr; <b>Cowork</b></li>
+            <li>Long task that runs while you do other things &rarr; <b>Dispatch</b></li>
+            <li>Recurring work &rarr; <b>Scheduled task</b></li>
+            <li>Data that changes over time &rarr; <b>Live artifact</b></li>
+            <li>Multiple parallel tasks &rarr; <b>Subagents</b> (Cowork picks them)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Top 10 prompts</h4>
+          <ul>
+            <li>"Give me a morning briefing &mdash; calendar, email, what matters today."</li>
+            <li>"Prep me for tomorrow's first meeting with attendee and history context."</li>
+            <li>"Triage my unread Slack and email. Group by urgency."</li>
+            <li>"Every weekday at 7am, run the morning briefing above."</li>
+            <li>"Build me a live artifact showing my open [tracker] tickets."</li>
+            <li>"Read every PDF in this folder and summarize each in one line."</li>
+            <li>"Research [company] &mdash; one-page brief."</li>
+            <li>"Critique this design / write a PRD for X / run an SEO audit on Y" (skill triggers)</li>
+            <li>"Remember that I prefer [tone/format/preference]."</li>
+            <li>"What do you currently remember about me?"</li>
+          </ul>
+
+          <h4>Skill patterns to know</h4>
+          <ul>
+            <li><code>/write-spec</code> &mdash; turn an idea into a structured PRD</li>
+            <li><code>/design-critique</code>, <code>/accessibility-review</code> &mdash; design feedback</li>
+            <li><code>/review-contract</code>, <code>/triage-nda</code> &mdash; legal triage</li>
+            <li><code>/account-research</code>, <code>/call-prep</code> &mdash; sales prep</li>
+            <li><code>/campaign-plan</code>, <code>/brand-review</code> &mdash; marketing</li>
+            <li><code>/skill-creator</code> &mdash; build your own skill</li>
+          </ul>
+
+          <h4>Safety patterns</h4>
+          <ul>
+            <li>Before bulk operations: <b>"show me what you'd do before doing it"</b></li>
+            <li>Before sending: <b>"draft, don't send"</b></li>
+            <li>Before deleting: <b>"move to a quarantine folder first, don't delete"</b></li>
+            <li>Memory check: <b>"show me your memory files"</b></li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>The 5-minute setup</h4>
+      <p>1. Pick a working folder &mdash; <code>~/Documents/CoworkDemo</code> is fine for tests. 2. Connect one tool you live in (Gmail, Calendar, or Slack). 3. Run a real task &mdash; don't test with a toy prompt. 4. If it worked, schedule it. 5. As friction comes up, connect more tools.</p>
+
+      <p style="margin-top:1rem;font-size:0.75rem;color:#666"><b>Made with Cowork.</b> Full guide: claude-cowork (GitHub) &middot; print this page from cmd+P</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>

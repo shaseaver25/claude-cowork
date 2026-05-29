@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Cowork Field Guide &middot; Cowork Field Guide</title>
+<meta name="description" content="A learning guide for Claude Cowork &mdash; Landing." />
+<link rel="stylesheet" href="assets/style.css" />
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    page_title: document.title,
+    page_path: location.pathname
+  });
+  window.gtagTrack = function(eventName, params) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params || {});
+    }
+  };
+</script>
+</head>
+<body>
+
+<div class="ambient"><div class="blob3"></div></div>
+
+<nav class="nav"><a href="index.html" class="brand"><span class="nav-dot"></span>Cowork Guide</a><a href="install.html">Install</a><a href="quickstart.html">Quick Start</a><a href="trust.html">Trust</a><a href="tutorials.html">Tutorials</a><a href="example.html">Example</a><a href="projects.html">Projects</a><a href="examples.html">Output Examples</a><a href="pitfalls.html">Pitfalls</a><a href="reference.html">Reference</a><a href="glossary.html">Glossary</a><a href="cheat-sheet.html">Cheat Sheet</a></nav>
+
+<main>
+<section class="hero" id="top">
+  <div class="noise"></div>
+  <div class="hero-inner">
+    <span class="badge"><span class="dot-live"></span> A field guide to Claude's Cowork mode</span>
+    <h1 class="h1 grad-text">Claude doesn't just<br/>chat. It works<br/>alongside you.</h1>
+    <p class="lead">Cowork mode turns Claude into a hands-on collaborator on your real computer &mdash; reading your files, running your tools, controlling your apps, and remembering what matters across sessions.</p>
+    <div class="hero-actions">
+      <a href="quickstart.html#start" class="btn btn-primary">Start the walkthrough
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="index.html#capabilities" class="btn btn-secondary">See what it can do</a>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num grad-text-soft">80+</div><div class="stat-label">Built-in skills</div></div>
+      <div class="stat"><div class="stat-num grad-text-soft">30+</div><div class="stat-label">App connectors</div></div>
+      <div class="stat"><div class="stat-num grad-text-soft">&infin;</div><div class="stat-label">Memory across sessions</div></div>
+      <div class="stat"><div class="stat-num grad-text-soft">1</div><div class="stat-label">App on your Mac</div></div>
+    </div>
+  </div>
+</section>
+<section class="section-sm">
+  <div class="container">
+    <span class="eyebrow">The shape of it</span>
+    <h2 class="h2">Three layers, one assistant.</h2>
+    <div style="height:1.5rem"></div>
+    <div class="feat-row">
+      <div class="feat-card">
+        <div class="feat-icon ic-violet"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <h3>Your files</h3>
+        <p>Pick a folder on your computer. Claude can read, write, and edit files in it &mdash; docs, spreadsheets, decks, PDFs, code, anything.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon ic-pink"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Your computer</h3>
+        <p>With your permission, Claude can take screenshots, click, type, and drive native apps &mdash; Finder, Notes, Maps, third-party software, anything.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon ic-sky"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+        <h3>Your tools</h3>
+        <p>Connect Gmail, Slack, Notion, Linear, Figma, Drive, and 30+ more. Claude reads from and acts in your real workplace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" id="decide">
+  <div class="container">
+    <span class="eyebrow">Before you commit</span>
+    <h2 class="h2">Is Cowork the right Claude for you?</h2>
+    <p class="section-sub">Anthropic ships three different ways to work with Claude, and they're not interchangeable. If you read this whole guide and then realize you actually wanted Claude.ai or Claude Code, that's an hour you can't get back. Quick disambiguation first.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-eyebrow">Web &amp; mobile</div>
+        <h3>Claude.ai</h3>
+        <p class="pick-if">Pick this if you want pure conversation &mdash; chat with Claude, paste in text or images, get answers. No files, no app installs, no real-world action.</p>
+        <div class="pick-list">
+          <span>Browser-based, also iOS and Android apps</span>
+          <span>Best for questions, drafting, explaining</span>
+          <span>Can use connectors and artifacts</span>
+          <span>Won't touch your local files or apps</span>
+        </div>
+      </div>
+
+      <div class="compare-card featured">
+        <div class="compare-eyebrow">You are here</div>
+        <h3>Claude Cowork</h3>
+        <p class="pick-if">Pick this if you want Claude alongside you on your real Mac &mdash; reading and writing your files, driving your apps, remembering your projects, running on a schedule.</p>
+        <div class="pick-list">
+          <span>Native macOS desktop app</span>
+          <span>Best for work that touches your files and tools</span>
+          <span>Has memory, scheduled tasks, computer use, MCP</span>
+          <span>You give it folder access and connector permissions per use</span>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-eyebrow">Terminal</div>
+        <h3>Claude Code</h3>
+        <p class="pick-if">Pick this if you write software &mdash; Claude as an agentic coding partner inside your terminal, working in your repo, running tests, opening PRs.</p>
+        <div class="pick-list">
+          <span>CLI tool, runs in your terminal</span>
+          <span>Best for code, tests, refactors, deploys</span>
+          <span>Knows git, runs commands, edits files</span>
+          <span>Built for engineers, not general users</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rec-callout" style="margin-top:2rem">
+      <div class="rec-callout-eyebrow">Quick decision tree</div>
+      <p><b>Do you write code for a living?</b> &rarr; Claude Code probably fits better, though Cowork can complement it. <b>Are you trying to get conversational answers without touching files?</b> &rarr; Claude.ai is lighter. <b>Are you trying to make Claude do real work across your apps, files, and calendar &mdash; like a coworker would?</b> &rarr; You're in the right place. Keep reading.</p>
+    </div>
+  </div>
+</section>
+<section class="section" id="capabilities">
+  <div class="container">
+    <span class="eyebrow">What it can do</span>
+    <h2 class="h2">Twelve capabilities, one app.</h2>
+    <p class="section-sub">Each tile links to a tutorial walkthrough further down the page. Skim, then dive into the ones that match your work.</p>
+
+    <div class="cap-grid">
+      <a href="tutorials.html#cap-files" class="cap-card"><div class="cap-icon ic-violet"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><div><h3>Files &amp; folders</h3><p>Read, write, edit, reorganize files in a folder you pick.</p></div></a>
+      <a href="tutorials.html#cap-code" class="cap-card"><div class="cap-icon ic-pink"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div><div><h3>Run code</h3><p>Sandboxed Linux for Python, Node, data processing, scripts.</p></div></a>
+      <a href="tutorials.html#cap-computer" class="cap-card"><div class="cap-icon ic-sky"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div><h3>Control your computer</h3><p>Screenshots, clicks, typing in native desktop apps.</p></div></a>
+      <a href="tutorials.html#cap-browser" class="cap-card"><div class="cap-icon ic-amber"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div><div><h3>Drive your browser</h3><p>Navigate, fill forms, scrape pages via Claude in Chrome.</p></div></a>
+      <a href="tutorials.html#cap-connectors" class="cap-card"><div class="cap-icon ic-emerald"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 10a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div><div><h3>Connect your apps (MCP)</h3><p>Gmail, Slack, Notion, Linear, Figma, Drive, 30+ more.</p></div></a>
+      <a href="tutorials.html#cap-skills" class="cap-card"><div class="cap-icon ic-fuchsia"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.39 7.36H22l-6.18 4.49 2.36 7.36L12 16.7l-6.18 4.51 2.36-7.36L2 9.36h7.61z"/></svg></div><div><h3>Skills</h3><p>Pre-built playbooks for sales, marketing, eng, legal, design.</p></div></a>
+      <a href="tutorials.html#cap-plugins" class="cap-card"><div class="cap-icon ic-indigo"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div><h3>Plugins</h3><p>Bundles of skills + connectors. Install by role.</p></div></a>
+      <a href="tutorials.html#cap-memory" class="cap-card"><div class="cap-icon ic-rose"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div><h3>Persistent memory</h3><p>Remembers you, your preferences, your projects across sessions.</p></div></a>
+      <a href="tutorials.html#cap-schedule" class="cap-card"><div class="cap-icon ic-teal"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><h3>Scheduled tasks</h3><p>Run on a cadence &mdash; daily briefings, weekly digests, reminders.</p></div></a>
+      <a href="tutorials.html#cap-artifacts" class="cap-card"><div class="cap-icon ic-orange"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><div><h3>Live artifacts</h3><p>HTML pages that persist and refresh data each time you open them.</p></div></a>
+      <a href="tutorials.html#cap-viz" class="cap-card"><div class="cap-icon ic-yellow"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></div><div><h3>Inline visualizations</h3><p>Diagrams, charts, mockups, interactive widgets in chat.</p></div></a>
+      <a href="tutorials.html#cap-agents" class="cap-card"><div class="cap-icon ic-cyan"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><h3>Subagents</h3><p>Delegate heavy work &mdash; research, code review, parallel searches.</p></div></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-row" style="flex-direction:column;gap:2rem">
+    <div style="display:flex;flex-direction:column;gap:1rem;width:100%">
+      <div style="display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="footer-brand"><span class="nav-dot"></span> The Cowork Field Guide</div>
+          <p class="footer-desc">A learning guide built in Cowork itself. The fastest way to understand what it can do is to ask it to show you.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,minmax(140px,1fr));gap:0.25rem 2rem;align-content:start">
+          <a href="index.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Home</a><a href="install.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Install</a><a href="quickstart.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Quick Start</a><a href="trust.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Trust</a><a href="tutorials.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Tutorials</a><a href="example.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Example</a><a href="projects.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Projects</a><a href="examples.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Output Examples</a><a href="pitfalls.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Pitfalls</a><a href="reference.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Reference</a><a href="glossary.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Glossary</a><a href="cheat-sheet.html" style="color:rgba(255,255,255,0.65);text-decoration:none;font-size:0.8125rem;padding:0.25rem 0;display:block;transition:color 0.2s ease" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.65)'">Cheat Sheet</a>
+        </div>
+      </div>
+      <div class="footer-meta" style="padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06)">Built with Claude Cowork &middot; v2 &middot; <a href="https://github.com/shaseaver25/claude-cowork" style="color:#a78bfa;text-decoration:none">github.com/shaseaver25/claude-cowork</a></div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script src="assets/script.js"></script>
+</body>
+</html>
